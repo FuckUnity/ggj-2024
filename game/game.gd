@@ -33,7 +33,7 @@ func _open_level(level: MainState.MiniGames):
 		MainState.MiniGames.WINDOW:
 			state.set_level(level, assets.spawn_level(self, assets.template_level_window))
 		MainState.MiniGames.CAT_TREE:
-			state.set_level(level, assets.spawn_level(self, assets.template_level_window))
+			state.set_level(level, assets.spawn_level(self, assets.template_level_cat_tree))
 		MainState.MiniGames.COMPUTER:
 			state.set_level(level, assets.spawn_level(self, assets.template_level_window))
 		MainState.MiniGames.KITCHEN_COFFEE:
