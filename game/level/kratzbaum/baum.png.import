@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6ras4750xbx3"
-path="res://.godot/imported/base_cat.png-77ae4bd948017f390fced190fee18293.ctex"
+uid="uid://cal3vmhdbcbpy"
+path="res://.godot/imported/baum.png-53e416e39358827f36581b8249fbe6bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/kratzbaum/base_cat.png"
-dest_files=["res://.godot/imported/base_cat.png-77ae4bd948017f390fced190fee18293.ctex"]
+source_file="res://level/kratzbaum/baum.png"
+dest_files=["res://.godot/imported/baum.png-53e416e39358827f36581b8249fbe6bb.ctex"]
 
 [params]
 

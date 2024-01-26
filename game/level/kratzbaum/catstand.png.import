@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5rolxf0ma5vt"
-path="res://.godot/imported/walk_cat_4.png-4c3aca7ba462db92a969b5ab12612e15.ctex"
+uid="uid://dctsn6j045iwr"
+path="res://.godot/imported/catstand.png-6e265e660fc891c56dd9845c03b61a03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/kratzbaum/walk_cat_4.png"
-dest_files=["res://.godot/imported/walk_cat_4.png-4c3aca7ba462db92a969b5ab12612e15.ctex"]
+source_file="res://level/kratzbaum/catstand.png"
+dest_files=["res://.godot/imported/catstand.png-6e265e660fc891c56dd9845c03b61a03.ctex"]
 
 [params]
 

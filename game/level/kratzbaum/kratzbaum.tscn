@@ -1,20 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmo8kdh81gm2s"]
+[gd_scene load_steps=14 format=3 uid="uid://cmo8kdh81gm2s"]
 
-[ext_resource type="Texture2D" uid="uid://c6ras4750xbx3" path="res://level/kratzbaum/base_cat.png" id="1_tytga"]
-[ext_resource type="Texture2D" uid="uid://d2u26ngvilasi" path="res://level/kratzbaum/jump_cat.png" id="2_hyqcv"]
-[ext_resource type="Texture2D" uid="uid://c2dr7m87tai2p" path="res://level/kratzbaum/walk_cat.png" id="3_hnnk5"]
-[ext_resource type="Texture2D" uid="uid://0k60uh03isuc" path="res://level/kratzbaum/walk_cat_2.png" id="4_ixdfc"]
-[ext_resource type="Texture2D" uid="uid://b1hurr5jl7yb2" path="res://level/kratzbaum/walk_cat_3.png" id="5_e5fe8"]
-[ext_resource type="Texture2D" uid="uid://5rolxf0ma5vt" path="res://level/kratzbaum/walk_cat_4.png" id="6_uules"]
+[ext_resource type="Script" path="res://level/kratzbaum/Player.gd" id="1_6cojx"]
+[ext_resource type="Texture2D" uid="uid://cal3vmhdbcbpy" path="res://level/kratzbaum/baum.png" id="1_dmtou"]
+[ext_resource type="Texture2D" uid="uid://dctsn6j045iwr" path="res://level/kratzbaum/catstand.png" id="3_eop7y"]
+[ext_resource type="Texture2D" uid="uid://dd51wsfcynktw" path="res://level/kratzbaum/catjump.png" id="4_k2r06"]
+[ext_resource type="Texture2D" uid="uid://bsahrbiurh6mn" path="res://level/kratzbaum/cat01.png" id="5_vjfks"]
+[ext_resource type="Texture2D" uid="uid://dgwspnf6arwd5" path="res://level/kratzbaum/cat02.png" id="6_w2ooe"]
+[ext_resource type="Texture2D" uid="uid://ci7y6lrvii1tm" path="res://level/kratzbaum/cat03.png" id="7_i5nr3"]
+[ext_resource type="Texture2D" uid="uid://bkmsbkjins1w1" path="res://level/kratzbaum/cat04.png" id="8_7x6fe"]
+[ext_resource type="Texture2D" uid="uid://ct53icyvfqu1x" path="res://level/kratzbaum/cat05.png" id="9_gregh"]
+[ext_resource type="Texture2D" uid="uid://u0qt8v2pmeaw" path="res://level/kratzbaum/platform.png" id="9_phatm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wp02h"]
-size = Vector2(226, 212)
+size = Vector2(148.5, 129.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_odaov"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_tytga")
+"texture": ExtResource("3_eop7y")
 }],
 "loop": true,
 "name": &"default",
@@ -22,7 +26,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_hyqcv")
+"texture": ExtResource("4_k2r06")
 }],
 "loop": true,
 "name": &"jump",
@@ -30,40 +34,126 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_hnnk5")
+"texture": ExtResource("5_vjfks")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_ixdfc")
+"texture": ExtResource("6_w2ooe")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_e5fe8")
+"texture": ExtResource("7_i5nr3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_uules")
+"texture": ExtResource("8_7x6fe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gregh")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 8.0
+"speed": 6.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gw654"]
+size = Vector2(645, 40.1957)
 
 [node name="Kratzbaum" type="Node2D"]
 
+[node name="Tree" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(711, 503)
+scale = Vector2(7.045, 7.045)
+texture = ExtResource("1_dmtou")
+region_enabled = true
+region_rect = Rect2(0, -170.33, 25.92, 424.71)
+
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(553, 440)
+script = ExtResource("1_6cojx")
+gravity = 800
+SPEED = 500.0
+JUMP_VELOCITY = -800.0
+JUMP_MAX = -1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(4, -37)
+position = Vector2(0.75, -21.75)
 shape = SubResource("RectangleShape2D_wp02h")
 
-[node name="BaseCat" type="Sprite2D" parent="Player"]
-position = Vector2(-8, -42)
-texture = ExtResource("1_tytga")
-
-[node name="JumpCat" type="Sprite2D" parent="Player"]
-visible = false
-position = Vector2(-1.5, -50.5)
-texture = ExtResource("2_hyqcv")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-visible = false
-position = Vector2(3, -49)
+position = Vector2(62, -28)
+scale = Vector2(0.116416, 0.116416)
 sprite_frames = SubResource("SpriteFrames_odaov")
+frame_progress = 0.851694
+
+[node name="ColorRect" type="ColorRect" parent="Player/AnimatedSprite2D"]
+offset_left = -1331.43
+offset_top = 214.747
+offset_right = -1291.43
+offset_bottom = 254.747
+scale = Vector2(4.43596, 4.77955)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-2, 10)
+limit_left = -280
+limit_top = -2475
+limit_right = 1670
+limit_bottom = 1015
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_left_margin = 0.3
+drag_right_margin = 0.3
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(552, 515)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+texture_filter = 1
+position = Vector2(2, 46)
+scale = Vector2(13.925, 6.435)
+texture = ExtResource("9_phatm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(0.59436, 18.9021)
+shape = SubResource("RectangleShape2D_gw654")
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(1056, 282)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform2"]
+texture_filter = 1
+position = Vector2(2, 46)
+scale = Vector2(13.925, 6.435)
+texture = ExtResource("9_phatm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+position = Vector2(-2, 22)
+shape = SubResource("RectangleShape2D_gw654")
+
+[node name="Platform3" type="StaticBody2D" parent="."]
+position = Vector2(-266, 32)
+scale = Vector2(3.12, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform3"]
+texture_filter = 1
+position = Vector2(2, 46)
+scale = Vector2(13.925, 6.435)
+texture = ExtResource("9_phatm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
+position = Vector2(2, 22)
+shape = SubResource("RectangleShape2D_gw654")
+
+[node name="Platform4" type="StaticBody2D" parent="."]
+position = Vector2(415, -264)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform4"]
+texture_filter = 1
+position = Vector2(2, 46)
+scale = Vector2(13.925, 6.435)
+texture = ExtResource("9_phatm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4"]
+position = Vector2(2, 22)
+shape = SubResource("RectangleShape2D_gw654")
