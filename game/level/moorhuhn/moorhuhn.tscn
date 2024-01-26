@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dg5gg1vnmlbjf"]
+
+[node name="Moorhuhn" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Node2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+text = "Hallo Welt"

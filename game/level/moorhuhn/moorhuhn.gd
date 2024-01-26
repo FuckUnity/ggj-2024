@@ -1,6 +1,5 @@
-extends Node
+extends level_base
 
-var state: main_state
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
