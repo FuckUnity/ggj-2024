@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2psm1tw6l77"]
+
+[ext_resource type="Script" path="res://level/moorhuhn/bird.gd" id="1_ivgay"]
+[ext_resource type="Texture2D" uid="uid://cbd6nswqwyh66" path="res://level/moorhuhn/bird.png" id="2_f8o2g"]
+
+[node name="Bird" type="Node2D"]
+script = ExtResource("1_ivgay")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_f8o2g")
