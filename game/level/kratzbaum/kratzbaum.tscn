@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmo8kdh81gm2s"]
+
+[ext_resource type="Texture2D" uid="uid://c6ras4750xbx3" path="res://level/kratzbaum/base_cat.png" id="1_tytga"]
+[ext_resource type="Texture2D" uid="uid://d2u26ngvilasi" path="res://level/kratzbaum/jump_cat.png" id="2_hyqcv"]
+[ext_resource type="Texture2D" uid="uid://c2dr7m87tai2p" path="res://level/kratzbaum/walk_cat.png" id="3_hnnk5"]
+[ext_resource type="Texture2D" uid="uid://0k60uh03isuc" path="res://level/kratzbaum/walk_cat_2.png" id="4_ixdfc"]
+[ext_resource type="Texture2D" uid="uid://b1hurr5jl7yb2" path="res://level/kratzbaum/walk_cat_3.png" id="5_e5fe8"]
+[ext_resource type="Texture2D" uid="uid://5rolxf0ma5vt" path="res://level/kratzbaum/walk_cat_4.png" id="6_uules"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wp02h"]
+size = Vector2(226, 212)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_odaov"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tytga")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hyqcv")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_hnnk5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ixdfc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e5fe8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_uules")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[node name="Kratzbaum" type="Node2D"]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(4, -37)
+shape = SubResource("RectangleShape2D_wp02h")
+
+[node name="BaseCat" type="Sprite2D" parent="Player"]
+position = Vector2(-8, -42)
+texture = ExtResource("1_tytga")
+
+[node name="JumpCat" type="Sprite2D" parent="Player"]
+visible = false
+position = Vector2(-1.5, -50.5)
+texture = ExtResource("2_hyqcv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+visible = false
+position = Vector2(3, -49)
+sprite_frames = SubResource("SpriteFrames_odaov")
