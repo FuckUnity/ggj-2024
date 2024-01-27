@@ -28,6 +28,9 @@ var cup_positions = [
 var cur_pos = 0
 var goal_pos = 4
 
+var cat_face
+var count_cat_faces = 4
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
@@ -36,6 +39,7 @@ func _ready():
 	$CanvasLayer/Control/GridContainer/bar_label.text = str(bar)
 	$CanvasLayer/Control/display/clock.text = times[cur_time]
 	Input.set_custom_mouse_cursor(cursor_paw, 0, Vector2(32, 32))
+	cat_face = $CanvasLayer/Control/coffee_cup/AnimatedSprite2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -80,6 +84,8 @@ func _on_coffee_cup_pressed():
 	cur_pos = (cur_pos + 1) % cup_positions.size()
 	if cur_pos == 0:
 		$CanvasLayer/Control/coffee_cup.set_texture_normal(empty_cup)
+		cat_face.frame = (cat_face.frame + 1) % count_cat_faces
+	
 	$CanvasLayer/Control/coffee_cup.set_position(cup_positions[cur_pos])
 
 func _on_animated_sprite_2d_animation_finished():

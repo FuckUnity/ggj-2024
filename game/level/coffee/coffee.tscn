@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cpxr8f6vacmqt"]
+[gd_scene load_steps=34 format=3 uid="uid://cpxr8f6vacmqt"]
 
 [ext_resource type="Texture2D" uid="uid://bfahy8003euh2" path="res://level/coffee/sprites/bg.png" id="1_n0lo3"]
 [ext_resource type="Script" path="res://level/coffee/coffee.gd" id="1_x5kdv"]
@@ -27,6 +27,10 @@
 [ext_resource type="Texture2D" uid="uid://co066homvrayc" path="res://level/coffee/sprites/coffee_streams/end.png" id="11_h15da"]
 [ext_resource type="Texture2D" uid="uid://cy31pgqj8k30y" path="res://level/coffee/sprites/display.png" id="11_r4rh2"]
 [ext_resource type="FontFile" uid="uid://c6snkbqy5evdg" path="res://level/coffee/fonts/digital-dream/DIGITALDREAMFAT.ttf" id="11_x4j6t"]
+[ext_resource type="Texture2D" uid="uid://c7vdru5547yxt" path="res://assets/cat_face_black.png" id="26_dlod3"]
+[ext_resource type="Texture2D" uid="uid://dvfe0nmdk2yp2" path="res://assets/cat_face_blue.png" id="27_gad50"]
+[ext_resource type="Texture2D" uid="uid://dddfw4x0gwmnx" path="res://assets/cat_face_green.png" id="28_q084v"]
+[ext_resource type="Texture2D" uid="uid://cftcmmxin6031" path="res://assets/cat_face_red.png" id="29_srdfb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pvwsf"]
 animations = [{
@@ -113,6 +117,26 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_bgijf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_dlod3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_gad50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_q084v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_srdfb")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
 [node name="Coffee" type="Node2D"]
 scale = Vector2(1000, 1000)
 script = ExtResource("1_x5kdv")
@@ -121,7 +145,7 @@ script = ExtResource("1_x5kdv")
 anchor_mode = 0
 
 [node name="Bg" type="Sprite2D" parent="."]
-position = Vector2(0.7, 0.362)
+position = Vector2(-2.138, -1.321)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_n0lo3")
 
@@ -290,6 +314,11 @@ offset_right = 1982.0
 offset_bottom = 969.0
 texture_normal = ExtResource("10_smwps")
 stretch_mode = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/coffee_cup"]
+position = Vector2(212.953, 289.906)
+scale = Vector2(0.181568, 0.179621)
+sprite_frames = SubResource("SpriteFrames_bgijf")
 
 [node name="display" type="TextureButton" parent="CanvasLayer/Control"]
 layout_mode = 0
