@@ -11,6 +11,19 @@ const hover_plant_2 = preload("res://assets/Kitchen.png")
 const hover_plant_3 = preload("res://assets/Kitchen.png")
 const hover_computer = preload("res://assets/Kitchen.png")
 
+const window_closed = preload("res://assets/room_windows_closed.png")
+const window_opened = preload("res://assets/room_windows_opened.png")
+
+const mug_initial = preload("res://assets/Mug.png")
+const mug_used = null
+
+const couch_empty = null
+const couch_human = preload("res://assets/couch_human.png")
+
+const chair_empty = null
+const chair_human_happy = preload("res://assets/chair_human_happy.png")
+const chair_human_sad = preload("res://assets/chair_human_sad.png")
+
 var buttons
 
 # Called when the node enters the scene tree for the first time.
@@ -31,6 +44,33 @@ func _ready():
 	
 	for b in buttons:
 		_init_button(b)
+		
+	match game.state.mainState[MainState.MainSceneObjects.WINDOW]:
+		"closed":
+			$"Control/AspectRatioContainer/TextureRectWindows".set_texture(window_closed)
+		"open":
+			$"Control/AspectRatioContainer/TextureRectWindows".set_texture(window_opened)
+			
+	match game.state.mainState[MainState.MainSceneObjects.COFFEE_CUP]:
+		"initial":
+			$"Control/AspectRatioContainer/TextureRectMug".set_texture(mug_initial)
+		"used":
+			$"Control/AspectRatioContainer/TextureRectMug".set_texture(mug_used)
+			
+	match game.state.mainState[MainState.MainSceneObjects.COUCH]:
+		"empty":
+			$"Control/AspectRatioContainer/TextureRectCouch".set_texture(couch_empty)
+		"human":
+			$"Control/AspectRatioContainer/TextureRectCouch".set_texture(couch_human)
+			
+	match game.state.mainState[MainState.MainSceneObjects.CHAIR]:
+		"empty":
+			$"Control/AspectRatioContainer/TextureRectChair".set_texture(chair_empty)
+		"human_happy":
+			$"Control/AspectRatioContainer/TextureRectChair".set_texture(chair_human_happy)
+		"human_sad":
+			$"Control/AspectRatioContainer/TextureRectChair".set_texture(chair_human_sad)
+			
 
 func _init_button(b):
 	b.button.pressed.connect(func(): game._open_level(b.level))

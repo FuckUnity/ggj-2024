@@ -10,7 +10,7 @@ var rng = RandomNumberGenerator.new()
 var birds = [] as Array[Bird]
 var _point_objects = [] as Array[WindowGamePoint]
 var max_birds = 10
-var max_points = 40
+var max_points = 10
 var bird_holder: Node
 var points_holder: Node
 
