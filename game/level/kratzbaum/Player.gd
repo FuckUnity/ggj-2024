@@ -9,8 +9,6 @@ extends CharacterBody2D
 
 var jump_strength_charge = 0
 
-func _ready():
-	$AnimatedSprite2D/ColorRect.color = Color(0,0,0,0)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -20,12 +18,12 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_pressed("jump") and is_on_floor():
 		jump_strength_charge = max(jump_strength_charge + JUMP_VELOCITY * delta, JUMP_MAX)
-		$AnimatedSprite2D/ColorRect.color = Color(1, 1 - jump_strength_charge / JUMP_MAX, 1 - jump_strength_charge / JUMP_MAX)
+		$JumpIndicator.charge_amount = jump_strength_charge / JUMP_MAX
 
 	if Input.is_action_just_released("jump") and is_on_floor():
 		velocity.y = jump_strength_charge
 		jump_strength_charge = 0
-		$AnimatedSprite2D/ColorRect.color = Color(0,0,0,0)
+		$JumpIndicator.charge_amount = 0
 
 	var direction = Input.get_axis("left", "right")
 	if is_on_floor() and direction:
@@ -45,11 +43,13 @@ func _physics_process(delta):
 
 	if is_on_floor() and Input.is_action_pressed("left"):
 		$AnimatedSprite2D.flip_h = true
+		$JumpIndicator.flipped = true
 		$AnimatedSprite2D.play("walk")
 
 	#on right (add is_action_just_released so you continue running after jumping)
 	if is_on_floor() and Input.is_action_pressed("right"):
 		$AnimatedSprite2D.flip_h = false
+		$JumpIndicator.flipped = false
 		$AnimatedSprite2D.play("walk")
 
 	#on idle if nothing is being pressed
@@ -57,4 +57,8 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play("default")
 		
 	move_and_slide()
+
+func on_pickup(pickup):
+	print(pickup)
 	
+	pickup.queue_free()
