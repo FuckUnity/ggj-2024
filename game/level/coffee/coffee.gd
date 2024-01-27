@@ -28,19 +28,16 @@ That's exactly how I like my coffee!!
 var neg_response = """No that's not the right time for this coffee.
 	:-("""
 var cup_positions = [
-	Vector2(1062, 700), # 0 -- right edge
-	Vector2( 883, 700), # 1
-	Vector2( 800, 700), # 2
-	Vector2( 720, 700), # 3
-	Vector2( 664, 700), # 4 -> goal_pos
-	Vector2( 560, 700), # 5
-	Vector2( 447, 700), # 6 -- left edge
+	Vector2(1062, 729), # 0 -- right edge
+	Vector2( 980, 729), # 1
+	Vector2( 800, 729), # 2
+	Vector2( 720, 729), # 3
+	Vector2( 664, 729), # 4
+	Vector2( 560, 729), # 5
+	Vector2( 447, 729), # 6 -- left edge
 ]
 var cur_pos = 0
-var goal_pos = 4
-
-var cat_face
-var count_cat_faces = 4
+var goal_pos = 2
 
 func set_paw():
 	Input.set_custom_mouse_cursor(cursor_paw, 0, Vector2(63,63))
@@ -68,12 +65,9 @@ func click_button():
 func _on_pour_coffee_button_pressed():
 	if full || poaring: return
 	poaring = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	click_button()
 	$pouring_coffee.play()
-	if cur_pos == goal_pos:
-		print("play cup animation")
-		$CanvasLayer/Control/PouringCoffee.play("cup")
-		return
 	$CanvasLayer/Control/PouringCoffee.play("default")
 
 
@@ -103,9 +97,10 @@ func _on_display_pressed():
 
 func _on_coffee_cup_pressed():
 	if poaring: return
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	cur_pos = (cur_pos + 1) % cup_positions.size()
 	if cur_pos == 0:
+		$CanvasLayer/Control/coffee_cup/steam.play("none")
+		$CanvasLayer/Control/coffee_cup/steam.stop()
 		#$CanvasLayer/Control/coffee_cup.set_texture_normal(empty_cup)
 		#cat_face.frame = (cat_face.frame + 1) % count_cat_faces
 		full = false
@@ -113,10 +108,11 @@ func _on_coffee_cup_pressed():
 
 func _on_animated_sprite_2d_animation_finished():
 	print("finished poaring coffee :P")
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if cur_pos != goal_pos:
 		return
 	#$CanvasLayer/Control/coffee_cup.set_texture_normal(full_cup)
+	$CanvasLayer/Control/coffee_cup/steam.play("default")
 	# 01:00 PM - 3 be, 10 ba, 1 bt
 	if beans == 3 && bar == 10 && type == 1 && times[cur_time] == "01:00 PM":
 		$CanvasLayer/Control/speech_bubble/humans_response.text = pos_response

@@ -1,31 +1,36 @@
-[gd_scene load_steps=30 format=3 uid="uid://cpxr8f6vacmqt"]
+[gd_scene load_steps=36 format=3 uid="uid://cpxr8f6vacmqt"]
 
 [ext_resource type="Script" path="res://level/coffee/coffee.gd" id="1_b76l1"]
 [ext_resource type="Texture2D" uid="uid://bfahy8003euh2" path="res://level/coffee/sprites/bg.png" id="1_n0lo3"]
 [ext_resource type="Texture2D" uid="uid://bpn3w5gdvji4y" path="res://level/coffee/sprites/coffee_machine.png" id="3_8w54k"]
-[ext_resource type="Texture2D" uid="uid://mqdvipjdtpac" path="res://level/coffee/sprites/coffee_streams/empty.png" id="3_xy8ay"]
-[ext_resource type="Texture2D" uid="uid://d1tt0ropqamgo" path="res://level/coffee/sprites/coffee_streams/start.png" id="4_14rqc"]
-[ext_resource type="Texture2D" uid="uid://v1ner85fe70b" path="res://level/coffee/sprites/coffee_streams/third.png" id="5_c8ino"]
 [ext_resource type="Texture2D" uid="uid://byyflbuvbsfpd" path="res://level/coffee/icons/button_down.png" id="5_ejncl"]
-[ext_resource type="Texture2D" uid="uid://ciefmmf6lfb38" path="res://level/coffee/sprites/coffee_streams/half.png" id="6_eab6i"]
 [ext_resource type="Texture2D" uid="uid://dbdj6irh3gabd" path="res://level/coffee/icons/button_left.png" id="6_g0f7p"]
 [ext_resource type="Texture2D" uid="uid://y2i7ujufb4hj" path="res://level/coffee/icons/sticky_note.png" id="7_3d6il"]
-[ext_resource type="Texture2D" uid="uid://d4gbwrs8tuxt3" path="res://level/coffee/sprites/coffee_streams/two_thirds.png" id="7_u70e6"]
-[ext_resource type="Texture2D" uid="uid://cvhmokng8hfni" path="res://level/coffee/sprites/coffee_streams/full.png" id="8_3droe"]
 [ext_resource type="FontFile" uid="uid://b5wc8u1b2jhql" path="res://level/coffee/fonts/betterwork/Betterworks.otf" id="8_s0m11"]
 [ext_resource type="Texture2D" uid="uid://bx00tp7k6h4n5" path="res://level/coffee/icons/speech_bubble.png" id="9_62spy"]
-[ext_resource type="Texture2D" uid="uid://bj2kcumd73mou" path="res://level/coffee/sprites/coffee_streams/cup/full.png" id="9_n6x1b"]
-[ext_resource type="Texture2D" uid="uid://crg18rq7uojd3" path="res://level/coffee/sprites/coffee_streams/cup/start_end.png" id="9_nxpe8"]
-[ext_resource type="Texture2D" uid="uid://pke57eugxtq2" path="res://level/coffee/sprites/coffee_streams/start_end.png" id="9_qdec7"]
 [ext_resource type="FontFile" uid="uid://c5e6jd020r2fe" path="res://level/coffee/fonts/shiny-marker/Shiny Marker Regular.ttf" id="10_0hgcj"]
-[ext_resource type="Texture2D" uid="uid://b1bsblibsfoli" path="res://level/coffee/sprites/coffee_streams/end_mid.png" id="10_hu6ih"]
 [ext_resource type="Script" path="res://level/coffee/speech_bubble.gd" id="11_2nl58"]
-[ext_resource type="Texture2D" uid="uid://co066homvrayc" path="res://level/coffee/sprites/coffee_streams/end.png" id="11_h15da"]
 [ext_resource type="Texture2D" uid="uid://cy31pgqj8k30y" path="res://level/coffee/sprites/display.png" id="11_r4rh2"]
 [ext_resource type="FontFile" uid="uid://c6snkbqy5evdg" path="res://level/coffee/fonts/digital-dream/DIGITALDREAMFAT.ttf" id="11_x4j6t"]
+[ext_resource type="Texture2D" uid="uid://cqoq0ietmi75y" path="res://level/coffee/sprites/coffee_streams/c-0.png" id="12_hlqe5"]
+[ext_resource type="Texture2D" uid="uid://sxks7dtrkgj" path="res://level/coffee/sprites/coffee_streams/c-1.png" id="13_ayrmi"]
+[ext_resource type="Texture2D" uid="uid://djwh8ouo7y2u3" path="res://level/coffee/sprites/coffee_streams/c-2.png" id="14_op2ol"]
+[ext_resource type="Texture2D" uid="uid://chj0t3peo3kxu" path="res://level/coffee/sprites/coffee_streams/c-3.png" id="15_j8v02"]
+[ext_resource type="Texture2D" uid="uid://ctpiab5iugat3" path="res://level/coffee/sprites/coffee_streams/c-4.png" id="16_g4xbn"]
+[ext_resource type="Texture2D" uid="uid://brtn10pu5eai5" path="res://level/coffee/sprites/coffee_streams/c-5.png" id="17_5fq0q"]
+[ext_resource type="Texture2D" uid="uid://fjgxvfury1ot" path="res://level/coffee/sprites/coffee_streams/c-6.png" id="18_ia1a6"]
+[ext_resource type="Texture2D" uid="uid://cucoi1fg5yi6g" path="res://level/coffee/sprites/coffee_streams/c-7.png" id="19_tqy26"]
+[ext_resource type="Texture2D" uid="uid://ddkrx6fa45dmu" path="res://level/coffee/sprites/coffee_streams/c-8.png" id="20_mek08"]
+[ext_resource type="Texture2D" uid="uid://sip4fjbaqlum" path="res://level/coffee/sprites/coffee_streams/c-9.png" id="21_8itut"]
+[ext_resource type="Texture2D" uid="uid://ddwrji7asaew" path="res://level/coffee/sprites/coffee_streams/c-10.png" id="22_itvy7"]
+[ext_resource type="Texture2D" uid="uid://dwsypy12ps3yy" path="res://level/coffee/sprites/coffee_streams/steam/s-1.png" id="23_k13np"]
+[ext_resource type="Texture2D" uid="uid://cgybxiw4r2knb" path="res://level/coffee/sprites/coffee_streams/steam/s-2.png" id="24_7x5hh"]
+[ext_resource type="Texture2D" uid="uid://d4lv4ebuwi03f" path="res://level/coffee/sprites/coffee_streams/steam/s-3.png" id="25_8c3ou"]
 [ext_resource type="Texture2D" uid="uid://bgtcgif22rdef" path="res://level/coffee/sprites/coffee_cup.png" id="25_kii2q"]
+[ext_resource type="AudioStream" uid="uid://d10xko1u7c6to" path="res://level/coffee/audio/coffee_pouring_5sec.wav" id="25_rmnwf"]
+[ext_resource type="Texture2D" uid="uid://rqjnvm1db2si" path="res://level/coffee/sprites/coffee_streams/steam/s-4.png" id="26_fppeg"]
+[ext_resource type="Texture2D" uid="uid://b2h2lwvy0orik" path="res://level/coffee/sprites/coffee_streams/steam/s-0.png" id="27_e6pj5"]
 [ext_resource type="AudioStream" uid="uid://qrmb5ilyvoua" path="res://level/coffee/audio/button.wav" id="31_gt6xq"]
-[ext_resource type="AudioStream" uid="uid://d2p343rh884m3" path="res://level/coffee/audio/coffee_pouring_fade_out.wav" id="32_ycqrj"]
 [ext_resource type="AudioStream" uid="uid://dincjrymkh0r5" path="res://level/coffee/audio/KaffeemaschineBackroungloop.wav" id="33_gouby"]
 [ext_resource type="AudioStream" uid="uid://crkm6rsjcqbkj" path="res://level/coffee/audio/schnurren.wav" id="34_igoc4"]
 
@@ -33,76 +38,144 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_xy8ay")
+"texture": ExtResource("12_hlqe5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_14rqc")
+"texture": ExtResource("13_ayrmi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_c8ino")
-}, {
-"duration": 15.0,
-"texture": ExtResource("6_eab6i")
-}, {
-"duration": 15.0,
-"texture": ExtResource("9_n6x1b")
-}, {
-"duration": 10.0,
-"texture": ExtResource("6_eab6i")
-}, {
-"duration": 3.0,
-"texture": ExtResource("4_14rqc")
-}, {
-"duration": 2.0,
-"texture": ExtResource("6_eab6i")
-}, {
-"duration": 5.0,
-"texture": ExtResource("9_nxpe8")
+"texture": ExtResource("14_op2ol")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_xy8ay")
+"texture": ExtResource("15_j8v02")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_xy8ay")
-}],
-"loop": false,
-"name": &"cup",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_xy8ay")
+"texture": ExtResource("16_g4xbn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_14rqc")
+"texture": ExtResource("17_5fq0q")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_c8ino")
+"texture": ExtResource("18_ia1a6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_eab6i")
+"texture": ExtResource("16_g4xbn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_u70e6")
-}, {
-"duration": 55.0,
-"texture": ExtResource("8_3droe")
-}, {
-"duration": 2.0,
-"texture": ExtResource("9_qdec7")
-}, {
-"duration": 2.0,
-"texture": ExtResource("10_hu6ih")
-}, {
-"duration": 5.0,
-"texture": ExtResource("11_h15da")
+"texture": ExtResource("17_5fq0q")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_xy8ay")
+"texture": ExtResource("18_ia1a6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_g4xbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5fq0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ia1a6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_g4xbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5fq0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ia1a6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_g4xbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5fq0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ia1a6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_g4xbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5fq0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ia1a6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_g4xbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5fq0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ia1a6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_g4xbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5fq0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ia1a6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_g4xbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_5fq0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ia1a6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_tqy26")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_mek08")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_8itut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_itvy7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hlqe5")
 }],
 "loop": false,
 "name": &"default",
 "speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hgb3g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_k13np")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_7x5hh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_8c3ou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_fppeg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_e6pj5")
+}],
+"loop": true,
+"name": &"none",
+"speed": 5.0
 }]
 
 [node name="Coffee" type="Node2D"]
@@ -204,12 +277,12 @@ offset_bottom = 275.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("8_s0m11")
 theme_override_font_sizes/font_size = 14
-text = "08:00 AM - 2 be, 15 ba, 1 bt
-10:00 AM - 1 be, 10 ba, 2 bt
-12:00 PM - 1 be, 20 ba, 3 bt
-01:00 PM - 3 be, 10 ba, 1 bt
-03:00 PM - 2 be, 15 ba, 1 bt
-05:00 PM - 1 be, 20 ba, 3 bt"
+text = "08:00 AM - 2 be, 2 ba, 1 bt
+10:00 AM - 1 be, 1 ba, 2 bt
+12:00 PM - 1 be, 3 ba, 3 bt
+01:00 PM - 3 be, 1 ba, 1 bt
+03:00 PM - 2 be, 2 ba, 1 bt
+05:00 PM - 1 be, 3 ba, 3 bt"
 
 [node name="speech_bubble" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -234,20 +307,27 @@ theme_override_font_sizes/font_size = 36
 text = "I'm so tired..."
 autowrap_mode = 3
 
+[node name="PouringCoffee" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(985, 739.488)
+scale = Vector2(0.9325, 0.582402)
+sprite_frames = SubResource("SpriteFrames_pvwsf")
+frame_progress = 1.0
+
 [node name="coffee_cup" type="TextureButton" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 641.0
-offset_top = 700.0
-offset_right = 955.0
-offset_bottom = 905.0
+offset_left = 800.0
+offset_top = 729.0
+offset_right = 1113.0
+offset_bottom = 903.0
 texture_normal = ExtResource("25_kii2q")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="PouringCoffee" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
-position = Vector2(830, 750.5)
-scale = Vector2(0.9325, 0.976667)
-sprite_frames = SubResource("SpriteFrames_pvwsf")
+[node name="steam" type="AnimatedSprite2D" parent="CanvasLayer/Control/coffee_cup"]
+position = Vector2(126.5, -74)
+scale = Vector2(0.576316, 0.582402)
+sprite_frames = SubResource("SpriteFrames_hgb3g")
+animation = &"none"
 
 [node name="display" type="TextureButton" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -293,7 +373,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="pouring_coffee" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("32_ycqrj")
+stream = ExtResource("25_rmnwf")
 volume_db = 15.0
 
 [node name="background" type="AudioStreamPlayer" parent="."]
@@ -321,10 +401,11 @@ stream = ExtResource("31_gt6xq")
 [connection signal="mouse_exited" from="CanvasLayer/Control/adjust_type_button" to="." method="_on_adjust_type_button_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Control/adjust_type_button" to="." method="_on_adjust_type_button_pressed"]
 [connection signal="hidden" from="CanvasLayer/Control/speech_bubble" to="." method="_on_speech_bubble_hidden"]
+[connection signal="animation_finished" from="CanvasLayer/Control/PouringCoffee" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="mouse_entered" from="CanvasLayer/Control/coffee_cup" to="." method="_on_coffee_cup_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Control/coffee_cup" to="." method="_on_coffee_cup_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Control/coffee_cup" to="." method="_on_coffee_cup_pressed"]
-[connection signal="animation_finished" from="CanvasLayer/Control/PouringCoffee" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="CanvasLayer/Control/coffee_cup/steam" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="mouse_entered" from="CanvasLayer/Control/display" to="." method="_on_display_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Control/display" to="." method="_on_display_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Control/display" to="." method="_on_display_pressed"]

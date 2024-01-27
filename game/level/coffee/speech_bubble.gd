@@ -1,6 +1,6 @@
 extends TextureRect
 
-var MAX_VISIBLE = 2.5
+var MAX_VISIBLE = 4.5
 var count_visible = 0.0
 
 # Called when the node enters the scene tree for the first time.
