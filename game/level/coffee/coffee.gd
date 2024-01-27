@@ -47,11 +47,7 @@ func _process(delta):
 
 
 func _on_pour_coffee_button_pressed():
-	# 13:00 AM - 3 be, 10 ba, 1 bt
-	#print("be: " + str(beans) + ", bar: " + str(bar) + 
-		#", type: " + str(type) + ", time: " + times[cur_time] +
-		#", cup pos: " + str(cur_pos))
-	# animate pouring
+	if full: return
 	if cur_pos == goal_pos:
 		print("play cup animation")
 		$AnimatedSprite2D.play("cup")
@@ -85,6 +81,7 @@ func _on_coffee_cup_pressed():
 	if cur_pos == 0:
 		$CanvasLayer/Control/coffee_cup.set_texture_normal(empty_cup)
 		cat_face.frame = (cat_face.frame + 1) % count_cat_faces
+		full = false
 	
 	$CanvasLayer/Control/coffee_cup.set_position(cup_positions[cur_pos])
 
@@ -93,10 +90,12 @@ func _on_animated_sprite_2d_animation_finished():
 	if cur_pos != goal_pos:
 		return
 	$CanvasLayer/Control/coffee_cup.set_texture_normal(full_cup)
+	# 01:00 PM - 3 be, 10 ba, 1 bt
 	if beans == 3 && bar == 10 && type == 1 && times[cur_time] == "01:00 PM":
 		$CanvasLayer/Control/speech_bubble/humans_response.text = pos_response
 	else: $CanvasLayer/Control/speech_bubble/humans_response.text = neg_response
 	$CanvasLayer/Control/speech_bubble.visible = true
+	full = true
 
 func _on_speech_bubble_hidden():
 	# print("bubble gone")
