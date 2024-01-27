@@ -17,7 +17,6 @@ func _physics_process(delta):
 		if body.name == "Player":
 			if lastPress + KeyboardSpeed < Time.get_ticks_msec():
 				lastPress = Time.get_ticks_msec()
-				print(KeyboardKey)
 				var label = owner.get_node("Textpanel")
 
 				label.text += KeyboardKey

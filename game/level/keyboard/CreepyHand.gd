@@ -72,7 +72,7 @@ func _process(delta):
 func _physics_process(delta):
 
 	for body in get_overlapping_bodies():
-		if body.name == "Player":
+		if body.name == "Player" && !retreating:
 			startRetreating()
 			owner.pet()
 
