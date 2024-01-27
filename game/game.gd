@@ -32,10 +32,13 @@ func close_current_level():
 func _open_level(level: MainState.MiniGames):
 	if !state.is_open_level_allowed(level):
 		return;
+		
+	if state.current_level_type == MainState.MiniGames.NONE:
+		remove_child(state.current_level_ref)
 	
 	match level:
 		MainState.MiniGames.NONE:
-			pass
+			state.set_level(level, assets.spawn_level(self, assets.template_level_main))
 		MainState.MiniGames.WINDOW:
 			state.set_level(level, assets.spawn_level(self, assets.template_level_window))
 		MainState.MiniGames.CAT_TREE:
@@ -50,9 +53,8 @@ func _open_level(level: MainState.MiniGames):
 var _double_esc: float = 0
 
 func _unhandled_input(event):
-	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_ESCAPE:
-			if _double_esc > 0:
-				get_tree().quit()
-			else:
-				_double_esc = 0.3
+	if Input.is_action_pressed("close"):
+		if _double_esc > 0:
+			get_tree().quit()
+		else:
+			_double_esc = 0.3

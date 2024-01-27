@@ -17,6 +17,5 @@ func complete():
 	game.close_current_level()
 
 func _unhandled_input(event):
-	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_ESCAPE:
-			game.close_current_level()
+	if Input.is_action_pressed("close"):
+		game.close_current_level()

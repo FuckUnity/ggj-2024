@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://c5e6jd020r2fe"
+path="res://.godot/imported/Shiny Marker Regular.ttf-0ee4315f1e149c58b1d5c32925f7053a.fontdata"
+
+[deps]
+
+source_file="res://level/coffee/fonts/shiny-marker/Shiny Marker Regular.ttf"
+dest_files=["res://.godot/imported/Shiny Marker Regular.ttf-0ee4315f1e149c58b1d5c32925f7053a.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}
