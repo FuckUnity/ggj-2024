@@ -1,14 +1,11 @@
-extends level_base
+extends Node2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	super._ready()
+	pass # Replace with function body.
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-func _unhandled_input(event):
-	if event.is_pressed():
-		game._open_level(MainState.MiniGames.CAT_TREE)
-		
