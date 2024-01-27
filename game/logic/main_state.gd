@@ -17,8 +17,24 @@ var mainState = {
 		MiniGames.COMPUTER: MiniGameState.ACTIVE,
 		MiniGames.PLANTS: MiniGameState.BLOCKED,
 		MiniGames.CAT_TREE: MiniGameState.BLOCKED,
-	}
+	},
+	'emotions': [
+		'sad',
+		'lonely',
+		'bad_air',
+		'bored',
+		'tired'
+	]
 }
+
+func get_emotions():
+	return mainState.emotions
+
+func get_minigame_state():
+	return mainState.minigamesState
+
+func get_object_state(object: MainSceneObjects):
+	return mainState[object]
 
 func complete_current_level():
 	var level = current_level_type
@@ -35,7 +51,13 @@ func complete_current_level():
 					MiniGames.COMPUTER: MiniGameState.COMPLETED,
 					MiniGames.PLANTS: MiniGameState.BLOCKED,
 					MiniGames.CAT_TREE: MiniGameState.BLOCKED,
-				}
+				},
+				'emotions': [
+					'sad',
+					'bad_air',
+					'bored',
+					'tired'
+				]
 			}
 		MiniGames.KITCHEN_COFFEE:
 			mainState = {
@@ -48,7 +70,12 @@ func complete_current_level():
 					MiniGames.COMPUTER: MiniGameState.COMPLETED,
 					MiniGames.PLANTS: MiniGameState.BLOCKED,
 					MiniGames.CAT_TREE: MiniGameState.BLOCKED,
-				}
+				},
+				'emotions': [
+					'sad',
+					'bad_air',
+					'bored'
+				]
 			}
 			
 		MiniGames.WINDOW:
@@ -62,7 +89,11 @@ func complete_current_level():
 					MiniGames.COMPUTER: MiniGameState.COMPLETED,
 					MiniGames.PLANTS: MiniGameState.BLOCKED,
 					MiniGames.CAT_TREE: MiniGameState.ACTIVE,
-				}
+				},
+				'emotions': [
+					'sad',
+					'bored'
+				]
 			}
 		MiniGames.CAT_TREE:
 			mainState = {
@@ -75,7 +106,10 @@ func complete_current_level():
 					MiniGames.COMPUTER: MiniGameState.COMPLETED,
 					MiniGames.PLANTS: MiniGameState.ACTIVE,
 					MiniGames.CAT_TREE: MiniGameState.COMPLETED,
-				}
+				},
+				'emotions': [
+					'sad'
+				]
 			}
 		MiniGames.PLANTS:
 			mainState = {
@@ -88,7 +122,8 @@ func complete_current_level():
 					MiniGames.COMPUTER: MiniGameState.COMPLETED,
 					MiniGames.PLANTS: MiniGameState.COMPLETED,
 					MiniGames.CAT_TREE: MiniGameState.COMPLETED,
-				}
+				},
+				'emotions': []
 			}
 			
 	current_level_type = MiniGames.NONE
