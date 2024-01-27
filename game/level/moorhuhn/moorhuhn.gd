@@ -45,7 +45,8 @@ func _input(event):
 	if event.button_index != MOUSE_BUTTON_LEFT or !event.pressed:
 		return
 			
-	var pos = event.position - get_viewport().size * 0.5
+	var pos = get_viewport().get_camera_2d().get_local_mouse_position()
+	
 	for bird in birds:
 		var precision = bird.was_hit(pos)
 		if precision > 0:
