@@ -50,9 +50,8 @@ func _open_level(level: MainState.MiniGames):
 var _double_esc: float = 0
 
 func _unhandled_input(event):
-	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_ESCAPE:
-			if _double_esc > 0:
-				get_tree().quit()
-			else:
-				_double_esc = 0.3
+	if Input.is_action_pressed("close"):
+		if _double_esc > 0:
+			get_tree().quit()
+		else:
+			_double_esc = 0.3

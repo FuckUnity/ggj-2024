@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bokonvfnkrnhf"]
+
+[ext_resource type="Texture2D" uid="uid://bqolh0122rfmm" path="res://level/moorhuhn/treat.png" id="1_aftkk"]
+[ext_resource type="Script" path="res://level/moorhuhn/point.gd" id="1_tae38"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5edru"]
+radius = 7.28011
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ktonv"]
+size = Vector2(14, 14)
+
+[node name="Point" type="RigidBody2D"]
+mass = 0.01
+center_of_mass_mode = 1
+center_of_mass = Vector2(-1.62, -2.02)
+constant_force = Vector2(2.08165e-12, 2)
+script = ExtResource("1_tae38")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_aftkk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5edru")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_ktonv")
