@@ -1,18 +1,15 @@
-[gd_scene load_steps=33 format=3 uid="uid://cpxr8f6vacmqt"]
+[gd_scene load_steps=30 format=3 uid="uid://cpxr8f6vacmqt"]
 
-[ext_resource type="Script" path="res://level/coffee/coffee.gd" id="1_67j10"]
+[ext_resource type="Script" path="res://level/coffee/coffee.gd" id="1_b76l1"]
 [ext_resource type="Texture2D" uid="uid://bfahy8003euh2" path="res://level/coffee/sprites/bg.png" id="1_n0lo3"]
-[ext_resource type="Texture2D" uid="uid://2h2x2hy5q71c" path="res://level/coffee/icons/rotating_switch.png" id="2_4x0o6"]
 [ext_resource type="Texture2D" uid="uid://bpn3w5gdvji4y" path="res://level/coffee/sprites/coffee_machine.png" id="3_8w54k"]
-[ext_resource type="Texture2D" uid="uid://bsqgbovo6m8ev" path="res://level/coffee/icons/two_beans.png" id="3_w3ga4"]
 [ext_resource type="Texture2D" uid="uid://mqdvipjdtpac" path="res://level/coffee/sprites/coffee_streams/empty.png" id="3_xy8ay"]
 [ext_resource type="Texture2D" uid="uid://d1tt0ropqamgo" path="res://level/coffee/sprites/coffee_streams/start.png" id="4_14rqc"]
-[ext_resource type="Texture2D" uid="uid://53o4uruyqd6v" path="res://level/coffee/icons/cup_black.png" id="4_hio6f"]
 [ext_resource type="Texture2D" uid="uid://v1ner85fe70b" path="res://level/coffee/sprites/coffee_streams/third.png" id="5_c8ino"]
+[ext_resource type="Texture2D" uid="uid://byyflbuvbsfpd" path="res://level/coffee/icons/button_down.png" id="5_ejncl"]
 [ext_resource type="Texture2D" uid="uid://ciefmmf6lfb38" path="res://level/coffee/sprites/coffee_streams/half.png" id="6_eab6i"]
-[ext_resource type="Texture2D" uid="uid://byut6j80kuwcr" path="res://level/coffee/icons/latte_macchiato.png" id="6_vtmu5"]
+[ext_resource type="Texture2D" uid="uid://dbdj6irh3gabd" path="res://level/coffee/icons/button_left.png" id="6_g0f7p"]
 [ext_resource type="Texture2D" uid="uid://y2i7ujufb4hj" path="res://level/coffee/icons/sticky_note.png" id="7_3d6il"]
-[ext_resource type="Texture2D" uid="uid://b8bidqykr8r1m" path="res://level/coffee/sprites/coffee_streams/cup/half.png" id="7_3pq24"]
 [ext_resource type="Texture2D" uid="uid://d4gbwrs8tuxt3" path="res://level/coffee/sprites/coffee_streams/two_thirds.png" id="7_u70e6"]
 [ext_resource type="Texture2D" uid="uid://cvhmokng8hfni" path="res://level/coffee/sprites/coffee_streams/full.png" id="8_3droe"]
 [ext_resource type="FontFile" uid="uid://b5wc8u1b2jhql" path="res://level/coffee/fonts/betterwork/Betterworks.otf" id="8_s0m11"]
@@ -22,10 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://pke57eugxtq2" path="res://level/coffee/sprites/coffee_streams/start_end.png" id="9_qdec7"]
 [ext_resource type="FontFile" uid="uid://c5e6jd020r2fe" path="res://level/coffee/fonts/shiny-marker/Shiny Marker Regular.ttf" id="10_0hgcj"]
 [ext_resource type="Texture2D" uid="uid://b1bsblibsfoli" path="res://level/coffee/sprites/coffee_streams/end_mid.png" id="10_hu6ih"]
+[ext_resource type="Script" path="res://level/coffee/speech_bubble.gd" id="11_2nl58"]
 [ext_resource type="Texture2D" uid="uid://co066homvrayc" path="res://level/coffee/sprites/coffee_streams/end.png" id="11_h15da"]
 [ext_resource type="Texture2D" uid="uid://cy31pgqj8k30y" path="res://level/coffee/sprites/display.png" id="11_r4rh2"]
 [ext_resource type="FontFile" uid="uid://c6snkbqy5evdg" path="res://level/coffee/fonts/digital-dream/DIGITALDREAMFAT.ttf" id="11_x4j6t"]
-[ext_resource type="Script" path="res://level/coffee/speech_bubble.gd" id="23_4rqo2"]
 [ext_resource type="Texture2D" uid="uid://bgtcgif22rdef" path="res://level/coffee/sprites/coffee_cup.png" id="25_kii2q"]
 [ext_resource type="AudioStream" uid="uid://qrmb5ilyvoua" path="res://level/coffee/audio/button.wav" id="31_gt6xq"]
 [ext_resource type="AudioStream" uid="uid://d2p343rh884m3" path="res://level/coffee/audio/coffee_pouring_fade_out.wav" id="32_ycqrj"]
@@ -44,17 +41,20 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_c8ino")
 }, {
-"duration": 1.0,
+"duration": 15.0,
 "texture": ExtResource("6_eab6i")
 }, {
-"duration": 1.0,
-"texture": ExtResource("7_3pq24")
-}, {
-"duration": 5.0,
-"texture": ExtResource("7_u70e6")
-}, {
-"duration": 50.0,
+"duration": 15.0,
 "texture": ExtResource("9_n6x1b")
+}, {
+"duration": 10.0,
+"texture": ExtResource("6_eab6i")
+}, {
+"duration": 3.0,
+"texture": ExtResource("4_14rqc")
+}, {
+"duration": 2.0,
+"texture": ExtResource("6_eab6i")
 }, {
 "duration": 5.0,
 "texture": ExtResource("9_nxpe8")
@@ -67,7 +67,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"cup",
-"speed": 10.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -102,18 +102,18 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 8.0
 }]
 
 [node name="Coffee" type="Node2D"]
 scale = Vector2(1000, 1000)
-script = ExtResource("1_67j10")
+script = ExtResource("1_b76l1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
 [node name="Bg" type="Sprite2D" parent="."]
-position = Vector2(0.63, -3.19)
+position = Vector2(0.61, -3.19)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_n0lo3")
 
@@ -129,115 +129,61 @@ offset_bottom = 1092.0
 
 [node name="machine" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 179.0
-offset_top = -43.0
-offset_right = 1675.0
-offset_bottom = 1072.0
+offset_left = 436.0
+offset_top = -37.0
+offset_right = 1524.0
+offset_bottom = 1078.0
 texture = ExtResource("3_8w54k")
 expand_mode = 1
 stretch_mode = 4
-
-[node name="PouringCoffee" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
-position = Vector2(810, 645.25)
-scale = Vector2(0.9325, 0.778332)
-sprite_frames = SubResource("SpriteFrames_pvwsf")
-animation = &"cup"
 
 [node name="pour_coffee_button" type="TextureButton" parent="CanvasLayer/Control"]
 layout_mode = 2
 anchor_left = -2.76
 anchor_top = -2.88
 anchor_right = -0.48
-offset_left = 5888.16
-offset_top = 3294.8
-offset_right = 1574.68
-offset_bottom = 268.0
-texture_normal = ExtResource("4_hio6f")
-texture_pressed = ExtResource("4_hio6f")
-texture_hover = ExtResource("4_hio6f")
+offset_left = 5903.16
+offset_top = 3346.8
+offset_right = 1589.68
+offset_bottom = 320.0
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 682.0
-offset_top = 227.0
-offset_right = 1148.0
-offset_bottom = 346.0
-columns = 4
-
-[node name="adjust_beans_button" type="TextureButton" parent="CanvasLayer/Control/GridContainer"]
+[node name="adjust_beans_button" type="TextureButton" parent="CanvasLayer/Control"]
 layout_mode = 2
+offset_left = 723.0
+offset_top = 266.0
+offset_right = 793.0
+offset_bottom = 336.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("3_w3ga4")
-texture_pressed = ExtResource("3_w3ga4")
-texture_hover = ExtResource("3_w3ga4")
+texture_normal = ExtResource("5_ejncl")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="button_spacer" type="Control" parent="CanvasLayer/Control/GridContainer"]
-custom_minimum_size = Vector2(170, 48)
+[node name="adjust_bar_button" type="TextureButton" parent="CanvasLayer/Control"]
 layout_mode = 2
-size_flags_vertical = 3
-
-[node name="adjust_bar_button" type="TextureButton" parent="CanvasLayer/Control/GridContainer"]
-layout_mode = 2
+offset_left = 1017.0
+offset_top = 271.0
+offset_right = 1087.0
+offset_bottom = 341.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("2_4x0o6")
-texture_pressed = ExtResource("2_4x0o6")
-texture_hover = ExtResource("2_4x0o6")
+texture_normal = ExtResource("5_ejncl")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="adjust_type_button" type="TextureButton" parent="CanvasLayer/Control/GridContainer"]
+[node name="adjust_type_button" type="TextureButton" parent="CanvasLayer/Control"]
 layout_mode = 2
+offset_left = 1145.0
+offset_top = 270.0
+offset_right = 1215.0
+offset_bottom = 340.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("6_vtmu5")
-texture_pressed = ExtResource("6_vtmu5")
-texture_hover = ExtResource("6_vtmu5")
+texture_normal = ExtResource("6_g0f7p")
 ignore_texture_size = true
 stretch_mode = 5
-
-[node name="Control" type="Control" parent="CanvasLayer/Control/GridContainer"]
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-
-[node name="Control2" type="Control" parent="CanvasLayer/Control/GridContainer"]
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-
-[node name="Control3" type="Control" parent="CanvasLayer/Control/GridContainer"]
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-
-[node name="Control4" type="Control" parent="CanvasLayer/Control/GridContainer"]
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-
-[node name="bean_label" type="Label" parent="CanvasLayer/Control/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "1"
-horizontal_alignment = 1
-
-[node name="Control5" type="Control" parent="CanvasLayer/Control/GridContainer"]
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 2
-
-[node name="bar_label" type="Label" parent="CanvasLayer/Control/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "15"
-horizontal_alignment = 1
-
-[node name="type_label" type="Label" parent="CanvasLayer/Control/GridContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "2"
-horizontal_alignment = 1
 
 [node name="sticky_note" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -274,7 +220,7 @@ offset_bottom = 446.0
 texture = ExtResource("9_62spy")
 expand_mode = 1
 stretch_mode = 4
-script = ExtResource("23_4rqo2")
+script = ExtResource("11_2nl58")
 
 [node name="humans_response" type="Label" parent="CanvasLayer/Control/speech_bubble"]
 layout_mode = 0
@@ -290,13 +236,18 @@ autowrap_mode = 3
 
 [node name="coffee_cup" type="TextureButton" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 1062.0
-offset_top = 667.0
-offset_right = 1376.0
-offset_bottom = 872.0
+offset_left = 641.0
+offset_top = 700.0
+offset_right = 955.0
+offset_bottom = 905.0
 texture_normal = ExtResource("25_kii2q")
 ignore_texture_size = true
 stretch_mode = 4
+
+[node name="PouringCoffee" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(830, 750.5)
+scale = Vector2(0.9325, 0.976667)
+sprite_frames = SubResource("SpriteFrames_pvwsf")
 
 [node name="display" type="TextureButton" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -357,13 +308,25 @@ volume_db = 20.0
 [node name="button" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("31_gt6xq")
 
-[connection signal="animation_finished" from="CanvasLayer/Control/PouringCoffee" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/pour_coffee_button" to="." method="_on_pour_coffee_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/pour_coffee_button" to="." method="_on_pour_coffee_button_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Control/pour_coffee_button" to="." method="_on_pour_coffee_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/GridContainer/adjust_beans_button" to="." method="_on_adjust_beans_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/GridContainer/adjust_bar_button" to="." method="_on_adjust_bar_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/GridContainer/adjust_type_button" to="." method="_on_adjust_type_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/adjust_beans_button" to="." method="_on_adjust_beans_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/adjust_beans_button" to="." method="_on_adjust_beans_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/adjust_beans_button" to="." method="_on_adjust_beans_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/adjust_bar_button" to="." method="_on_adjust_bar_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/adjust_bar_button" to="." method="_on_adjust_bar_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/adjust_bar_button" to="." method="_on_adjust_bar_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/adjust_type_button" to="." method="_on_adjust_type_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/adjust_type_button" to="." method="_on_adjust_type_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/adjust_type_button" to="." method="_on_adjust_type_button_pressed"]
 [connection signal="hidden" from="CanvasLayer/Control/speech_bubble" to="." method="_on_speech_bubble_hidden"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/coffee_cup" to="." method="_on_coffee_cup_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/coffee_cup" to="." method="_on_coffee_cup_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Control/coffee_cup" to="." method="_on_coffee_cup_pressed"]
+[connection signal="animation_finished" from="CanvasLayer/Control/PouringCoffee" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/display" to="." method="_on_display_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/display" to="." method="_on_display_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Control/display" to="." method="_on_display_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/winning screen" to="." method="_on_winning_screen_pressed"]
 [connection signal="finished" from="pouring_coffee" to="." method="_on_pouring_coffee_finished"]
