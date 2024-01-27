@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://d35fcfy4ngulx"]
+[gd_scene load_steps=5 format=3 uid="uid://d35fcfy4ngulx"]
 
 [ext_resource type="Script" path="res://level/main/main.gd" id="1_rswi3"]
-[ext_resource type="Texture2D" uid="uid://07rv2tn3v0wl" path="res://assets/room.png" id="1_vitcv"]
+[ext_resource type="Texture2D" uid="uid://cdum0diys0l72" path="res://assets/Kitchen.png" id="2_l2i18"]
+[ext_resource type="Texture2D" uid="uid://b07rfa12n1rmf" path="res://assets/Mug.png" id="3_fjpey"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mbtux"]
+load_path = "res://.godot/imported/room.png-540a1a8618b7827b31d3ca4def6e3dfa.ctex"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_rswi3")
@@ -27,13 +31,73 @@ ratio = 1.77
 
 [node name="TextureRect" type="TextureRect" parent="Control/AspectRatioContainer"]
 layout_mode = 2
-texture = ExtResource("1_vitcv")
+texture = SubResource("CompressedTexture2D_mbtux")
 
-[node name="Window" type="Button" parent="Control"]
+[node name="TextureRectKitchen" type="TextureRect" parent="Control/AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("2_l2i18")
+
+[node name="TextureRectHover" type="TextureRect" parent="Control/AspectRatioContainer"]
+layout_mode = 2
+
+[node name="TextureRectMug" type="TextureRect" parent="Control/AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("3_fjpey")
+
+[node name="ButtonWindow" type="TextureButton" parent="Control"]
 layout_mode = 2
 offset_left = 306.0
 offset_top = 195.0
 offset_right = 979.0
 offset_bottom = 516.0
+
+[node name="ButtonKitchen" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 1216.0
+offset_top = 469.0
+offset_right = 1355.0
+offset_bottom = 622.0
+
+[node name="ButtonCatTree" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 1012.0
+offset_top = 352.0
+offset_right = 1208.0
+offset_bottom = 863.0
+
+[node name="ButtonPlant0" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 416.0
+offset_right = 306.0
+offset_bottom = 853.0
+
+[node name="ButtonPlant1" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 842.0
+offset_top = 354.0
+offset_right = 928.0
+offset_bottom = 536.0
+
+[node name="ButtonPlant2" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 1301.0
+offset_top = 623.0
+offset_right = 1389.0
+offset_bottom = 846.0
+
+[node name="ButtonPlant3" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 29.0
+offset_right = 209.0
+offset_bottom = 274.0
+
+[node name="ButtonComputer" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 354.0
+offset_right = 181.0
+offset_bottom = 694.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
