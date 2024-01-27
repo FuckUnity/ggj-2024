@@ -26,7 +26,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i01k5"]
-size = Vector2(148.5, 129.5)
+size = Vector2(11, 11)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pssln"]
 animations = [{
@@ -108,46 +108,155 @@ stretch_mode = 5
 
 [node name="Hands" type="Node" parent="."]
 
-[node name="South_Left" type="Area2D" parent="Hands"]
-position = Vector2(-147, 516)
+[node name="HandWrapper" type="Node2D" parent="Hands"]
+position = Vector2(-125, 562)
+rotation = -6.28319
+
+[node name="South_Left" type="Area2D" parent="Hands/HandWrapper"]
+position = Vector2(-33, 3)
 script = ExtResource("3_02k2l")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hands/South_Left"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hands/HandWrapper/South_Left"]
 position = Vector2(-2.00003, 5.00006)
 scale = Vector2(4, 4)
 shape = SubResource("CircleShape2D_om5s5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hands/South_Left"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hands/HandWrapper/South_Left"]
 position = Vector2(1, 492)
 rotation = -3.14159
 scale = Vector2(0.26, -0.273)
 sprite_frames = SubResource("SpriteFrames_rybby")
 
-[node name="South_Right" type="Area2D" parent="Hands"]
-position = Vector2(240, 525)
-script = ExtResource("3_02k2l")
+[node name="HandWrapper2" type="Node2D" parent="Hands"]
+position = Vector2(-849, -171)
+rotation = 1.5708
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hands/South_Right"]
+[node name="South_Left" type="Area2D" parent="Hands/HandWrapper2"]
+position = Vector2(-33, 3)
+script = ExtResource("3_02k2l")
+HAND_MAX_EXTEND = 1000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hands/HandWrapper2/South_Left"]
 position = Vector2(-2.00003, 5.00006)
 scale = Vector2(4, 4)
 shape = SubResource("CircleShape2D_om5s5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hands/South_Right"]
-position = Vector2(2, 491)
-scale = Vector2(0.26, 0.273)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hands/HandWrapper2/South_Left"]
+position = Vector2(1, 492)
+rotation = -3.14159
+scale = Vector2(0.26, -0.273)
 sprite_frames = SubResource("SpriteFrames_rybby")
 
-[node name="West_Left" type="Area2D" parent="Hands"]
-position = Vector2(-898, -131)
+[node name="HandWrapper3" type="Node2D" parent="Hands"]
+position = Vector2(-830, 58)
 rotation = 1.5708
-script = ExtResource("3_02k2l")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hands/West_Left"]
+[node name="South_Left" type="Area2D" parent="Hands/HandWrapper3"]
+position = Vector2(-33, 3)
+script = ExtResource("3_02k2l")
+HAND_MAX_EXTEND = 1000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hands/HandWrapper3/South_Left"]
 position = Vector2(-2.00003, 5.00006)
 scale = Vector2(4, 4)
 shape = SubResource("CircleShape2D_om5s5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hands/West_Left"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hands/HandWrapper3/South_Left"]
+position = Vector2(1, 492)
+rotation = -3.14159
+scale = Vector2(0.26, -0.273)
+sprite_frames = SubResource("SpriteFrames_rybby")
+
+[node name="HandWrapper4" type="Node2D" parent="Hands"]
+position = Vector2(1233, 2)
+rotation = -1.5708
+
+[node name="South_Left" type="Area2D" parent="Hands/HandWrapper4"]
+position = Vector2(-33, 3)
+script = ExtResource("3_02k2l")
+HAND_MAX_EXTEND = 1000
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hands/HandWrapper4/South_Left"]
+position = Vector2(-2.00003, 5.00006)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_om5s5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hands/HandWrapper4/South_Left"]
+position = Vector2(1, 492)
+rotation = -3.14159
+scale = Vector2(0.26, -0.273)
+sprite_frames = SubResource("SpriteFrames_rybby")
+
+[node name="HandWrapper5" type="Node2D" parent="Hands"]
+position = Vector2(1221, -279)
+rotation = -1.5708
+
+[node name="South_Left" type="Area2D" parent="Hands/HandWrapper5"]
+position = Vector2(-33, 3)
+script = ExtResource("3_02k2l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hands/HandWrapper5/South_Left"]
+position = Vector2(-2.00003, 5.00006)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_om5s5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hands/HandWrapper5/South_Left"]
+position = Vector2(1, 492)
+rotation = -3.14159
+scale = Vector2(0.26, -0.273)
+sprite_frames = SubResource("SpriteFrames_rybby")
+
+[node name="HandWrapper6" type="Node2D" parent="Hands"]
+position = Vector2(484, 531)
+
+[node name="South_Left" type="Area2D" parent="Hands/HandWrapper6"]
+position = Vector2(-33, 3)
+script = ExtResource("3_02k2l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hands/HandWrapper6/South_Left"]
+position = Vector2(-2.00003, 5.00006)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_om5s5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hands/HandWrapper6/South_Left"]
+position = Vector2(1, 492)
+rotation = -3.14159
+scale = Vector2(0.26, -0.273)
+sprite_frames = SubResource("SpriteFrames_rybby")
+
+[node name="HandWrapper7" type="Node2D" parent="Hands"]
+position = Vector2(-253, -643)
+rotation = 3.14159
+
+[node name="South_Left" type="Area2D" parent="Hands/HandWrapper7"]
+position = Vector2(-33, 3)
+script = ExtResource("3_02k2l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hands/HandWrapper7/South_Left"]
+position = Vector2(-2.00003, 5.00006)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_om5s5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hands/HandWrapper7/South_Left"]
+position = Vector2(1, 492)
+rotation = -3.14159
+scale = Vector2(0.26, -0.273)
+sprite_frames = SubResource("SpriteFrames_rybby")
+
+[node name="HandWrapper8" type="Node2D" parent="Hands"]
+position = Vector2(448, -644)
+rotation = 3.14159
+
+[node name="South_Left" type="Area2D" parent="Hands/HandWrapper8"]
+position = Vector2(-33, 3)
+script = ExtResource("3_02k2l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hands/HandWrapper8/South_Left"]
+position = Vector2(-2.00003, 5.00006)
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_om5s5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hands/HandWrapper8/South_Left"]
 position = Vector2(1, 492)
 rotation = -3.14159
 scale = Vector2(0.26, -0.273)
@@ -156,9 +265,10 @@ sprite_frames = SubResource("SpriteFrames_rybby")
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-193, -116)
 script = ExtResource("3_mksne")
+SPEED = 450.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(0.75, -21.75)
+position = Vector2(3.5, -19.5)
 shape = SubResource("RectangleShape2D_i01k5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
