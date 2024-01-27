@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cmo8kdh81gm2s"]
+[gd_scene load_steps=27 format=3 uid="uid://cmo8kdh81gm2s"]
 
 [ext_resource type="Script" path="res://level/kratzbaum/Player.gd" id="1_6cojx"]
 [ext_resource type="Texture2D" uid="uid://c3c3xwe1caoy4" path="res://level/kratzbaum/catstamm.png" id="1_f6ygx"]
@@ -88,6 +88,9 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3xqf"]
 radius = 79.66
 height = 291.67
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_831ot"]
+size = Vector2(13174, 615)
 
 [node name="Kratzbaum" type="Node2D"]
 script = ExtResource("1_ljt1c")
@@ -261,5 +264,12 @@ position = Vector2(-26, -10)
 scale = Vector2(0.262386, 0.262386)
 texture = ExtResource("15_stvxb")
 
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1104, 1281)
+shape = SubResource("RectangleShape2D_831ot")
+
 [connection signal="body_entered" from="pickup" to="pickup" method="_on_body_entered"]
 [connection signal="body_entered" from="pickup2" to="pickup2" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Player" method="_on_bottom_border_entered"]

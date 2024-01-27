@@ -12,7 +12,6 @@ func _process(delta):
 	position = start_pos + Vector2(0, vert_wobble)
 	queue_redraw()
 
-
 func _on_body_entered(body):
 	if body.name == 'Player':
 		body.on_pickup(self)

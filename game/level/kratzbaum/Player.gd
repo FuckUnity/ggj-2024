@@ -5,14 +5,15 @@ extends CharacterBody2D
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -200.0
-@export var JUMP_MAX = -400.0
-@export var JUMP_BOOST_MULT = 2
+@export var JUMP_MAX = -350.0
+@export var JUMP_BOOST_MULT = 1.6
 @export var IDLE_ANIM_TIMEOUT = 2000
 
 var jump_strength_charge = 0
 var hast_jump_boost = false
 
 var idle_timer = null
+var start_pos = null
 
 func _get_jump_str_max():
 	if hast_jump_boost:
@@ -20,10 +21,16 @@ func _get_jump_str_max():
 	else:
 		return JUMP_MAX
 
+func _ready():
+	start_pos = position
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
+
+	if Input.is_anything_pressed() or not is_on_floor():
+		idle_timer = null
 
 	# Handle jump.
 	if Input.is_action_pressed("jump") and is_on_floor():
@@ -65,18 +72,14 @@ func _physics_process(delta):
 		$JumpIndicator.flipped = false
 		$AnimatedSprite2D.play("walk")
 
-	if Input.is_anything_pressed():
-		idle_timer = null
-
 	#on idle if nothing is being pressed
 	if is_on_floor() and !Input.is_anything_pressed():
 		$AnimatedSprite2D.play("default")
 		if idle_timer == null:
 			idle_timer = Time.get_ticks_msec()
 		elif Time.get_ticks_msec() - idle_timer > IDLE_ANIM_TIMEOUT:
-			print(Time.get_ticks_msec() - idle_timer)
 			$AnimatedSprite2D.play("sleep")
-		
+
 	move_and_slide()
 
 func on_pickup(pickup: Pickup):
@@ -86,3 +89,7 @@ func on_pickup(pickup: Pickup):
 		get_parent().complete()
 	if(pickup.pickup_type == Pickup.PickupType.Boost):
 		hast_jump_boost = true
+
+
+func _on_bottom_border_entered(body):
+	position = start_pos
