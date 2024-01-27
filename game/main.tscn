@@ -4,4 +4,4 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_yoetu")
-init_level = 1
+init_level = 2
