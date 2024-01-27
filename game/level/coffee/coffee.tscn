@@ -1,6 +1,6 @@
-[gd_scene load_steps=35 format=3 uid="uid://cpxr8f6vacmqt"]
+[gd_scene load_steps=32 format=3 uid="uid://cpxr8f6vacmqt"]
 
-[ext_resource type="Script" path="res://level/coffee/coffee.gd" id="1_l5gj4"]
+[ext_resource type="Script" path="res://level/coffee/coffee.gd" id="1_bn6v8"]
 [ext_resource type="Texture2D" uid="uid://bfahy8003euh2" path="res://level/coffee/sprites/bg.png" id="1_n0lo3"]
 [ext_resource type="Texture2D" uid="uid://2h2x2hy5q71c" path="res://level/coffee/icons/rotating_switch.png" id="2_4x0o6"]
 [ext_resource type="Texture2D" uid="uid://bpn3w5gdvji4y" path="res://level/coffee/sprites/coffee_machine.png" id="3_8w54k"]
@@ -22,16 +22,14 @@
 [ext_resource type="Texture2D" uid="uid://pke57eugxtq2" path="res://level/coffee/sprites/coffee_streams/start_end.png" id="9_qdec7"]
 [ext_resource type="FontFile" uid="uid://c5e6jd020r2fe" path="res://level/coffee/fonts/shiny-marker/Shiny Marker Regular.ttf" id="10_0hgcj"]
 [ext_resource type="Texture2D" uid="uid://b1bsblibsfoli" path="res://level/coffee/sprites/coffee_streams/end_mid.png" id="10_hu6ih"]
-[ext_resource type="Texture2D" uid="uid://ibq2uxc1ih05" path="res://level/coffee/icons/coffee_cup_empty.png" id="10_smwps"]
 [ext_resource type="Texture2D" uid="uid://co066homvrayc" path="res://level/coffee/sprites/coffee_streams/end.png" id="11_h15da"]
 [ext_resource type="Texture2D" uid="uid://cy31pgqj8k30y" path="res://level/coffee/sprites/display.png" id="11_r4rh2"]
 [ext_resource type="FontFile" uid="uid://c6snkbqy5evdg" path="res://level/coffee/fonts/digital-dream/DIGITALDREAMFAT.ttf" id="11_x4j6t"]
-[ext_resource type="Script" path="res://level/coffee/human_response.gd" id="23_i5tdj"]
-[ext_resource type="Texture2D" uid="uid://c7vdru5547yxt" path="res://assets/cat_face_black.png" id="26_dlod3"]
-[ext_resource type="Texture2D" uid="uid://dvfe0nmdk2yp2" path="res://assets/cat_face_blue.png" id="27_gad50"]
-[ext_resource type="Texture2D" uid="uid://dddfw4x0gwmnx" path="res://assets/cat_face_green.png" id="28_q084v"]
-[ext_resource type="Texture2D" uid="uid://cftcmmxin6031" path="res://assets/cat_face_red.png" id="29_srdfb"]
+[ext_resource type="Script" path="res://level/coffee/human_response.gd" id="23_ruypc"]
+[ext_resource type="Texture2D" uid="uid://bgtcgif22rdef" path="res://level/coffee/sprites/coffee_cup.png" id="25_kii2q"]
 [ext_resource type="AudioStream" uid="uid://d2p343rh884m3" path="res://level/coffee/audio/coffee_pouring_fade_out.wav" id="32_ycqrj"]
+[ext_resource type="AudioStream" uid="uid://dincjrymkh0r5" path="res://level/coffee/audio/KaffeemaschineBackroungloop.wav" id="33_gouby"]
+[ext_resource type="AudioStream" uid="uid://crkm6rsjcqbkj" path="res://level/coffee/audio/schnurren.wav" id="34_igoc4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pvwsf"]
 animations = [{
@@ -106,29 +104,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_bgijf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("26_dlod3")
-}, {
-"duration": 1.0,
-"texture": ExtResource("27_gad50")
-}, {
-"duration": 1.0,
-"texture": ExtResource("28_q084v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("29_srdfb")
-}],
-"loop": false,
-"name": &"default",
-"speed": 1.0
-}]
-
 [node name="Coffee" type="Node2D"]
 scale = Vector2(1000, 1000)
-script = ExtResource("1_l5gj4")
+script = ExtResource("1_bn6v8")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -287,7 +265,6 @@ text = "08:00 AM - 2 be, 15 ba, 1 bt
 05:00 PM - 1 be, 20 ba, 3 bt"
 
 [node name="speech_bubble" type="TextureRect" parent="CanvasLayer/Control"]
-visible = false
 layout_mode = 0
 offset_left = 68.0
 offset_top = 420.0
@@ -296,7 +273,7 @@ offset_bottom = 802.0
 texture = ExtResource("9_62spy")
 expand_mode = 1
 stretch_mode = 4
-script = ExtResource("23_i5tdj")
+script = ExtResource("23_ruypc")
 
 [node name="humans_response" type="Label" parent="CanvasLayer/Control/speech_bubble"]
 layout_mode = 0
@@ -312,18 +289,13 @@ autowrap_mode = 3
 
 [node name="coffee_cup" type="TextureButton" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 664.0
-offset_top = 520.0
-offset_right = 963.0
-offset_bottom = 756.0
-texture_normal = ExtResource("10_smwps")
+offset_left = 843.0
+offset_top = 581.0
+offset_right = 1157.0
+offset_bottom = 786.0
+texture_normal = ExtResource("25_kii2q")
 ignore_texture_size = true
 stretch_mode = 4
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/coffee_cup"]
-position = Vector2(98.7501, 125.5)
-scale = Vector2(0.0967591, 0.0860604)
-sprite_frames = SubResource("SpriteFrames_bgijf")
 
 [node name="display" type="TextureButton" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -370,6 +342,16 @@ vertical_alignment = 1
 
 [node name="pouring_coffee" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("32_ycqrj")
+volume_db = 15.0
+
+[node name="background" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_gouby")
+volume_db = -32.0
+autoplay = true
+
+[node name="winning_purring" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_igoc4")
+volume_db = 20.0
 
 [connection signal="animation_finished" from="CanvasLayer/Control/PouringCoffee" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="pressed" from="CanvasLayer/Control/pour_coffee_button" to="." method="_on_pour_coffee_button_pressed"]

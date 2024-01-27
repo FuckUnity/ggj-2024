@@ -18,13 +18,13 @@ That's exactly how I like my coffee!!
 var neg_response = """No that's not the right time for this coffee.
 	:-("""
 var cup_positions = [
-	Vector2(1000, 529),
-	Vector2( 883, 529),
-	Vector2( 800, 529),
-	Vector2( 720, 529),
-	Vector2( 664, 529), # goal_pos
-	Vector2( 560, 529),
-	Vector2( 447, 529),
+	Vector2(1000, 529), # 0 -- right edge
+	Vector2( 883, 529), # 1
+	Vector2( 800, 529), # 2
+	Vector2( 720, 529), # 3
+	Vector2( 664, 529), # 4 -> goal_pos
+	Vector2( 560, 529), # 5
+	Vector2( 447, 529), # 6 -- left edge
 ]
 var cur_pos = 0
 var goal_pos = 4
@@ -51,11 +51,11 @@ func _process(delta):
 func _on_pour_coffee_button_pressed():
 	if full || poaring: return
 	poaring = true
+	$pouring_coffee.play()
 	if cur_pos == goal_pos:
 		print("play cup animation")
 		$CanvasLayer/Control/PouringCoffee.play("cup")
 		return
-	$pouring_coffee.play()
 	$CanvasLayer/Control/PouringCoffee.play("default")
 
 
@@ -102,8 +102,11 @@ func _on_animated_sprite_2d_animation_finished():
 
 func _on_speech_bubble_hidden():
 	# print("bubble gone")
-	if  $CanvasLayer/Control/speech_bubble/humans_response.text == pos_response:
-		$"CanvasLayer/Control/winning screen".visible = true
+	if  $CanvasLayer/Control/speech_bubble/humans_response.text != pos_response:
+		return
+	$"CanvasLayer/Control/winning screen".visible = true
+	$winning_purring.autoplay = true
+	$winning_purring.play()
 
 
 func _on_winning_screen_pressed():
