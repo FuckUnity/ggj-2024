@@ -4,6 +4,7 @@ var cursor_paw = load("res://assets/tiny_paw.png")
 var empty_cup = load("res://level/coffee/icons/coffee_cup_empty.png")
 var full_cup = load("res://level/coffee/icons/coffee_cup_full.png")
 var full = false
+var poaring = false
 
 # Initial States
 var beans = 2
@@ -48,12 +49,14 @@ func _process(delta):
 
 
 func _on_pour_coffee_button_pressed():
-	if full: return
+	if full || poaring: return
+	poaring = true
 	if cur_pos == goal_pos:
 		print("play cup animation")
-		$CanvasLayer/Control/AnimatedSprite2D.play("cup")
+		$CanvasLayer/Control/PouringCoffee.play("cup")
 		return
-	$CanvasLayer/Control/AnimatedSprite2D.play("default")
+	$pouring_coffee.play()
+	$CanvasLayer/Control/PouringCoffee.play("default")
 
 
 func _on_adjust_bar_button_pressed():
@@ -82,7 +85,7 @@ func _on_coffee_cup_pressed():
 	if cur_pos == 0:
 		$CanvasLayer/Control/coffee_cup.set_texture_normal(empty_cup)
 		cat_face.frame = (cat_face.frame + 1) % count_cat_faces
-		full = false	
+		full = false
 	$CanvasLayer/Control/coffee_cup.set_position(cup_positions[cur_pos])
 
 func _on_animated_sprite_2d_animation_finished():
@@ -105,3 +108,7 @@ func _on_speech_bubble_hidden():
 
 func _on_winning_screen_pressed():
 	complete()
+
+
+func _on_pouring_coffee_finished():
+	poaring = false

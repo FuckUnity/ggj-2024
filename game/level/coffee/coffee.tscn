@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cpxr8f6vacmqt"]
+[gd_scene load_steps=35 format=3 uid="uid://cpxr8f6vacmqt"]
 
 [ext_resource type="Script" path="res://level/coffee/coffee.gd" id="1_l5gj4"]
 [ext_resource type="Texture2D" uid="uid://bfahy8003euh2" path="res://level/coffee/sprites/bg.png" id="1_n0lo3"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://dvfe0nmdk2yp2" path="res://assets/cat_face_blue.png" id="27_gad50"]
 [ext_resource type="Texture2D" uid="uid://dddfw4x0gwmnx" path="res://assets/cat_face_green.png" id="28_q084v"]
 [ext_resource type="Texture2D" uid="uid://cftcmmxin6031" path="res://assets/cat_face_red.png" id="29_srdfb"]
+[ext_resource type="AudioStream" uid="uid://d2p343rh884m3" path="res://level/coffee/audio/coffee_pouring_fade_out.wav" id="32_ycqrj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pvwsf"]
 animations = [{
@@ -50,19 +51,13 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_3pq24")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": ExtResource("7_u70e6")
 }, {
-"duration": 1.0,
+"duration": 50.0,
 "texture": ExtResource("9_n6x1b")
 }, {
-"duration": 1.0,
-"texture": ExtResource("9_n6x1b")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_n6x1b")
-}, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": ExtResource("9_nxpe8")
 }, {
 "duration": 1.0,
@@ -91,22 +86,16 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("7_u70e6")
 }, {
-"duration": 1.0,
+"duration": 55.0,
 "texture": ExtResource("8_3droe")
 }, {
-"duration": 1.0,
-"texture": ExtResource("8_3droe")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_3droe")
-}, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("9_qdec7")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("10_hu6ih")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": ExtResource("11_h15da")
 }, {
 "duration": 1.0,
@@ -169,12 +158,11 @@ texture = ExtResource("3_8w54k")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+[node name="PouringCoffee" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
 position = Vector2(810, 645.25)
 scale = Vector2(0.9325, 0.778332)
 sprite_frames = SubResource("SpriteFrames_pvwsf")
-frame = 11
-frame_progress = 1.0
+animation = &"cup"
 
 [node name="pour_coffee_button" type="TextureButton" parent="CanvasLayer/Control"]
 layout_mode = 2
@@ -380,7 +368,10 @@ You did it, your human is not tired anymore.
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="animation_finished" from="CanvasLayer/Control/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[node name="pouring_coffee" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("32_ycqrj")
+
+[connection signal="animation_finished" from="CanvasLayer/Control/PouringCoffee" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="pressed" from="CanvasLayer/Control/pour_coffee_button" to="." method="_on_pour_coffee_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/GridContainer/adjust_beans_button" to="." method="_on_adjust_beans_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/GridContainer/adjust_bar_button" to="." method="_on_adjust_bar_button_pressed"]
@@ -389,3 +380,4 @@ vertical_alignment = 1
 [connection signal="pressed" from="CanvasLayer/Control/coffee_cup" to="." method="_on_coffee_cup_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/display" to="." method="_on_display_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/winning screen" to="." method="_on_winning_screen_pressed"]
+[connection signal="finished" from="pouring_coffee" to="." method="_on_pouring_coffee_finished"]
