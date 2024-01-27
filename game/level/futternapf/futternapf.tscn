@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://b20ni4aqu8plm"]
+
+[ext_resource type="Script" path="res://level/futternapf/futternapf.gd" id="1_614k2"]
+
+[node name="Futternapf" type="Node2D"]
+script = ExtResource("1_614k2")
+
+[node name="contanier" type="GridContainer" parent="."]
+offset_left = 920.0
+offset_top = 217.0
+offset_right = 1124.0
+offset_bottom = 275.0
+
+[node name="Label" type="Label" parent="contanier"]
+layout_mode = 2
+text = "Do You want some food?"
+
+[node name="Button1" type="Button" parent="contanier"]
+layout_mode = 2
+text = "Meow (yes)"
+
+[node name="Button2" type="Button" parent="contanier"]
+layout_mode = 2
+text = "Meow (affirmative	)"
+
+[node name="Button3" type="Button" parent="contanier"]
+layout_mode = 2
+text = "Meow (of course)"
