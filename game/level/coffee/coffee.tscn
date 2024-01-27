@@ -1,6 +1,6 @@
-[gd_scene load_steps=32 format=3 uid="uid://cpxr8f6vacmqt"]
+[gd_scene load_steps=33 format=3 uid="uid://cpxr8f6vacmqt"]
 
-[ext_resource type="Script" path="res://level/coffee/coffee.gd" id="1_bn6v8"]
+[ext_resource type="Script" path="res://level/coffee/coffee.gd" id="1_67j10"]
 [ext_resource type="Texture2D" uid="uid://bfahy8003euh2" path="res://level/coffee/sprites/bg.png" id="1_n0lo3"]
 [ext_resource type="Texture2D" uid="uid://2h2x2hy5q71c" path="res://level/coffee/icons/rotating_switch.png" id="2_4x0o6"]
 [ext_resource type="Texture2D" uid="uid://bpn3w5gdvji4y" path="res://level/coffee/sprites/coffee_machine.png" id="3_8w54k"]
@@ -25,8 +25,9 @@
 [ext_resource type="Texture2D" uid="uid://co066homvrayc" path="res://level/coffee/sprites/coffee_streams/end.png" id="11_h15da"]
 [ext_resource type="Texture2D" uid="uid://cy31pgqj8k30y" path="res://level/coffee/sprites/display.png" id="11_r4rh2"]
 [ext_resource type="FontFile" uid="uid://c6snkbqy5evdg" path="res://level/coffee/fonts/digital-dream/DIGITALDREAMFAT.ttf" id="11_x4j6t"]
-[ext_resource type="Script" path="res://level/coffee/human_response.gd" id="23_ruypc"]
+[ext_resource type="Script" path="res://level/coffee/speech_bubble.gd" id="23_4rqo2"]
 [ext_resource type="Texture2D" uid="uid://bgtcgif22rdef" path="res://level/coffee/sprites/coffee_cup.png" id="25_kii2q"]
+[ext_resource type="AudioStream" uid="uid://qrmb5ilyvoua" path="res://level/coffee/audio/button.wav" id="31_gt6xq"]
 [ext_resource type="AudioStream" uid="uid://d2p343rh884m3" path="res://level/coffee/audio/coffee_pouring_fade_out.wav" id="32_ycqrj"]
 [ext_resource type="AudioStream" uid="uid://dincjrymkh0r5" path="res://level/coffee/audio/KaffeemaschineBackroungloop.wav" id="33_gouby"]
 [ext_resource type="AudioStream" uid="uid://crkm6rsjcqbkj" path="res://level/coffee/audio/schnurren.wav" id="34_igoc4"]
@@ -106,13 +107,13 @@ animations = [{
 
 [node name="Coffee" type="Node2D"]
 scale = Vector2(1000, 1000)
-script = ExtResource("1_bn6v8")
+script = ExtResource("1_67j10")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
 [node name="Bg" type="Sprite2D" parent="."]
-position = Vector2(-2.138, -1.321)
+position = Vector2(0.63, -3.19)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_n0lo3")
 
@@ -128,10 +129,10 @@ offset_bottom = 1092.0
 
 [node name="machine" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 190.0
-offset_top = -80.0
-offset_right = 1630.0
-offset_bottom = 970.0
+offset_left = 179.0
+offset_top = -43.0
+offset_right = 1675.0
+offset_bottom = 1072.0
 texture = ExtResource("3_8w54k")
 expand_mode = 1
 stretch_mode = 4
@@ -240,10 +241,10 @@ horizontal_alignment = 1
 
 [node name="sticky_note" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 1331.0
-offset_top = 68.0
-offset_right = 1869.0
-offset_bottom = 481.0
+offset_left = 1387.0
+offset_top = 57.0
+offset_right = 1925.0
+offset_bottom = 470.0
 texture = ExtResource("7_3d6il")
 expand_mode = 1
 stretch_mode = 4
@@ -266,14 +267,14 @@ text = "08:00 AM - 2 be, 15 ba, 1 bt
 
 [node name="speech_bubble" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 68.0
-offset_top = 420.0
-offset_right = 428.0
-offset_bottom = 802.0
+offset_left = 80.0
+offset_top = 64.0
+offset_right = 440.0
+offset_bottom = 446.0
 texture = ExtResource("9_62spy")
 expand_mode = 1
 stretch_mode = 4
-script = ExtResource("23_ruypc")
+script = ExtResource("23_4rqo2")
 
 [node name="humans_response" type="Label" parent="CanvasLayer/Control/speech_bubble"]
 layout_mode = 0
@@ -289,10 +290,10 @@ autowrap_mode = 3
 
 [node name="coffee_cup" type="TextureButton" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 843.0
-offset_top = 581.0
-offset_right = 1157.0
-offset_bottom = 786.0
+offset_left = 1062.0
+offset_top = 667.0
+offset_right = 1376.0
+offset_bottom = 872.0
 texture_normal = ExtResource("25_kii2q")
 ignore_texture_size = true
 stretch_mode = 4
@@ -353,6 +354,9 @@ autoplay = true
 stream = ExtResource("34_igoc4")
 volume_db = 20.0
 
+[node name="button" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_gt6xq")
+
 [connection signal="animation_finished" from="CanvasLayer/Control/PouringCoffee" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="pressed" from="CanvasLayer/Control/pour_coffee_button" to="." method="_on_pour_coffee_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/GridContainer/adjust_beans_button" to="." method="_on_adjust_beans_button_pressed"]
@@ -363,3 +367,6 @@ volume_db = 20.0
 [connection signal="pressed" from="CanvasLayer/Control/display" to="." method="_on_display_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/winning screen" to="." method="_on_winning_screen_pressed"]
 [connection signal="finished" from="pouring_coffee" to="." method="_on_pouring_coffee_finished"]
+[connection signal="finished" from="background" to="." method="_on_background_finished"]
+[connection signal="finished" from="winning_purring" to="." method="_on_winning_purring_finished"]
+[connection signal="finished" from="button" to="." method="_on_button_finished"]
