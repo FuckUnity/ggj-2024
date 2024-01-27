@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Area2D
 
 var HAND_SPEED = 100
 var HAND_SPEED_RETREAT = 500
@@ -17,6 +17,9 @@ func _ready():
 
 	HAND_SPEED = HAND_SPEED * randf_range(1, 1.5)
 	extendStart = Time.get_ticks_msec() + randi_range(1,5) * 1000
+	
+
+	
 
 func startExtending():
 	extending = true
@@ -37,8 +40,6 @@ func startRetreating():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if name == "South_Left":
-		print(Time.get_ticks_msec() - extendStart)
 	if Time.get_ticks_msec() > extendStart && extendStart != 0:
 		extendStart = 0
 		startExtending()
@@ -65,5 +66,13 @@ func _process(delta):
 		if HAND_POS == 0:
 			retreating = false
 	
+
+
 	
+func _physics_process(delta):
+
+	for body in get_overlapping_bodies():
+		if body.name == "Player":
+			print("pat! pat!" + body.name)
+			startRetreating()
 	

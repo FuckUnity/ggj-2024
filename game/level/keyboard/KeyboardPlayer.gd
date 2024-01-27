@@ -26,7 +26,7 @@ func _physics_process(delta):
 	
 		
 
-	$CollisionShape2D.set_deferred("disabled", true)
+	#$CollisionShape2D.set_deferred("disabled", false)
 		
 	if Input.is_action_pressed("left"):
 		$AnimatedSprite2D.flip_h = true
