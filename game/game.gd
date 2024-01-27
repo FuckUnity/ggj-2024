@@ -15,18 +15,24 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	_double_esc -= _delta
 	pass
 	
 func _init_level():
 	_open_level(init_level)
 	
-func _close_level():
-	if !state._current_level_ref:
+func close_current_level():
+	if !state.current_level_ref:
 		return
 		
-	remove_child(state._current_level_ref)
+	remove_child(state.current_level_ref)
+	_open_level(MainState.MiniGames.NONE)
+	
 	
 func _open_level(level: MainState.MiniGames):
+	if !state.is_open_level_allowed(level):
+		return;
+	
 	match level:
 		MainState.MiniGames.NONE:
 			pass
@@ -40,3 +46,13 @@ func _open_level(level: MainState.MiniGames):
 			state.set_level(level, assets.spawn_level(self, assets.template_level_coffee))
 		MainState.MiniGames.PLANTS:
 			state.set_level(level, assets.spawn_level(self, assets.template_level_window))
+
+var _double_esc: float = 0
+
+func _unhandled_input(event):
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_ESCAPE:
+			if _double_esc > 0:
+				get_tree().quit()
+			else:
+				_double_esc = 0.3
