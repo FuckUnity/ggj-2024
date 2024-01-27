@@ -30,7 +30,7 @@ var neg_response = """No that's not the right time for this coffee.
 var cup_positions = [
 	Vector2(1062, 729), # 0 -- right edge
 	Vector2( 980, 729), # 1
-	Vector2( 800, 729), # 2
+	Vector2( 800, 729), # 2 -> goal
 	Vector2( 720, 729), # 3
 	Vector2( 664, 729), # 4
 	Vector2( 560, 729), # 5
@@ -114,7 +114,7 @@ func _on_animated_sprite_2d_animation_finished():
 	#$CanvasLayer/Control/coffee_cup.set_texture_normal(full_cup)
 	$CanvasLayer/Control/coffee_cup/steam.play("default")
 	# 01:00 PM - 3 be, 10 ba, 1 bt
-	if beans == 3 && bar == 10 && type == 1 && times[cur_time] == "01:00 PM":
+	if beans == 3 && bar == 1 && type == 1 && times[cur_time] == "01:00 PM":
 		$CanvasLayer/Control/speech_bubble/humans_response.text = pos_response
 	else: $CanvasLayer/Control/speech_bubble/humans_response.text = neg_response
 	$CanvasLayer/Control/speech_bubble.visible = true
