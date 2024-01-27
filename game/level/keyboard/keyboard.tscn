@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://blmrx462bcani"]
+[gd_scene load_steps=17 format=3 uid="uid://blmrx462bcani"]
 
 [ext_resource type="Texture2D" uid="uid://dctsn6j045iwr" path="res://level/kratzbaum/catstand.png" id="1_5ixg6"]
+[ext_resource type="Script" path="res://level/keyboard/keyboard.gd" id="1_h1fu1"]
 [ext_resource type="Texture2D" uid="uid://p1qq1raax6qj" path="res://level/keyboard/keyboard_background.png" id="1_rr68e"]
 [ext_resource type="Texture2D" uid="uid://dd51wsfcynktw" path="res://level/kratzbaum/catjump.png" id="2_0dyg1"]
 [ext_resource type="Texture2D" uid="uid://nm8opicc08eu" path="res://level/keyboard/hand.png" id="2_5thq0"]
@@ -68,6 +69,7 @@ animations = [{
 }]
 
 [node name="Keyboard" type="Node2D"]
+script = ExtResource("1_h1fu1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(163, -62)

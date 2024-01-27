@@ -32,7 +32,9 @@ func close_current_level():
 func _open_level(level: MainState.MiniGames):
 	if !state.is_open_level_allowed(level):
 		return;
-		
+	
+	Input.set_custom_mouse_cursor(null)
+	
 	if state.current_level_type == MainState.MiniGames.NONE:
 		remove_child(state.current_level_ref)
 	
@@ -44,7 +46,7 @@ func _open_level(level: MainState.MiniGames):
 		MainState.MiniGames.CAT_TREE:
 			state.set_level(level, assets.spawn_level(self, assets.template_level_cat_tree))
 		MainState.MiniGames.COMPUTER:
-			state.set_level(level, assets.spawn_level(self, assets.template_level_window))
+			state.set_level(level, assets.spawn_level(self, assets.template_level_computer))
 		MainState.MiniGames.KITCHEN_COFFEE:
 			state.set_level(level, assets.spawn_level(self, assets.template_level_coffee))
 		MainState.MiniGames.PLANTS:
