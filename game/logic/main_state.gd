@@ -2,7 +2,7 @@ class_name MainState extends Object
 
 enum MiniGames { NONE, WINDOW, KITCHEN_COFFEE, COMPUTER, PLANTS, CAT_TREE }
 enum MiniGameState { ACTIVE, BLOCKED, COMPLETED }
-enum MainSceneObjects { WINDOW, COUCH, CHAIR }
+enum MainSceneObjects { WINDOW, COUCH, CHAIR, COFFEE_CUP }
 
 var current_level_type: MiniGames
 var current_level_ref: Node
@@ -11,6 +11,7 @@ var mainState = {
 	MainSceneObjects.WINDOW: "closed",
 	MainSceneObjects.COUCH: "empty",
 	MainSceneObjects.CHAIR: "human_sad",
+	MainSceneObjects.COFFEE_CUP: "initial",
 	'minigamesState': {
 		MiniGames.WINDOW: MiniGameState.BLOCKED,
 		MiniGames.KITCHEN_COFFEE: MiniGameState.BLOCKED,
@@ -45,6 +46,7 @@ func complete_current_level():
 				MainSceneObjects.WINDOW: "closed",
 				MainSceneObjects.COUCH: "empty",
 				MainSceneObjects.CHAIR: "human_happy",
+				MainSceneObjects.COFFEE_CUP: "initial",
 				'minigamesState': {
 					MiniGames.WINDOW: MiniGameState.BLOCKED,
 					MiniGames.KITCHEN_COFFEE: MiniGameState.ACTIVE,
@@ -64,6 +66,7 @@ func complete_current_level():
 				MainSceneObjects.WINDOW: "closed",
 				MainSceneObjects.COUCH: "human",
 				MainSceneObjects.CHAIR: "empty",
+				MainSceneObjects.COFFEE_CUP: "used",
 				'minigamesState': {
 					MiniGames.WINDOW: MiniGameState.ACTIVE,
 					MiniGames.KITCHEN_COFFEE: MiniGameState.COMPLETED,
@@ -83,6 +86,7 @@ func complete_current_level():
 				MainSceneObjects.WINDOW: "open",
 				MainSceneObjects.COUCH: "human",
 				MainSceneObjects.CHAIR: "empty",
+				MainSceneObjects.COFFEE_CUP: "used",
 				'minigamesState': {
 					MiniGames.WINDOW: MiniGameState.COMPLETED,
 					MiniGames.KITCHEN_COFFEE: MiniGameState.COMPLETED,
@@ -100,6 +104,7 @@ func complete_current_level():
 				MainSceneObjects.WINDOW: "open",
 				MainSceneObjects.COUCH: "human",
 				MainSceneObjects.CHAIR: "empty",
+				MainSceneObjects.COFFEE_CUP: "used",
 				'minigamesState': {
 					MiniGames.WINDOW: MiniGameState.COMPLETED,
 					MiniGames.KITCHEN_COFFEE: MiniGameState.COMPLETED,
@@ -116,6 +121,7 @@ func complete_current_level():
 				MainSceneObjects.WINDOW: "open",
 				MainSceneObjects.COUCH: "human",
 				MainSceneObjects.CHAIR: "empty",
+				MainSceneObjects.COFFEE_CUP: "used",
 				'minigamesState': {
 					MiniGames.WINDOW: MiniGameState.COMPLETED,
 					MiniGames.KITCHEN_COFFEE: MiniGameState.COMPLETED,
