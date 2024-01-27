@@ -58,7 +58,10 @@ func _physics_process(delta):
 		
 	move_and_slide()
 
-func on_pickup(pickup):
-	print(pickup)
-	
+func on_pickup(pickup: Pickup):
 	pickup.queue_free()
+	
+	if(pickup.pickup_type == Pickup.PickupType.Toy):
+		get_parent().complete()
+	if(pickup.pickup_type == Pickup.PickupType.Boost):
+		JUMP_MAX = JUMP_MAX * 2

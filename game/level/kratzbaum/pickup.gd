@@ -1,5 +1,6 @@
-extends Area2D
+class_name Pickup extends Area2D
 
+@export var pickup_type = PickupType.Boost
 @export var vert_wobble_amount = 50
 
 var start_pos
@@ -15,3 +16,8 @@ func _process(delta):
 func _on_body_entered(body):
 	if body.name == 'Player':
 		body.on_pickup(self)
+
+enum PickupType{
+	Boost,
+	Toy
+}

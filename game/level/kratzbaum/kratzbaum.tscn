@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://cmo8kdh81gm2s"]
+[gd_scene load_steps=23 format=3 uid="uid://cmo8kdh81gm2s"]
 
 [ext_resource type="Script" path="res://level/kratzbaum/Player.gd" id="1_6cojx"]
 [ext_resource type="Texture2D" uid="uid://c3c3xwe1caoy4" path="res://level/kratzbaum/catstamm.png" id="1_f6ygx"]
+[ext_resource type="Script" path="res://level/kratzbaum/kratzbaum.gd" id="1_ljt1c"]
 [ext_resource type="Texture2D" uid="uid://dctsn6j045iwr" path="res://level/kratzbaum/catstand.png" id="3_eop7y"]
 [ext_resource type="Texture2D" uid="uid://dd51wsfcynktw" path="res://level/kratzbaum/catjump.png" id="4_k2r06"]
 [ext_resource type="Texture2D" uid="uid://bsahrbiurh6mn" path="res://level/kratzbaum/cat01.png" id="5_vjfks"]
@@ -70,6 +71,7 @@ radius = 79.66
 height = 291.67
 
 [node name="Kratzbaum" type="Node2D"]
+script = ExtResource("1_ljt1c")
 
 [node name="Tree" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -143,7 +145,7 @@ position = Vector2(-22.5, 37)
 shape = SubResource("RectangleShape2D_l8agw")
 
 [node name="Platform4" type="StaticBody2D" parent="."]
-position = Vector2(415, -264)
+position = Vector2(1136, -845)
 
 [node name="Sprite2D" type="Sprite2D" parent="Platform4"]
 texture_filter = 1
@@ -154,6 +156,21 @@ region_enabled = true
 region_rect = Rect2(305, 575, 2394, 396)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4"]
+position = Vector2(2, 22)
+shape = SubResource("RectangleShape2D_gw654")
+
+[node name="Platform6" type="StaticBody2D" parent="."]
+position = Vector2(1723, -1604)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform6"]
+texture_filter = 1
+position = Vector2(0.720245, 44.7176)
+scale = Vector2(0.271746, 0.188295)
+texture = ExtResource("11_8fg1h")
+region_enabled = true
+region_rect = Rect2(305, 575, 2394, 396)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform6"]
 position = Vector2(2, 22)
 shape = SubResource("RectangleShape2D_gw654")
 
@@ -206,8 +223,9 @@ scale = Vector2(1.575, 1.575)
 texture = ExtResource("13_1eixj")
 
 [node name="pickup2" type="Area2D" parent="."]
-position = Vector2(163, -453)
+position = Vector2(649, -2167)
 script = ExtResource("12_xvmek")
+pickup_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pickup2"]
 position = Vector2(0, -1)
