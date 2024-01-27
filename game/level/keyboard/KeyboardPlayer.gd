@@ -27,6 +27,12 @@ func _physics_process(delta):
 		
 
 	#$CollisionShape2D.set_deferred("disabled", false)
+	
+	if Input.is_action_pressed("up"):
+		$AnimatedSprite2D.play("walk")
+		
+	if Input.is_action_pressed("down"):
+		$AnimatedSprite2D.play("walk")
 		
 	if Input.is_action_pressed("left"):
 		$AnimatedSprite2D.flip_h = true
@@ -38,7 +44,7 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play("walk")
 
 	#on idle if nothing is being pressed
-	if is_on_floor() and !Input.is_anything_pressed():
+	if !Input.is_anything_pressed():
 		$AnimatedSprite2D.play("default")
 		
 	move_and_slide()

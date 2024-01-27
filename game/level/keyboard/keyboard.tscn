@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://blmrx462bcani"]
+[gd_scene load_steps=20 format=3 uid="uid://blmrx462bcani"]
 
 [ext_resource type="Texture2D" uid="uid://dctsn6j045iwr" path="res://level/kratzbaum/catstand.png" id="1_5ixg6"]
 [ext_resource type="Script" path="res://level/keyboard/keyboard.gd" id="1_h1fu1"]
@@ -7,11 +7,18 @@
 [ext_resource type="Texture2D" uid="uid://nm8opicc08eu" path="res://level/keyboard/hand.png" id="2_5thq0"]
 [ext_resource type="Script" path="res://level/keyboard/CreepyHand.gd" id="3_02k2l"]
 [ext_resource type="Texture2D" uid="uid://bsahrbiurh6mn" path="res://level/kratzbaum/cat01.png" id="3_4h5pw"]
+[ext_resource type="FontFile" uid="uid://drm8qogtyhsbk" path="res://level/coffee/fonts/digital-dream/DIGITALDREAM.ttf" id="3_ew1st"]
 [ext_resource type="Script" path="res://level/keyboard/KeyboardPlayer.gd" id="3_mksne"]
+[ext_resource type="PackedScene" uid="uid://d4g3dlp2m23n8" path="res://level/keyboard/KeyboardKeyButton.tscn" id="3_ojum0"]
 [ext_resource type="Texture2D" uid="uid://dgwspnf6arwd5" path="res://level/kratzbaum/cat02.png" id="4_kq245"]
 [ext_resource type="Texture2D" uid="uid://ci7y6lrvii1tm" path="res://level/kratzbaum/cat03.png" id="5_o2a80"]
 [ext_resource type="Texture2D" uid="uid://bkmsbkjins1w1" path="res://level/kratzbaum/cat04.png" id="6_fg8xq"]
 [ext_resource type="Texture2D" uid="uid://ct53icyvfqu1x" path="res://level/kratzbaum/cat05.png" id="7_ijim8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w6xl0"]
+font = ExtResource("3_ew1st")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_om5s5"]
 
@@ -107,6 +114,203 @@ size_flags_vertical = 3
 texture = ExtResource("1_rr68e")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="Textpanel" type="Label" parent="."]
+layout_direction = 3
+offset_left = -386.0
+offset_top = -4461.0
+offset_right = 314.0
+offset_bottom = -461.0
+label_settings = SubResource("LabelSettings_w6xl0")
+horizontal_alignment = 2
+vertical_alignment = 2
+autowrap_mode = 1
+
+[node name="KeyboardKeys" type="Node2D" parent="."]
+
+[node name="Area2D" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+KeyboardKey = "m"
+
+[node name="Area2D2" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-63, 0)
+KeyboardKey = "n"
+
+[node name="Area2D3" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-29, -69)
+KeyboardKey = "j"
+
+[node name="Area2D4" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(35, -69)
+KeyboardKey = "k"
+
+[node name="Area2D5" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(63, 0)
+KeyboardKey = "<"
+
+[node name="Area2D6" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-123, 1)
+KeyboardKey = "b"
+
+[node name="Area2D7" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-91, -69)
+KeyboardKey = "h"
+
+[node name="Area2D8" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(96, -70)
+KeyboardKey = "l"
+
+[node name="Area2D9" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-186, 1)
+KeyboardKey = "v"
+
+[node name="Area2D10" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-247, 0)
+KeyboardKey = "c"
+
+[node name="Area2D11" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-312, 1)
+KeyboardKey = "x"
+
+[node name="Area2D12" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-375, 0)
+KeyboardKey = "z"
+
+[node name="Area2D13" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-151, -69)
+KeyboardKey = "g"
+
+[node name="Area2D14" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-213, -67)
+KeyboardKey = "f"
+
+[node name="Area2D15" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-276, -70)
+KeyboardKey = "d"
+
+[node name="Area2D16" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-338, -68)
+KeyboardKey = "s"
+
+[node name="Area2D17" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-402, -68)
+KeyboardKey = "a"
+
+[node name="Area2D18" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-409, -136)
+KeyboardKey = "q"
+
+[node name="Area2D19" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-346, -138)
+KeyboardKey = "w"
+
+[node name="Area2D20" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-287, -138)
+KeyboardKey = "e"
+
+[node name="Area2D21" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-220, -139)
+KeyboardKey = "r"
+
+[node name="Area2D22" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-160, -138)
+KeyboardKey = "t"
+
+[node name="Area2D23" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-100, -137)
+KeyboardKey = "y"
+
+[node name="Area2D24" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-37, -138)
+KeyboardKey = "u"
+
+[node name="Area2D25" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(27, -138)
+KeyboardKey = "i"
+
+[node name="Area2D26" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(87, -138)
+KeyboardKey = "o"
+
+[node name="Area2D27" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(149, -138)
+KeyboardKey = "p"
+
+[node name="Area2D28" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(126, -1)
+KeyboardKey = "."
+
+[node name="Area2D29" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(159, -68)
+KeyboardKey = ";"
+
+[node name="Area2D30" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(191, -1)
+KeyboardKey = "/"
+
+[node name="Area2D31" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(212, -139)
+KeyboardKey = "["
+
+[node name="Area2D32" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(221, -69)
+KeyboardKey = "'"
+
+[node name="Area2D33" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-462, -209)
+KeyboardKey = "1"
+
+[node name="Area2D34" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-400, -209)
+KeyboardKey = "2"
+
+[node name="Area2D35" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-338, -209)
+KeyboardKey = "3"
+
+[node name="Area2D36" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-276, -209)
+KeyboardKey = "4"
+
+[node name="Area2D37" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-213, -209)
+KeyboardKey = "5"
+
+[node name="Area2D38" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-152, -209)
+KeyboardKey = "6"
+
+[node name="Area2D39" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-90, -208)
+KeyboardKey = "7"
+
+[node name="Area2D40" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-28, -207)
+KeyboardKey = "8"
+
+[node name="Area2D41" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(35, -208)
+KeyboardKey = "9"
+
+[node name="Area2D42" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(97, -209)
+KeyboardKey = "0"
+
+[node name="Area2D43" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(158, -208)
+KeyboardKey = "-"
+
+[node name="Area2D44" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(223, -209)
+KeyboardKey = "="
+
+[node name="Area2D45" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(274, -138)
+KeyboardKey = "]"
+
+[node name="Area2D46" parent="KeyboardKeys" instance=ExtResource("3_ojum0")]
+position = Vector2(-83, 71)
+scale = Vector2(5.88, 1)
+KeyboardKey = " "
 
 [node name="Hands" type="Node" parent="."]
 
