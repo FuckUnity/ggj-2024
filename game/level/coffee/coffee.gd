@@ -17,13 +17,13 @@ That's exactly how I like my coffee!!
 var neg_response = """No that's not the right time for this coffee.
 	:-("""
 var cup_positions = [
-	Vector2(1470, 457),
-	Vector2(1000, 457),
-	Vector2( 800, 457),
-	Vector2( 650, 457),
-	Vector2( 470, 457), # goal_pos
-	Vector2( 250, 457),
-	Vector2(-100, 457),
+	Vector2(1000, 529),
+	Vector2( 883, 529),
+	Vector2( 800, 529),
+	Vector2( 720, 529),
+	Vector2( 664, 529), # goal_pos
+	Vector2( 560, 529),
+	Vector2( 447, 529),
 ]
 var cur_pos = 0
 var goal_pos = 4
@@ -40,6 +40,7 @@ func _ready():
 	$CanvasLayer/Control/display/clock.text = times[cur_time]
 	Input.set_custom_mouse_cursor(cursor_paw, 0, Vector2(32, 32))
 	cat_face = $CanvasLayer/Control/coffee_cup/AnimatedSprite2D
+	$CanvasLayer/Control/coffee_cup.set_position(cup_positions[cur_pos])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -50,9 +51,9 @@ func _on_pour_coffee_button_pressed():
 	if full: return
 	if cur_pos == goal_pos:
 		print("play cup animation")
-		$AnimatedSprite2D.play("cup")
+		$CanvasLayer/Control/AnimatedSprite2D.play("cup")
 		return
-	$AnimatedSprite2D.play("default")
+	$CanvasLayer/Control/AnimatedSprite2D.play("default")
 
 
 func _on_adjust_bar_button_pressed():
@@ -81,8 +82,7 @@ func _on_coffee_cup_pressed():
 	if cur_pos == 0:
 		$CanvasLayer/Control/coffee_cup.set_texture_normal(empty_cup)
 		cat_face.frame = (cat_face.frame + 1) % count_cat_faces
-		full = false
-	
+		full = false	
 	$CanvasLayer/Control/coffee_cup.set_position(cup_positions[cur_pos])
 
 func _on_animated_sprite_2d_animation_finished():

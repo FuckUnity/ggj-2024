@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ecx082nqdnkj"
-path="res://.godot/imported/Kitchen.png-5c26b19ddc2a8c9387167a07f03cdddc.ctex"
+uid="uid://bpn3w5gdvji4y"
+path="res://.godot/imported/coffee_machine.png-6560459a6c338fc972c35b83f783f760.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Kitchen.png"
-dest_files=["res://.godot/imported/Kitchen.png-5c26b19ddc2a8c9387167a07f03cdddc.ctex"]
+source_file="res://level/coffee/sprites/coffee_machine.png"
+dest_files=["res://.godot/imported/coffee_machine.png-6560459a6c338fc972c35b83f783f760.ctex"]
 
 [params]
 
