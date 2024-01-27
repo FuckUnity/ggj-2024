@@ -1,5 +1,6 @@
 class_name Assets extends Object
 
+const template_level_main = preload("res://level/main/main.tscn")
 const template_level_window = preload("res://level/moorhuhn/moorhuhn.tscn")
 const template_level_cat_tree = preload("res://level/kratzbaum/kratzbaum.tscn")
 const template_level_coffee = preload("res://level/coffee/coffee.tscn")

@@ -34,6 +34,7 @@ func _physics_process(delta):
 	if Input.is_anything_pressed() or not is_on_floor():
 		idle_timer = null
 		is_sleeping = false
+		$purr.stop()
 
 	# Handle jump.
 	if Input.is_action_pressed("jump") and is_on_floor():
@@ -84,7 +85,6 @@ func _physics_process(delta):
 		elif Time.get_ticks_msec() - idle_timer > IDLE_ANIM_TIMEOUT && not is_sleeping:
 			$AnimatedSprite2D.play("sleep")
 			$purr.play()
-			$purr.autoplay = true
 			is_sleeping = true
 			
 		if not is_sleeping:

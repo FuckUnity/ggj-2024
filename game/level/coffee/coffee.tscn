@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://level/coffee/coffee.gd" id="1_aukjh"]
 [ext_resource type="Texture2D" uid="uid://bfahy8003euh2" path="res://level/coffee/sprites/bg.png" id="1_n0lo3"]
 [ext_resource type="Texture2D" uid="uid://2h2x2hy5q71c" path="res://level/coffee/icons/rotating_switch.png" id="2_4x0o6"]
-[ext_resource type="Texture2D" uid="uid://f8xbj4pd13yw" path="res://level/coffee/icons/coffee_machine.png" id="3_fn7ok"]
+[ext_resource type="Texture2D" uid="uid://bpn3w5gdvji4y" path="res://level/coffee/sprites/coffee_machine.png" id="3_8w54k"]
 [ext_resource type="Texture2D" uid="uid://bsqgbovo6m8ev" path="res://level/coffee/icons/two_beans.png" id="3_w3ga4"]
 [ext_resource type="Texture2D" uid="uid://mqdvipjdtpac" path="res://level/coffee/sprites/coffee_streams/empty.png" id="3_xy8ay"]
 [ext_resource type="Texture2D" uid="uid://d1tt0ropqamgo" path="res://level/coffee/sprites/coffee_streams/start.png" id="4_14rqc"]
@@ -149,12 +149,6 @@ position = Vector2(-2.138, -1.321)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_n0lo3")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.815, 0.8005)
-scale = Vector2(0.00226, 0.00136333)
-sprite_frames = SubResource("SpriteFrames_pvwsf")
-animation = &"cup"
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
@@ -167,21 +161,30 @@ offset_bottom = 1092.0
 
 [node name="machine" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = -101.0
-offset_top = -246.0
-offset_right = 2034.0
-offset_bottom = 1314.0
-texture = ExtResource("3_fn7ok")
+offset_left = 190.0
+offset_top = -80.0
+offset_right = 1630.0
+offset_bottom = 970.0
+texture = ExtResource("3_8w54k")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(810, 645.25)
+scale = Vector2(0.9325, 0.778332)
+sprite_frames = SubResource("SpriteFrames_pvwsf")
+frame = 11
+frame_progress = 1.0
 
 [node name="pour_coffee_button" type="TextureButton" parent="CanvasLayer/Control"]
 layout_mode = 2
 anchor_left = -2.76
 anchor_top = -2.88
 anchor_right = -0.48
-offset_left = 5729.16
-offset_top = 3205.8
-offset_right = 1720.68
-offset_bottom = 253.0
+offset_left = 5888.16
+offset_top = 3294.8
+offset_right = 1574.68
+offset_bottom = 268.0
 texture_normal = ExtResource("4_hio6f")
 texture_pressed = ExtResource("4_hio6f")
 texture_hover = ExtResource("4_hio6f")
@@ -190,21 +193,11 @@ stretch_mode = 5
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 882.0
-offset_top = 173.0
-offset_right = 1543.0
-offset_bottom = 294.0
-columns = 3
-
-[node name="adjust_bar_button" type="TextureButton" parent="CanvasLayer/Control/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture_normal = ExtResource("2_4x0o6")
-texture_pressed = ExtResource("2_4x0o6")
-texture_hover = ExtResource("2_4x0o6")
-ignore_texture_size = true
-stretch_mode = 5
+offset_left = 682.0
+offset_top = 227.0
+offset_right = 1148.0
+offset_bottom = 346.0
+columns = 4
 
 [node name="adjust_beans_button" type="TextureButton" parent="CanvasLayer/Control/GridContainer"]
 layout_mode = 2
@@ -213,6 +206,21 @@ size_flags_vertical = 3
 texture_normal = ExtResource("3_w3ga4")
 texture_pressed = ExtResource("3_w3ga4")
 texture_hover = ExtResource("3_w3ga4")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="button_spacer" type="Control" parent="CanvasLayer/Control/GridContainer"]
+custom_minimum_size = Vector2(170, 48)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="adjust_bar_button" type="TextureButton" parent="CanvasLayer/Control/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("2_4x0o6")
+texture_pressed = ExtResource("2_4x0o6")
+texture_hover = ExtResource("2_4x0o6")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -238,16 +246,24 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
-[node name="bar_label" type="Label" parent="CanvasLayer/Control/GridContainer"]
+[node name="Control4" type="Control" parent="CanvasLayer/Control/GridContainer"]
+custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "15"
-horizontal_alignment = 1
 
 [node name="bean_label" type="Label" parent="CanvasLayer/Control/GridContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "1"
+horizontal_alignment = 1
+
+[node name="Control5" type="Control" parent="CanvasLayer/Control/GridContainer"]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="bar_label" type="Label" parent="CanvasLayer/Control/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "15"
 horizontal_alignment = 1
 
 [node name="type_label" type="Label" parent="CanvasLayer/Control/GridContainer"]
@@ -258,10 +274,10 @@ horizontal_alignment = 1
 
 [node name="sticky_note" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 1184.0
-offset_top = 377.0
-offset_right = 1664.0
-offset_bottom = 800.0
+offset_left = 1331.0
+offset_top = 68.0
+offset_right = 1869.0
+offset_bottom = 481.0
 texture = ExtResource("7_3d6il")
 expand_mode = 1
 stretch_mode = 4
@@ -308,16 +324,17 @@ autowrap_mode = 3
 
 [node name="coffee_cup" type="TextureButton" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 1470.0
-offset_top = 457.0
-offset_right = 1982.0
-offset_bottom = 969.0
+offset_left = 664.0
+offset_top = 520.0
+offset_right = 963.0
+offset_bottom = 756.0
 texture_normal = ExtResource("10_smwps")
+ignore_texture_size = true
 stretch_mode = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/Control/coffee_cup"]
-position = Vector2(212.953, 289.906)
-scale = Vector2(0.181568, 0.179621)
+position = Vector2(98.7501, 125.5)
+scale = Vector2(0.0967591, 0.0860604)
 sprite_frames = SubResource("SpriteFrames_bgijf")
 
 [node name="display" type="TextureButton" parent="CanvasLayer/Control"]
@@ -363,10 +380,10 @@ You did it, your human is not tired anymore.
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="CanvasLayer/Control/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="pressed" from="CanvasLayer/Control/pour_coffee_button" to="." method="_on_pour_coffee_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/GridContainer/adjust_bar_button" to="." method="_on_adjust_bar_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/GridContainer/adjust_beans_button" to="." method="_on_adjust_beans_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/GridContainer/adjust_bar_button" to="." method="_on_adjust_bar_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/GridContainer/adjust_type_button" to="." method="_on_adjust_type_button_pressed"]
 [connection signal="hidden" from="CanvasLayer/Control/speech_bubble" to="." method="_on_speech_bubble_hidden"]
 [connection signal="pressed" from="CanvasLayer/Control/coffee_cup" to="." method="_on_coffee_cup_pressed"]

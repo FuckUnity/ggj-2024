@@ -32,10 +32,13 @@ func close_current_level():
 func _open_level(level: MainState.MiniGames):
 	if !state.is_open_level_allowed(level):
 		return;
+		
+	if state.current_level_type == MainState.MiniGames.NONE:
+		remove_child(state.current_level_ref)
 	
 	match level:
 		MainState.MiniGames.NONE:
-			pass
+			state.set_level(level, assets.spawn_level(self, assets.template_level_main))
 		MainState.MiniGames.WINDOW:
 			state.set_level(level, assets.spawn_level(self, assets.template_level_window))
 		MainState.MiniGames.CAT_TREE:
