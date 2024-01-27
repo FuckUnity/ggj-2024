@@ -6,9 +6,19 @@ extends CharacterBody2D
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -200.0
 @export var JUMP_MAX = -400.0
+@export var JUMP_BOOST_MULT = 2
+@export var IDLE_ANIM_TIMEOUT = 2000
 
 var jump_strength_charge = 0
+var hast_jump_boost = false
 
+var idle_timer = null
+
+func _get_jump_str_max():
+	if hast_jump_boost:
+		return JUMP_MAX * JUMP_BOOST_MULT
+	else:
+		return JUMP_MAX
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -17,8 +27,8 @@ func _physics_process(delta):
 
 	# Handle jump.
 	if Input.is_action_pressed("jump") and is_on_floor():
-		jump_strength_charge = max(jump_strength_charge + JUMP_VELOCITY * delta, JUMP_MAX)
-		$JumpIndicator.charge_amount = jump_strength_charge / JUMP_MAX
+		jump_strength_charge = max(jump_strength_charge + JUMP_VELOCITY * delta, _get_jump_str_max())
+		$JumpIndicator.charge_amount = jump_strength_charge / _get_jump_str_max()
 
 	if Input.is_action_just_released("jump") and is_on_floor():
 		velocity.y = jump_strength_charge
@@ -34,7 +44,10 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	if not is_on_floor():
-		$AnimatedSprite2D.play("jump")
+		if hast_jump_boost:
+			$AnimatedSprite2D.play("jump_quick")			
+		else:
+			$AnimatedSprite2D.play("jump")
 	
 	if not is_on_floor() and velocity.y < 0:
 		$CollisionShape2D.set_deferred("disabled", true)
@@ -52,9 +65,17 @@ func _physics_process(delta):
 		$JumpIndicator.flipped = false
 		$AnimatedSprite2D.play("walk")
 
+	if Input.is_anything_pressed():
+		idle_timer = null
+
 	#on idle if nothing is being pressed
 	if is_on_floor() and !Input.is_anything_pressed():
 		$AnimatedSprite2D.play("default")
+		if idle_timer == null:
+			idle_timer = Time.get_ticks_msec()
+		elif Time.get_ticks_msec() - idle_timer > IDLE_ANIM_TIMEOUT:
+			print(Time.get_ticks_msec() - idle_timer)
+			$AnimatedSprite2D.play("sleep")
 		
 	move_and_slide()
 
@@ -64,4 +85,4 @@ func on_pickup(pickup: Pickup):
 	if(pickup.pickup_type == Pickup.PickupType.Toy):
 		get_parent().complete()
 	if(pickup.pickup_type == Pickup.PickupType.Boost):
-		JUMP_MAX = JUMP_MAX * 2
+		hast_jump_boost = true

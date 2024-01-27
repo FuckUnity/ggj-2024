@@ -1,22 +1,25 @@
-[gd_scene load_steps=23 format=3 uid="uid://cmo8kdh81gm2s"]
+[gd_scene load_steps=26 format=3 uid="uid://cmo8kdh81gm2s"]
 
 [ext_resource type="Script" path="res://level/kratzbaum/Player.gd" id="1_6cojx"]
 [ext_resource type="Texture2D" uid="uid://c3c3xwe1caoy4" path="res://level/kratzbaum/catstamm.png" id="1_f6ygx"]
 [ext_resource type="Script" path="res://level/kratzbaum/kratzbaum.gd" id="1_ljt1c"]
+[ext_resource type="Texture2D" uid="uid://ct788aensgutb" path="res://level/kratzbaum/catbg.png" id="2_1i3gy"]
 [ext_resource type="Texture2D" uid="uid://dctsn6j045iwr" path="res://level/kratzbaum/catstand.png" id="3_eop7y"]
 [ext_resource type="Texture2D" uid="uid://dd51wsfcynktw" path="res://level/kratzbaum/catjump.png" id="4_k2r06"]
 [ext_resource type="Texture2D" uid="uid://bsahrbiurh6mn" path="res://level/kratzbaum/cat01.png" id="5_vjfks"]
 [ext_resource type="Texture2D" uid="uid://dgwspnf6arwd5" path="res://level/kratzbaum/cat02.png" id="6_w2ooe"]
 [ext_resource type="Texture2D" uid="uid://ci7y6lrvii1tm" path="res://level/kratzbaum/cat03.png" id="7_i5nr3"]
 [ext_resource type="Texture2D" uid="uid://bkmsbkjins1w1" path="res://level/kratzbaum/cat04.png" id="8_7x6fe"]
+[ext_resource type="Texture2D" uid="uid://k2oxt8mqq0wr" path="res://level/kratzbaum/catjump02.png" id="9_5b2m1"]
 [ext_resource type="Texture2D" uid="uid://ct53icyvfqu1x" path="res://level/kratzbaum/cat05.png" id="9_gregh"]
 [ext_resource type="Script" path="res://level/kratzbaum/jumpChargeIndicator.gd" id="10_oy500"]
+[ext_resource type="Texture2D" uid="uid://ykrwfev06372" path="res://level/kratzbaum/catidle.png" id="10_tso42"]
 [ext_resource type="Texture2D" uid="uid://ouspeckyg2ae" path="res://level/kratzbaum/catplatf02.png" id="11_8fg1h"]
 [ext_resource type="Texture2D" uid="uid://fyxeb1gt7swv" path="res://level/kratzbaum/catplatf03.png" id="12_i1g2d"]
 [ext_resource type="Script" path="res://level/kratzbaum/pickup.gd" id="12_xvmek"]
-[ext_resource type="Texture2D" uid="uid://cj7g7lnycn18k" path="res://assets/paw.png" id="13_1eixj"]
 [ext_resource type="Texture2D" uid="uid://bp1d0whvw6vnd" path="res://level/kratzbaum/catplatf01.png" id="13_nhr31"]
 [ext_resource type="Texture2D" uid="uid://don3wkdlvwjee" path="res://level/kratzbaum/cattoy02.png" id="15_stvxb"]
+[ext_resource type="Texture2D" uid="uid://buxsts112wuws" path="res://level/kratzbaum/catsnack01.png" id="19_h3dfc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gw654"]
 size = Vector2(645, 40.1957)
@@ -47,6 +50,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("9_5b2m1")
+}],
+"loop": true,
+"name": &"jump_quick",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_tso42")
+}],
+"loop": true,
+"name": &"sleep",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("5_vjfks")
 }, {
 "duration": 1.0,
@@ -72,6 +91,11 @@ height = 291.67
 
 [node name="Kratzbaum" type="Node2D"]
 script = ExtResource("1_ljt1c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(440, -817)
+scale = Vector2(1.81097, 1.81097)
+texture = ExtResource("2_1i3gy")
 
 [node name="Tree" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -190,6 +214,7 @@ shape = SubResource("RectangleShape2D_wp02h")
 position = Vector2(-13, -51)
 scale = Vector2(0.116416, 0.116416)
 sprite_frames = SubResource("SpriteFrames_odaov")
+animation = &"jump_quick"
 
 [node name="JumpIndicator" type="Node2D" parent="Player"]
 position = Vector2(92, -10)
@@ -219,8 +244,8 @@ shape = SubResource("CapsuleShape2D_v3xqf")
 
 [node name="Sprite2D" type="Sprite2D" parent="pickup"]
 position = Vector2(0, 1)
-scale = Vector2(1.575, 1.575)
-texture = ExtResource("13_1eixj")
+scale = Vector2(0.305, 0.305)
+texture = ExtResource("19_h3dfc")
 
 [node name="pickup2" type="Area2D" parent="."]
 position = Vector2(649, -2167)
