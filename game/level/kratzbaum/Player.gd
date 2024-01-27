@@ -15,6 +15,8 @@ var hast_jump_boost = false
 var idle_timer = null
 var start_pos = null
 
+var is_sleeping = false
+
 func _get_jump_str_max():
 	if hast_jump_boost:
 		return JUMP_MAX * JUMP_BOOST_MULT
@@ -31,6 +33,7 @@ func _physics_process(delta):
 
 	if Input.is_anything_pressed() or not is_on_floor():
 		idle_timer = null
+		is_sleeping = false
 
 	# Handle jump.
 	if Input.is_action_pressed("jump") and is_on_floor():
@@ -41,6 +44,7 @@ func _physics_process(delta):
 		velocity.y = jump_strength_charge
 		jump_strength_charge = 0
 		$JumpIndicator.charge_amount = 0
+		$meow.play()
 
 	var direction = Input.get_axis("left", "right")
 	if is_on_floor() and direction:
@@ -52,7 +56,7 @@ func _physics_process(delta):
 		
 	if not is_on_floor():
 		if hast_jump_boost:
-			$AnimatedSprite2D.play("jump_quick")			
+			$AnimatedSprite2D.play("jump_quick")
 		else:
 			$AnimatedSprite2D.play("jump")
 	
@@ -74,11 +78,17 @@ func _physics_process(delta):
 
 	#on idle if nothing is being pressed
 	if is_on_floor() and !Input.is_anything_pressed():
-		$AnimatedSprite2D.play("default")
+		
 		if idle_timer == null:
 			idle_timer = Time.get_ticks_msec()
-		elif Time.get_ticks_msec() - idle_timer > IDLE_ANIM_TIMEOUT:
+		elif Time.get_ticks_msec() - idle_timer > IDLE_ANIM_TIMEOUT && not is_sleeping:
 			$AnimatedSprite2D.play("sleep")
+			$purr.play()
+			$purr.autoplay = true
+			is_sleeping = true
+			
+		if not is_sleeping:
+			$AnimatedSprite2D.play("default")
 
 	move_and_slide()
 
@@ -89,6 +99,7 @@ func on_pickup(pickup: Pickup):
 		get_parent().complete()
 	if(pickup.pickup_type == Pickup.PickupType.Boost):
 		hast_jump_boost = true
+		$eat.play()
 
 
 func _on_bottom_border_entered(body):

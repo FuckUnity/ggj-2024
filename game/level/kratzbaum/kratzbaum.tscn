@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cmo8kdh81gm2s"]
+[gd_scene load_steps=30 format=3 uid="uid://cmo8kdh81gm2s"]
 
 [ext_resource type="Script" path="res://level/kratzbaum/Player.gd" id="1_6cojx"]
 [ext_resource type="Texture2D" uid="uid://c3c3xwe1caoy4" path="res://level/kratzbaum/catstamm.png" id="1_f6ygx"]
@@ -19,7 +19,10 @@
 [ext_resource type="Script" path="res://level/kratzbaum/pickup.gd" id="12_xvmek"]
 [ext_resource type="Texture2D" uid="uid://bp1d0whvw6vnd" path="res://level/kratzbaum/catplatf01.png" id="13_nhr31"]
 [ext_resource type="Texture2D" uid="uid://don3wkdlvwjee" path="res://level/kratzbaum/cattoy02.png" id="15_stvxb"]
+[ext_resource type="AudioStream" uid="uid://bnf11c1yyttbl" path="res://level/kratzbaum/cat_purr.ogg" id="18_pa7ie"]
+[ext_resource type="AudioStream" uid="uid://b0s3hisdm4ool" path="res://level/kratzbaum/cat_meow.ogg" id="19_0pvsy"]
 [ext_resource type="Texture2D" uid="uid://buxsts112wuws" path="res://level/kratzbaum/catsnack01.png" id="19_h3dfc"]
+[ext_resource type="AudioStream" uid="uid://1307g0s88sks" path="res://level/kratzbaum/cat_eat_chrispy_treat.ogg" id="20_ryeyd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gw654"]
 size = Vector2(645, 40.1957)
@@ -95,7 +98,7 @@ size = Vector2(13174, 615)
 [node name="Kratzbaum" type="Node2D"]
 script = ExtResource("1_ljt1c")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="background" type="Sprite2D" parent="."]
 position = Vector2(440, -817)
 scale = Vector2(1.81097, 1.81097)
 texture = ExtResource("2_1i3gy")
@@ -217,7 +220,7 @@ shape = SubResource("RectangleShape2D_wp02h")
 position = Vector2(-13, -51)
 scale = Vector2(0.116416, 0.116416)
 sprite_frames = SubResource("SpriteFrames_odaov")
-animation = &"jump_quick"
+animation = &"sleep"
 
 [node name="JumpIndicator" type="Node2D" parent="Player"]
 position = Vector2(92, -10)
@@ -236,6 +239,18 @@ drag_left_margin = 0.3
 drag_right_margin = 0.3
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Player"]
+current = true
+
+[node name="meow" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("19_0pvsy")
+
+[node name="eat" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("20_ryeyd")
+
+[node name="purr" type="AudioStreamPlayer2D" parent="Player"]
+stream = ExtResource("18_pa7ie")
 
 [node name="pickup" type="Area2D" parent="."]
 position = Vector2(-1161, -129)
