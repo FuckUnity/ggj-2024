@@ -15,6 +15,7 @@ func _process(delta):
 func pet():
 	currentPets += 1
 	print(currentPets)
-	if currentPets >= TargetPets:
+	if currentPets == TargetPets:
 		print("complete")
 		complete()
+		
