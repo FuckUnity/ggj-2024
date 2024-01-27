@@ -10,5 +10,13 @@ func _process(delta):
 
 func _unhandled_input(event):
 	if event.is_pressed():
-		game._open_level(MainState.MiniGames.CAT_TREE)
+		match event.keycode:
+			KEY_1:
+				game._open_level(MainState.MiniGames.CAT_TREE)
+			KEY_2:
+				game._open_level(MainState.MiniGames.KITCHEN_COFFEE)
+			KEY_3:
+				game._open_level(MainState.MiniGames.WINDOW)
+			KEY_4:
+				game._open_level(MainState.MiniGames.COMPUTER)
 		
