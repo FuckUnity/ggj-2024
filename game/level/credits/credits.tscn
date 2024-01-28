@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvehssf85u3rp"]
+
+[ext_resource type="Texture2D" uid="uid://bfahy8003euh2" path="res://level/coffee/sprites/bg.png" id="1_0r1mj"]
+[ext_resource type="FontFile" uid="uid://c5e6jd020r2fe" path="res://level/coffee/fonts/shiny-marker/Shiny Marker Regular.ttf" id="2_bj3pe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8u0ee"]
+font = ExtResource("2_bj3pe")
+font_size = 115
+shadow_size = 16
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_erkpf"]
+shadow_color = Color(0, 0, 0, 0.501961)
+
+[node name="Credits" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(961, 542)
+scale = Vector2(1.1537, 1.1537)
+texture = ExtResource("1_0r1mj")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 266.0
+offset_top = 95.0
+offset_right = 949.0
+offset_bottom = 1636.0
+text = "Credits
+
+Jeffrey
+Yannis
+Johannes
+Lea
+Tina
+Luca"
+label_settings = SubResource("LabelSettings_8u0ee")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 1131.0
+offset_top = 219.0
+offset_right = 2247.0
+offset_bottom = 1760.0
+text = "Special Thanks
+Cat
+Anni"
+label_settings = SubResource("LabelSettings_8u0ee")
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 1013.0
+offset_top = 839.0
+offset_right = 1911.0
+offset_bottom = 1070.0
+text = "\"Fast Crawling Bu\" by dasrealized (licensed under the Creative Commons 0 License!) [2020-03-01].
+- Links: https://freesound.org/people/dasrealized/sounds/266014/
+https://creativecommons.org/publicdomain/zero/1.0/
+* \"SRS_Cinematic_Hit\" by StephenSaldanha (licensed under the Creative Commons Attribution License!) [2020-03-01].
+- Links: https://freesound.org/people/StephenSaldanha/sounds/166515/
+https://creativecommons.org/licenses/by/3.0/
+* \"Epic_Battle_Music_1.MP3\" by Airwolf89 (licensed under the Creative Commons 0 License!) [2020-03-01].
+- Links: https://freesound.org/people/Airwolf89/sounds/346455/
+https://creativecommons.org/publicdomain/zero/1.0/
+"
+label_settings = SubResource("LabelSettings_erkpf")
