@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dhsmbap6gwobw"]
+
+[node name="Plants" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
