@@ -1,13 +1,24 @@
 extends level_base
 
-var cursor_paw = load("res://assets/tiny_paw.png")
+var cursor_paw = load("res://level/coffee/sprites/drawn_paw.png")
+var cursor_dark_paw = load("res://level/coffee/sprites/dark_paw.png")
 var empty_cup = load("res://level/coffee/icons/coffee_cup_empty.png")
 var full_cup = load("res://level/coffee/icons/coffee_cup_full.png")
+var button_left = load("res://level/coffee/icons/button_left.png")
+var button_down = load("res://level/coffee/icons/button_down.png")
+var button_right = load("res://level/coffee/icons/button_right.png")
+var button_dict = {
+	1 : button_right,
+	2 : button_down,
+	3 : button_left
+}
 var full = false
+var poaring = false
+var clickable = true
 
 # Initial States
 var beans = 2
-var bar = 15
+var bar = 2
 var type = 3
 var times = ["12:36 PM","12:41 PM","12:59 PM","01:00 PM","01:15 PM"]
 var cur_time = 0
@@ -17,29 +28,29 @@ That's exactly how I like my coffee!!
 var neg_response = """No that's not the right time for this coffee.
 	:-("""
 var cup_positions = [
-	Vector2(1000, 529),
-	Vector2( 883, 529),
-	Vector2( 800, 529),
-	Vector2( 720, 529),
-	Vector2( 664, 529), # goal_pos
-	Vector2( 560, 529),
-	Vector2( 447, 529),
+	Vector2(1062, 729), # 0 -- right edge
+	Vector2( 980, 729), # 1
+	Vector2( 800, 729), # 2 -> goal
+	Vector2( 720, 729), # 3
+	Vector2( 664, 729), # 4
+	Vector2( 560, 729), # 5
+	Vector2( 447, 729), # 6 -- left edge
 ]
 var cur_pos = 0
-var goal_pos = 4
+var goal_pos = 2
 
-var cat_face
-var count_cat_faces = 4
+func set_paw():
+	Input.set_custom_mouse_cursor(cursor_paw, 0, Vector2(63,63))
+
+func set_dark_paw():
+	Input.set_custom_mouse_cursor(cursor_dark_paw, 0, Vector2(63,63))
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
-	$CanvasLayer/Control/GridContainer/type_label.text = str(type)
-	$CanvasLayer/Control/GridContainer/bean_label.text = str(beans)
-	$CanvasLayer/Control/GridContainer/bar_label.text = str(bar)
 	$CanvasLayer/Control/display/clock.text = times[cur_time]
-	Input.set_custom_mouse_cursor(cursor_paw, 0, Vector2(32, 32))
-	cat_face = $CanvasLayer/Control/coffee_cup/AnimatedSprite2D
+	set_paw()
+	#cat_face = $CanvasLayer/Control/coffee_cup/AnimatedSprite2D
 	$CanvasLayer/Control/coffee_cup.set_position(cup_positions[cur_pos])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,29 +58,36 @@ func _process(delta):
 	pass
 
 
+func click_button():
+	clickable = false;
+	$button.play()
+
 func _on_pour_coffee_button_pressed():
-	if full: return
-	if cur_pos == goal_pos:
-		print("play cup animation")
-		$CanvasLayer/Control/AnimatedSprite2D.play("cup")
-		return
-	$CanvasLayer/Control/AnimatedSprite2D.play("default")
+	if full || poaring: return
+	poaring = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	click_button()
+	$pouring_coffee.play()
+	$CanvasLayer/Control/PouringCoffee.play("default")
 
 
 func _on_adjust_bar_button_pressed():
-	if bar == 15: bar = 20
-	elif bar == 20: bar = 10
-	elif bar == 10: bar = 15
-	$CanvasLayer/Control/GridContainer/bar_label.text = str(bar)
+	click_button()
+	bar = (bar % 3) + 1
+	print(bar)
+	$CanvasLayer/Control/adjust_bar_button.set_texture_normal(button_dict[bar])
 
 func _on_adjust_beans_button_pressed():
-	print(beans % 3)
+	click_button()
 	beans = (beans % 3) + 1
-	$CanvasLayer/Control/GridContainer/bean_label.text = str(beans)
+	print(beans)
+	$CanvasLayer/Control/adjust_beans_button.set_texture_normal(button_dict[beans])
 
 func _on_adjust_type_button_pressed():
+	click_button()
 	type = (type % 3) + 1
-	$CanvasLayer/Control/GridContainer/type_label.text = str(type)
+	print(type)
+	$CanvasLayer/Control/adjust_type_button.set_texture_normal(button_dict[type])
 
 
 func _on_display_pressed():
@@ -78,20 +96,25 @@ func _on_display_pressed():
 
 
 func _on_coffee_cup_pressed():
+	if poaring: return
 	cur_pos = (cur_pos + 1) % cup_positions.size()
 	if cur_pos == 0:
-		$CanvasLayer/Control/coffee_cup.set_texture_normal(empty_cup)
-		cat_face.frame = (cat_face.frame + 1) % count_cat_faces
-		full = false	
+		$CanvasLayer/Control/coffee_cup/steam.play("none")
+		$CanvasLayer/Control/coffee_cup/steam.stop()
+		#$CanvasLayer/Control/coffee_cup.set_texture_normal(empty_cup)
+		#cat_face.frame = (cat_face.frame + 1) % count_cat_faces
+		full = false
 	$CanvasLayer/Control/coffee_cup.set_position(cup_positions[cur_pos])
 
 func _on_animated_sprite_2d_animation_finished():
 	print("finished poaring coffee :P")
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if cur_pos != goal_pos:
 		return
-	$CanvasLayer/Control/coffee_cup.set_texture_normal(full_cup)
+	#$CanvasLayer/Control/coffee_cup.set_texture_normal(full_cup)
+	$CanvasLayer/Control/coffee_cup/steam.play("default")
 	# 01:00 PM - 3 be, 10 ba, 1 bt
-	if beans == 3 && bar == 10 && type == 1 && times[cur_time] == "01:00 PM":
+	if beans == 3 && bar == 1 && type == 1 && times[cur_time] == "01:00 PM":
 		$CanvasLayer/Control/speech_bubble/humans_response.text = pos_response
 	else: $CanvasLayer/Control/speech_bubble/humans_response.text = neg_response
 	$CanvasLayer/Control/speech_bubble.visible = true
@@ -99,9 +122,64 @@ func _on_animated_sprite_2d_animation_finished():
 
 func _on_speech_bubble_hidden():
 	# print("bubble gone")
-	if  $CanvasLayer/Control/speech_bubble/humans_response.text == pos_response:
-		$"CanvasLayer/Control/winning screen".visible = true
+	if  $CanvasLayer/Control/speech_bubble/humans_response.text != pos_response:
+		return
+	$"CanvasLayer/Control/winning screen".visible = true
+	$winning_purring.autoplay = true
+	$winning_purring.play()
 
 
 func _on_winning_screen_pressed():
 	complete()
+
+
+func _on_pouring_coffee_finished():
+	poaring = false
+
+
+func _on_button_finished():
+	clickable = true
+
+
+func _on_background_finished():
+	$background.play()
+
+
+func _on_winning_purring_finished():
+	$winning_purring.play()
+
+func _on_adjust_type_button_mouse_entered():
+	set_dark_paw()
+
+func _on_adjust_type_button_mouse_exited():
+	set_paw()
+
+func _on_adjust_beans_button_mouse_entered():
+	set_dark_paw()
+
+func _on_adjust_beans_button_mouse_exited():
+	set_paw()
+
+func _on_adjust_bar_button_mouse_entered():
+	set_dark_paw()
+
+func _on_adjust_bar_button_mouse_exited():
+	set_paw()
+
+func _on_pour_coffee_button_mouse_entered():
+	set_dark_paw()
+
+func _on_pour_coffee_button_mouse_exited():
+	set_paw()
+
+func _on_coffee_cup_mouse_entered():
+	set_dark_paw()
+
+func _on_coffee_cup_mouse_exited():
+	set_paw()
+
+func _on_display_mouse_entered():
+	set_dark_paw()
+
+func _on_display_mouse_exited():
+	set_paw()

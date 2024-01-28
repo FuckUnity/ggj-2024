@@ -96,7 +96,7 @@ func on_pickup(pickup: Pickup):
 	pickup.queue_free()
 	
 	if(pickup.pickup_type == Pickup.PickupType.Toy):
-		get_parent().complete()
+		get_parent().set_complete()
 	if(pickup.pickup_type == Pickup.PickupType.Boost):
 		hast_jump_boost = true
 		$eat.play()

@@ -35,7 +35,7 @@ func _open_level(level: MainState.MiniGames):
 	
 	Input.set_custom_mouse_cursor(null)
 	
-	if state.current_level_type == MainState.MiniGames.NONE:
+	if state.current_level_type == MainState.MiniGames.NONE and state.current_level_ref:
 		remove_child(state.current_level_ref)
 	
 	match level:
@@ -60,3 +60,7 @@ func _unhandled_input(event):
 			get_tree().quit()
 		else:
 			_double_esc = 0.3
+			
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_0:
+			state.debug_override_level_allowed = !state.debug_override_level_allowed

@@ -6,6 +6,7 @@ enum MainSceneObjects { WINDOW, COUCH, CHAIR, COFFEE_CUP }
 
 var current_level_type: MiniGames
 var current_level_ref: Node
+var debug_override_level_allowed = false
 
 var mainState = {
 	MainSceneObjects.WINDOW: "closed",
@@ -131,16 +132,17 @@ func complete_current_level():
 				},
 				'emotions': []
 			}
-			
-	current_level_type = MiniGames.NONE
-	current_level_ref = null
+	
+	# current_level is set by set_level
+	#   current_level_type = MiniGames.NONE
+	#   current_level_ref = null
 
 func set_level(level_type: MiniGames, level_ref: Node):
 	current_level_type = level_type
 	current_level_ref = level_ref
 	
 func is_open_level_allowed(level: MiniGames) -> bool:
-	if level == MiniGames.NONE:
+	if level == MiniGames.NONE or debug_override_level_allowed:
 		return true
 	
 	return mainState.minigamesState[level] == MiniGameState.ACTIVE
