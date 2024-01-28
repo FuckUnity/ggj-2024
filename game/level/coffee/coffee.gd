@@ -50,6 +50,7 @@ var tipp_timer = 0.0
 
 var FALL_TIME = 1.0
 var fall_timer = 0.0
+var falling = false
 
 var bubble
 var text
@@ -118,10 +119,13 @@ func handle_tipp(delta):
 	tipp_timer = 0.0
 
 func handle_falling(delta):
-	if !falling_cup.visible: return
+	if !falling_cup.visible || falling: return
 	fall_timer += delta
 	if fall_timer < FALL_TIME: return
+	falling = true
 	crash.play()
+	fall_timer = 0.0
+	
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -176,19 +180,19 @@ func _on_coffee_cup_pressed():
 		cup.set_rotation(-76)
 	elif cur_pos == 0:
 		cup.visible = false
-		falling_cup.set_position(Vector2(432, 929))
 		falling_cup.visible = true
 		fall_timer = 0.0
 		steam.play("none")
 		steam.stop()
 		full = false
+		falling_cup.set_position(Vector2(432, 929))
 	cup.set_position(cup_positions[cur_pos])
 	
 func reset_coffee_cup():
-	falling_cup.visible = false
-	cup.visible = true
+	falling = false
 	cup.set_rotation(0)
-	
+	cup.visible = true
+	falling_cup.visible = false
 
 func _on_animated_sprite_2d_animation_finished():
 	print("finished poaring coffee :P")
