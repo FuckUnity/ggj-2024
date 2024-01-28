@@ -49,6 +49,7 @@ func _input(event):
 	if event.button_index != MOUSE_BUTTON_LEFT or !event.pressed:
 		return
 			
+	$"AudioStreamClick".play()
 	var pos = get_viewport().get_camera_2d().get_local_mouse_position()
 	
 	for bird in birds:
