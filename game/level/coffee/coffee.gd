@@ -30,13 +30,13 @@ var times = ["12:36 PM","12:41 PM","12:59 PM","01:00 PM","01:15 PM"]
 var cur_time = 0
 
 var cup_positions = [
-	Vector2(1062, 729), # 0 -- right edge
-	Vector2( 980, 729), # 1
-	Vector2( 800, 729), # 2 -> goal
-	Vector2( 720, 729), # 3
-	Vector2( 664, 729), # 4
-	Vector2( 560, 729), # 5
-	Vector2( 447, 729), # 6 -- left edge
+	Vector2( 509, 615), # 0 -- right edge
+	Vector2( 476, 615), # 1
+	Vector2( 275, 615), # 2 -> goal
+	Vector2( 220, 615), # 3
+	Vector2( 160, 615), # 4
+	Vector2( 80, 615), # 5
+	Vector2( -14, 615), # 6 -- left edge
 ]
 var cur_pos = 0
 var goal_pos = 2
@@ -50,6 +50,9 @@ var tipp_timer = 0.0
 
 var bubble
 var olli
+var cup
+var steam
+var pouring
 
 func set_paw():
 	Input.set_custom_mouse_cursor(cursor_paw, 0, Vector2(63,63))
@@ -80,7 +83,10 @@ func _ready():
 	set_paw()
 	bubble = $CanvasLayer/Control/bubble
 	olli = $CanvasLayer/Control/bubble/olli
-	$CanvasLayer/Control/coffee_cup.set_position(cup_positions[cur_pos])
+	cup = $CanvasLayer/Control/machine/coffee_cup
+	cup.set_position(cup_positions[cur_pos])
+	steam = $CanvasLayer/Control/machine/coffee_cup/steam
+	pouring = $CanvasLayer/Control/machine/PouringCoffee
 
 func handle_bubble(delta):
 	if bubble.visible == false: return
@@ -115,7 +121,7 @@ func _on_pour_coffee_button_pressed():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	click_button()
 	$pouring_coffee.play()
-	$CanvasLayer/Control/PouringCoffee.play("default")
+	pouring.play("default")
 
 
 func _on_adjust_bar_button_pressed():
@@ -147,17 +153,16 @@ func _on_coffee_cup_pressed():
 	$sliding_cup.play()
 	cur_pos = (cur_pos + 1) % cup_positions.size()
 	if cur_pos == 0:
-		$CanvasLayer/Control/coffee_cup/steam.play("none")
-		$CanvasLayer/Control/coffee_cup/steam.stop()
+		steam.play("none")
+		steam.stop()
 		full = false
-	$CanvasLayer/Control/coffee_cup.set_position(cup_positions[cur_pos])
+	cup.set_position(cup_positions[cur_pos])
 
 func _on_animated_sprite_2d_animation_finished():
 	print("finished poaring coffee :P")
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if cur_pos != goal_pos:
-		return
-	$CanvasLayer/Control/coffee_cup/steam.play("default")
+	if cur_pos != goal_pos: return
+	steam.play("default")
 	# 01:00 PM - 3 be, 10 ba, 1 bt
 	if beans == 3 && bar == 1 && type == 1 && times[cur_time] == "01:00 PM":
 		olli_positiv()

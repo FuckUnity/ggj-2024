@@ -1,12 +1,14 @@
-[gd_scene load_steps=35 format=3 uid="uid://cpxr8f6vacmqt"]
+[gd_scene load_steps=37 format=3 uid="uid://cpxr8f6vacmqt"]
 
 [ext_resource type="Script" path="res://level/coffee/coffee.gd" id="1_2v5hi"]
 [ext_resource type="Texture2D" uid="uid://bfahy8003euh2" path="res://level/coffee/sprites/bg.png" id="1_n0lo3"]
+[ext_resource type="Texture2D" uid="uid://b5gwe8bxik2wc" path="res://level/coffee/sprites/Plattform.png" id="3_1vn27"]
 [ext_resource type="Texture2D" uid="uid://bpn3w5gdvji4y" path="res://level/coffee/sprites/coffee_machine.png" id="3_8w54k"]
+[ext_resource type="Texture2D" uid="uid://mhej1hfs43it" path="res://level/coffee/sprites/sticky_note.png" id="3_psnuc"]
+[ext_resource type="Texture2D" uid="uid://bs25k8xgaj17y" path="res://level/coffee/sprites/plant.png" id="4_xmymy"]
+[ext_resource type="Texture2D" uid="uid://xbkqsrvukyge" path="res://level/coffee/sprites/Friend.png" id="5_dcw5n"]
 [ext_resource type="Texture2D" uid="uid://byyflbuvbsfpd" path="res://level/coffee/icons/button_down.png" id="5_ejncl"]
 [ext_resource type="Texture2D" uid="uid://dbdj6irh3gabd" path="res://level/coffee/icons/button_left.png" id="6_g0f7p"]
-[ext_resource type="Texture2D" uid="uid://y2i7ujufb4hj" path="res://level/coffee/icons/sticky_note.png" id="7_3d6il"]
-[ext_resource type="FontFile" uid="uid://b5wc8u1b2jhql" path="res://level/coffee/fonts/betterwork/Betterworks.otf" id="8_s0m11"]
 [ext_resource type="Texture2D" uid="uid://cy31pgqj8k30y" path="res://level/coffee/sprites/display.png" id="11_r4rh2"]
 [ext_resource type="FontFile" uid="uid://c6snkbqy5evdg" path="res://level/coffee/fonts/digital-dream/DIGITALDREAMFAT.ttf" id="11_x4j6t"]
 [ext_resource type="Texture2D" uid="uid://cqoq0ietmi75y" path="res://level/coffee/sprites/coffee_streams/c-0.png" id="12_hlqe5"]
@@ -185,8 +187,8 @@ script = ExtResource("1_2v5hi")
 anchor_mode = 0
 
 [node name="Bg" type="Sprite2D" parent="."]
-position = Vector2(0.61, -3.19)
-scale = Vector2(0.1, 0.1)
+position = Vector2(0.9565, 0.5365)
+scale = Vector2(0.0119812, 0.0120556)
 texture = ExtResource("1_n0lo3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -199,107 +201,117 @@ offset_top = 32.0
 offset_right = 1926.0
 offset_bottom = 1092.0
 
+[node name="sticky_note" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1291.0
+offset_top = 232.0
+offset_right = 1845.0
+offset_bottom = 717.0
+texture = ExtResource("3_psnuc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="table" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 361.0
+offset_top = 773.0
+offset_right = 1537.0
+offset_bottom = 1044.0
+texture = ExtResource("3_1vn27")
+stretch_mode = 4
+
+[node name="friend" type="TextureRect" parent="CanvasLayer/Control/table"]
+layout_mode = 0
+offset_left = 709.0
+offset_top = -806.0
+offset_right = 859.0
+offset_bottom = -680.0
+texture = ExtResource("5_dcw5n")
+stretch_mode = 4
+
+[node name="plant" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1463.0
+offset_top = 603.0
+offset_right = 1908.0
+offset_bottom = 1046.0
+texture = ExtResource("4_xmymy")
+stretch_mode = 4
+
 [node name="machine" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_left = 436.0
-offset_top = -37.0
-offset_right = 1524.0
-offset_bottom = 1078.0
+offset_left = 551.0
+offset_top = 91.0
+offset_right = 1449.0
+offset_bottom = 1011.0
 texture = ExtResource("3_8w54k")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="pour_coffee_button" type="TextureButton" parent="CanvasLayer/Control"]
+[node name="pour_coffee_button" type="TextureButton" parent="CanvasLayer/Control/machine"]
 layout_mode = 2
 anchor_left = -2.76
 anchor_top = -2.88
 anchor_right = -0.48
-offset_left = 5903.16
-offset_top = 3346.8
-offset_right = 1589.68
-offset_bottom = 320.0
+offset_left = 2621.48
+offset_top = 2921.6
+offset_right = 627.04
+offset_bottom = 296.0
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="adjust_beans_button" type="TextureButton" parent="CanvasLayer/Control"]
+[node name="adjust_beans_button" type="TextureButton" parent="CanvasLayer/Control/machine"]
 layout_mode = 2
-offset_left = 723.0
-offset_top = 266.0
-offset_right = 793.0
-offset_bottom = 336.0
+offset_left = 234.0
+offset_top = 246.0
+offset_right = 294.0
+offset_bottom = 316.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("5_ejncl")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="adjust_bar_button" type="TextureButton" parent="CanvasLayer/Control"]
+[node name="adjust_bar_button" type="TextureButton" parent="CanvasLayer/Control/machine"]
 layout_mode = 2
-offset_left = 1017.0
-offset_top = 271.0
-offset_right = 1087.0
-offset_bottom = 341.0
+offset_left = 480.0
+offset_top = 249.0
+offset_right = 540.0
+offset_bottom = 319.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("5_ejncl")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="adjust_type_button" type="TextureButton" parent="CanvasLayer/Control"]
+[node name="adjust_type_button" type="TextureButton" parent="CanvasLayer/Control/machine"]
 layout_mode = 2
-offset_left = 1145.0
-offset_top = 270.0
-offset_right = 1215.0
-offset_bottom = 340.0
+offset_left = 586.0
+offset_top = 249.0
+offset_right = 646.0
+offset_bottom = 319.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("6_g0f7p")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="sticky_note" type="TextureRect" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 1387.0
-offset_top = 57.0
-offset_right = 1925.0
-offset_bottom = 470.0
-texture = ExtResource("7_3d6il")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="information" type="Label" parent="CanvasLayer/Control/sticky_note"]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 56.0
-offset_right = 358.0
-offset_bottom = 275.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("8_s0m11")
-theme_override_font_sizes/font_size = 14
-text = "08:00 AM - 2 be, 2 ba, 1 bt
-10:00 AM - 1 be, 1 ba, 2 bt
-12:00 PM - 1 be, 3 ba, 3 bt
-01:00 PM - 3 be, 1 ba, 1 bt
-03:00 PM - 2 be, 2 ba, 1 bt
-05:00 PM - 1 be, 3 ba, 3 bt"
-
-[node name="PouringCoffee" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
-position = Vector2(985, 739.488)
-scale = Vector2(0.9325, 0.582402)
+[node name="PouringCoffee" type="AnimatedSprite2D" parent="CanvasLayer/Control/machine"]
+position = Vector2(456, 641)
+scale = Vector2(0.9325, 0.505882)
 sprite_frames = SubResource("SpriteFrames_pvwsf")
-frame_progress = 1.0
 
-[node name="coffee_cup" type="TextureButton" parent="CanvasLayer/Control"]
+[node name="coffee_cup" type="TextureButton" parent="CanvasLayer/Control/machine"]
 layout_mode = 0
-offset_left = 800.0
-offset_top = 729.0
-offset_right = 1113.0
-offset_bottom = 903.0
+offset_left = -14.0
+offset_top = 603.0
+offset_right = 282.0
+offset_bottom = 774.0
 texture_normal = ExtResource("25_kii2q")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="steam" type="AnimatedSprite2D" parent="CanvasLayer/Control/coffee_cup"]
+[node name="steam" type="AnimatedSprite2D" parent="CanvasLayer/Control/machine/coffee_cup"]
 position = Vector2(126.5, -74)
 scale = Vector2(0.576316, 0.582402)
 sprite_frames = SubResource("SpriteFrames_hgb3g")
@@ -351,9 +363,9 @@ vertical_alignment = 1
 [node name="bubble" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = 40.0
-offset_top = -15.0
+offset_top = -18.0
 offset_right = 473.0
-offset_bottom = 351.0
+offset_bottom = 348.0
 
 [node name="olli" type="TextureRect" parent="CanvasLayer/Control/bubble"]
 layout_mode = 0
@@ -386,23 +398,23 @@ stream = ExtResource("31_alu3l")
 volume_db = -10.0
 pitch_scale = 0.7
 
-[connection signal="mouse_entered" from="CanvasLayer/Control/pour_coffee_button" to="." method="_on_pour_coffee_button_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/Control/pour_coffee_button" to="." method="_on_pour_coffee_button_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/Control/pour_coffee_button" to="." method="_on_pour_coffee_button_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/Control/adjust_beans_button" to="." method="_on_adjust_beans_button_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/Control/adjust_beans_button" to="." method="_on_adjust_beans_button_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/Control/adjust_beans_button" to="." method="_on_adjust_beans_button_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/Control/adjust_bar_button" to="." method="_on_adjust_bar_button_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/Control/adjust_bar_button" to="." method="_on_adjust_bar_button_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/Control/adjust_bar_button" to="." method="_on_adjust_bar_button_pressed"]
-[connection signal="mouse_entered" from="CanvasLayer/Control/adjust_type_button" to="." method="_on_adjust_type_button_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/Control/adjust_type_button" to="." method="_on_adjust_type_button_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/Control/adjust_type_button" to="." method="_on_adjust_type_button_pressed"]
-[connection signal="animation_finished" from="CanvasLayer/Control/PouringCoffee" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="mouse_entered" from="CanvasLayer/Control/coffee_cup" to="." method="_on_coffee_cup_mouse_entered"]
-[connection signal="mouse_exited" from="CanvasLayer/Control/coffee_cup" to="." method="_on_coffee_cup_mouse_exited"]
-[connection signal="pressed" from="CanvasLayer/Control/coffee_cup" to="." method="_on_coffee_cup_pressed"]
-[connection signal="animation_finished" from="CanvasLayer/Control/coffee_cup/steam" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/machine/pour_coffee_button" to="." method="_on_pour_coffee_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/machine/pour_coffee_button" to="." method="_on_pour_coffee_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/machine/pour_coffee_button" to="." method="_on_pour_coffee_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/machine/adjust_beans_button" to="." method="_on_adjust_beans_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/machine/adjust_beans_button" to="." method="_on_adjust_beans_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/machine/adjust_beans_button" to="." method="_on_adjust_beans_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/machine/adjust_bar_button" to="." method="_on_adjust_bar_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/machine/adjust_bar_button" to="." method="_on_adjust_bar_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/machine/adjust_bar_button" to="." method="_on_adjust_bar_button_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/machine/adjust_type_button" to="." method="_on_adjust_type_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/machine/adjust_type_button" to="." method="_on_adjust_type_button_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/machine/adjust_type_button" to="." method="_on_adjust_type_button_pressed"]
+[connection signal="animation_finished" from="CanvasLayer/Control/machine/PouringCoffee" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="mouse_entered" from="CanvasLayer/Control/machine/coffee_cup" to="." method="_on_coffee_cup_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Control/machine/coffee_cup" to="." method="_on_coffee_cup_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/Control/machine/coffee_cup" to="." method="_on_coffee_cup_pressed"]
+[connection signal="animation_finished" from="CanvasLayer/Control/machine/coffee_cup/steam" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="mouse_entered" from="CanvasLayer/Control/display" to="." method="_on_display_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Control/display" to="." method="_on_display_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Control/display" to="." method="_on_display_pressed"]
