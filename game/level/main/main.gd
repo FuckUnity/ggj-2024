@@ -42,7 +42,7 @@ func _ready():
 		{ "button": $"Control/ButtonPlant3", "level": MainState.MiniGames.PLANTS, "hover": _hover_plants() },
 		{ "button": $"Control/ButtonComputer", "level": MainState.MiniGames.COMPUTER, "hover": hover_computer },
 		{ "button": $"Control/ButtonFoodBowl", "level": MainState.MiniGames.FOOD_BOWL, "hover": hover_food_bowl },
-		{ "button": $"Control/ButtonEasterEgg", "level": null, "hover": hover_easteregg },
+		{ "button": $"Control/ButtonEasterEgg", "level": MainState.MiniGames.CREDITS, "hover": hover_easteregg },
 	]
 	
 	for b in buttons:

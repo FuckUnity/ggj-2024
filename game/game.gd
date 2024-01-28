@@ -53,6 +53,8 @@ func _open_level(level: MainState.MiniGames):
 			state.set_level(level, assets.spawn_level(self, assets.template_level_plants))
 		MainState.MiniGames.FOOD_BOWL:
 			state.set_level(level, assets.spawn_level(self, assets.template_level_food_bowl))
+		MainState.MiniGames.CREDITS:
+			state.set_level(level, assets.spawn_level(self, assets.template_level_credits))
 
 var _double_esc: float = 0
 

@@ -1,6 +1,6 @@
 class_name MainState extends Object
 
-enum MiniGames { NONE, WINDOW, KITCHEN_COFFEE, COMPUTER, PLANTS, CAT_TREE, FOOD_BOWL }
+enum MiniGames { NONE, WINDOW, KITCHEN_COFFEE, COMPUTER, PLANTS, CAT_TREE, FOOD_BOWL, CREDITS }
 enum MiniGameState { ACTIVE, BLOCKED, COMPLETED }
 enum MainSceneObjects { WINDOW, COUCH, CHAIR, COFFEE_CUP, PLANTS }
 
@@ -171,7 +171,7 @@ func set_level(level_type: MiniGames, level_ref: Node):
 	current_level_ref = level_ref
 	
 func is_open_level_allowed(level: MiniGames) -> bool:
-	if level == MiniGames.NONE or debug_override_level_allowed:
+	if level == MiniGames.NONE or level == MiniGames.CREDITS or debug_override_level_allowed:
 		return true
 	
 	return mainState.minigamesState[level] == MiniGameState.ACTIVE or mainState.minigamesState[level] == MiniGameState.COMPLETED
