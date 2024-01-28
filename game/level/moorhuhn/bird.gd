@@ -77,5 +77,6 @@ func _get_start_movement(side: float) -> Vector2:
 	var angle = _rng.randf_range(-85.0, -60.0)
 
 	$AnimatedSprite2D.flip_h = side > 0
+	$AnimatedSprite2D.play()
 	
 	return Vector2(speed * -side, angle)

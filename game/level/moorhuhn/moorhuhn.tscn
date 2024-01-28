@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://w5ytcejhcpph" path="res://assets/room_empty.png" id="3_d3ukn"]
 [ext_resource type="Texture2D" uid="uid://dyqi04i7kat5n" path="res://assets/room_windows_border.png" id="4_75g8t"]
 [ext_resource type="Texture2D" uid="uid://cqlty36vcjrfl" path="res://assets/Plants_happy.png" id="5_5xn03"]
+[ext_resource type="AudioStream" uid="uid://coksqwpfrrurh" path="res://level/moorhuhn/VogelMoorhuhnBackroundloop.wav" id="6_6sfyd"]
+[ext_resource type="AudioStream" uid="uid://uth70lt47akp" path="res://level/moorhuhn/Button2.wav" id="7_askr6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyu38"]
 size = Vector2(159, 9)
