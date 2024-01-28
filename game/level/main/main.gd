@@ -6,10 +6,12 @@ const hover_window = preload("res://assets/Kitchen.png")
 const hover_kitchen = preload("res://assets/Coffee_room.png")
 const hover_cat_tree = preload("res://assets/Kratzbaum.png")
 const hover_plant_0 = preload("res://assets/Kitchen.png")
-const hover_plant_1 = preload("res://assets/Kitchen.png")
+const hover_plant_1 = preload("res://assets/Monstera_happy.png")
 const hover_plant_2 = preload("res://assets/Kitchen.png")
 const hover_plant_3 = preload("res://assets/Kitchen.png")
 const hover_computer = preload("res://assets/Kitchen.png")
+const hover_easteregg = null
+const hover_food_bowl = preload("res://assets/Kitchen.png")
 
 const window_closed = preload("res://assets/room_windows_closed.png")
 const window_opened = preload("res://assets/room_windows_opened.png")
@@ -24,6 +26,7 @@ const chair_empty = null
 const chair_human_happy = preload("res://assets/chair_human_happy.png")
 const chair_human_sad = preload("res://assets/chair_human_sad.png")
 
+var completed = false
 var buttons
 
 # Called when the node enters the scene tree for the first time.
@@ -40,6 +43,8 @@ func _ready():
 		{ "button": $"Control/ButtonPlant2", "level": MainState.MiniGames.PLANTS, "hover": hover_plant_2 },
 		{ "button": $"Control/ButtonPlant3", "level": MainState.MiniGames.PLANTS, "hover": hover_plant_3 },
 		{ "button": $"Control/ButtonComputer", "level": MainState.MiniGames.COMPUTER, "hover": hover_computer },
+		{ "button": $"Control/ButtonFoodBowl", "level": MainState.MiniGames.FOOD_BOWL, "hover": hover_food_bowl },
+		{ "button": $"Control/ButtonEasterEgg", "level": null, "hover": hover_easteregg },
 	]
 	
 	for b in buttons:
@@ -73,15 +78,31 @@ func _ready():
 			
 
 func _init_button(b):
-	b.button.pressed.connect(func(): game._open_level(b.level))
+	b.button.pressed.connect(func(): if b.level != null and _can_level_be_opened(b.level): game._open_level(b.level))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var button_hover = null
 	for button in buttons: 
-		if button.button.is_hovered():
+		if (button.level == null or _can_level_be_opened(button.level)) and button.button.is_hovered():
 			button_hover = button.hover
 			
-	# @todo set cursor to "CURSOR_POINTING_HAND"
 	$"Control/AspectRatioContainer/TextureRectHover".set_texture(button_hover)
+			
+	if !completed:
+		_check_completed()
 
+func _can_level_be_opened(level) -> bool:
+	return game.state.is_open_level_allowed(level)
+
+func _check_completed():
+	var _completed = true
+	for level in MainState.MiniGames:
+		_completed = completed and game.state.get_minigame_state()[level]
+	
+	if !completed and _completed:
+		_show_game_completed()
+
+func _show_game_completed():
+	completed = true
+	# @todo show completed dialog / speach-bubble?

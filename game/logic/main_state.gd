@@ -1,6 +1,6 @@
 class_name MainState extends Object
 
-enum MiniGames { NONE, WINDOW, KITCHEN_COFFEE, COMPUTER, PLANTS, CAT_TREE }
+enum MiniGames { NONE, WINDOW, KITCHEN_COFFEE, COMPUTER, PLANTS, CAT_TREE, FOOD_BOWL }
 enum MiniGameState { ACTIVE, BLOCKED, COMPLETED }
 enum MainSceneObjects { WINDOW, COUCH, CHAIR, COFFEE_CUP }
 
@@ -19,6 +19,7 @@ var mainState = {
 		MiniGames.COMPUTER: MiniGameState.ACTIVE,
 		MiniGames.PLANTS: MiniGameState.BLOCKED,
 		MiniGames.CAT_TREE: MiniGameState.BLOCKED,
+		MiniGames.FOOD_BOWL: MiniGameState.BLOCKED,
 	},
 	'emotions': [
 		'sad',
@@ -54,6 +55,7 @@ func complete_current_level():
 					MiniGames.COMPUTER: MiniGameState.COMPLETED,
 					MiniGames.PLANTS: MiniGameState.BLOCKED,
 					MiniGames.CAT_TREE: MiniGameState.BLOCKED,
+					MiniGames.FOOD_BOWL: MiniGameState.BLOCKED,
 				},
 				'emotions': [
 					'sad',
@@ -74,6 +76,7 @@ func complete_current_level():
 					MiniGames.COMPUTER: MiniGameState.COMPLETED,
 					MiniGames.PLANTS: MiniGameState.BLOCKED,
 					MiniGames.CAT_TREE: MiniGameState.BLOCKED,
+					MiniGames.FOOD_BOWL: MiniGameState.BLOCKED,
 				},
 				'emotions': [
 					'sad',
@@ -94,6 +97,7 @@ func complete_current_level():
 					MiniGames.COMPUTER: MiniGameState.COMPLETED,
 					MiniGames.PLANTS: MiniGameState.BLOCKED,
 					MiniGames.CAT_TREE: MiniGameState.ACTIVE,
+					MiniGames.FOOD_BOWL: MiniGameState.BLOCKED,
 				},
 				'emotions': [
 					'sad',
@@ -112,6 +116,7 @@ func complete_current_level():
 					MiniGames.COMPUTER: MiniGameState.COMPLETED,
 					MiniGames.PLANTS: MiniGameState.ACTIVE,
 					MiniGames.CAT_TREE: MiniGameState.COMPLETED,
+					MiniGames.FOOD_BOWL: MiniGameState.BLOCKED,
 				},
 				'emotions': [
 					'sad'
@@ -129,6 +134,23 @@ func complete_current_level():
 					MiniGames.COMPUTER: MiniGameState.COMPLETED,
 					MiniGames.PLANTS: MiniGameState.COMPLETED,
 					MiniGames.CAT_TREE: MiniGameState.COMPLETED,
+					MiniGames.FOOD_BOWL: MiniGameState.ACTIVE,
+				},
+				'emotions': []
+			}
+		MiniGames.PLANTS:
+			mainState = {
+				MainSceneObjects.WINDOW: "open",
+				MainSceneObjects.COUCH: "human",
+				MainSceneObjects.CHAIR: "empty",
+				MainSceneObjects.COFFEE_CUP: "used",
+				'minigamesState': {
+					MiniGames.WINDOW: MiniGameState.COMPLETED,
+					MiniGames.KITCHEN_COFFEE: MiniGameState.COMPLETED,
+					MiniGames.COMPUTER: MiniGameState.COMPLETED,
+					MiniGames.PLANTS: MiniGameState.COMPLETED,
+					MiniGames.CAT_TREE: MiniGameState.COMPLETED,
+					MiniGames.FOOD_BOWL: MiniGameState.COMPLETED,
 				},
 				'emotions': []
 			}
