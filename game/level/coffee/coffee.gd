@@ -39,6 +39,12 @@ var cup_positions = [
 var cur_pos = 0
 var goal_pos = 2
 
+var MAX_VISIBLE = 4.5
+var count_visible = 0.0
+
+var bubble
+
+
 func set_paw():
 	Input.set_custom_mouse_cursor(cursor_paw, 0, Vector2(63,63))
 
@@ -50,12 +56,16 @@ func _ready():
 	super._ready()
 	$CanvasLayer/Control/display/clock.text = times[cur_time]
 	set_paw()
-	#cat_face = $CanvasLayer/Control/coffee_cup/AnimatedSprite2D
+	bubble = $CanvasLayer/Control/speech_bubble
 	$CanvasLayer/Control/coffee_cup.set_position(cup_positions[cur_pos])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if bubble.visible == false: return
+	count_visible += delta
+	if count_visible < MAX_VISIBLE: return
+	bubble.visible = false
+	count_visible = 0.0
 
 
 func click_button():
