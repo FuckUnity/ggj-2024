@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cpxr8f6vacmqt"]
+[gd_scene load_steps=34 format=3 uid="uid://cpxr8f6vacmqt"]
 
 [ext_resource type="Script" path="res://level/coffee/coffee.gd" id="1_1iix2"]
 [ext_resource type="Texture2D" uid="uid://bfahy8003euh2" path="res://level/coffee/sprites/bg.png" id="1_n0lo3"]
@@ -7,9 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dbdj6irh3gabd" path="res://level/coffee/icons/button_left.png" id="6_g0f7p"]
 [ext_resource type="Texture2D" uid="uid://y2i7ujufb4hj" path="res://level/coffee/icons/sticky_note.png" id="7_3d6il"]
 [ext_resource type="FontFile" uid="uid://b5wc8u1b2jhql" path="res://level/coffee/fonts/betterwork/Betterworks.otf" id="8_s0m11"]
-[ext_resource type="Script" path="res://level/coffee/speech_bubble.gd" id="9_4tkaq"]
-[ext_resource type="Texture2D" uid="uid://bx00tp7k6h4n5" path="res://level/coffee/icons/speech_bubble.png" id="9_62spy"]
-[ext_resource type="FontFile" uid="uid://c5e6jd020r2fe" path="res://level/coffee/fonts/shiny-marker/Shiny Marker Regular.ttf" id="10_0hgcj"]
 [ext_resource type="Texture2D" uid="uid://cy31pgqj8k30y" path="res://level/coffee/sprites/display.png" id="11_r4rh2"]
 [ext_resource type="FontFile" uid="uid://c6snkbqy5evdg" path="res://level/coffee/fonts/digital-dream/DIGITALDREAMFAT.ttf" id="11_x4j6t"]
 [ext_resource type="Texture2D" uid="uid://cqoq0ietmi75y" path="res://level/coffee/sprites/coffee_streams/c-0.png" id="12_hlqe5"]
@@ -27,11 +24,12 @@
 [ext_resource type="Texture2D" uid="uid://cgybxiw4r2knb" path="res://level/coffee/sprites/coffee_streams/steam/s-2.png" id="24_7x5hh"]
 [ext_resource type="Texture2D" uid="uid://d4lv4ebuwi03f" path="res://level/coffee/sprites/coffee_streams/steam/s-3.png" id="25_8c3ou"]
 [ext_resource type="Texture2D" uid="uid://bgtcgif22rdef" path="res://level/coffee/sprites/coffee_cup.png" id="25_kii2q"]
-[ext_resource type="AudioStream" uid="uid://d10xko1u7c6to" path="res://level/coffee/audio/coffee_pouring_5sec.wav" id="25_rmnwf"]
 [ext_resource type="Texture2D" uid="uid://rqjnvm1db2si" path="res://level/coffee/sprites/coffee_streams/steam/s-4.png" id="26_fppeg"]
+[ext_resource type="AudioStream" uid="uid://d10xko1u7c6to" path="res://level/coffee/audio/5sec_coffee_poar.wav" id="27_0puj1"]
 [ext_resource type="Texture2D" uid="uid://b2h2lwvy0orik" path="res://level/coffee/sprites/coffee_streams/steam/s-0.png" id="27_e6pj5"]
+[ext_resource type="AudioStream" uid="uid://lqvaboqpqycb" path="res://level/coffee/audio/Loyalty_Freak_Lofi_-_You_know_why.mp3" id="28_gm2sr"]
+[ext_resource type="AudioStream" uid="uid://dy5r6j4i0wmf0" path="res://level/coffee/audio/very_fast_sliding_cup.mp3" id="31_alu3l"]
 [ext_resource type="AudioStream" uid="uid://qrmb5ilyvoua" path="res://level/coffee/audio/button.wav" id="31_gt6xq"]
-[ext_resource type="AudioStream" uid="uid://dincjrymkh0r5" path="res://level/coffee/audio/KaffeemaschineBackroungloop.wav" id="33_gouby"]
 [ext_resource type="AudioStream" uid="uid://crkm6rsjcqbkj" path="res://level/coffee/audio/schnurren.wav" id="34_igoc4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pvwsf"]
@@ -284,29 +282,6 @@ text = "08:00 AM - 2 be, 2 ba, 1 bt
 03:00 PM - 2 be, 2 ba, 1 bt
 05:00 PM - 1 be, 3 ba, 3 bt"
 
-[node name="speech_bubble" type="TextureRect" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 80.0
-offset_top = 64.0
-offset_right = 440.0
-offset_bottom = 446.0
-texture = ExtResource("9_62spy")
-expand_mode = 1
-stretch_mode = 4
-script = ExtResource("9_4tkaq")
-
-[node name="humans_response" type="Label" parent="CanvasLayer/Control/speech_bubble"]
-layout_mode = 0
-offset_left = 43.0
-offset_top = 77.0
-offset_right = 335.0
-offset_bottom = 261.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("10_0hgcj")
-theme_override_font_sizes/font_size = 36
-text = "I'm so tired..."
-autowrap_mode = 3
-
 [node name="PouringCoffee" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
 position = Vector2(985, 739.488)
 scale = Vector2(0.9325, 0.582402)
@@ -372,21 +347,31 @@ You did it, your human is not tired anymore.
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="bubble" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="pouring_coffee" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("25_rmnwf")
+stream = ExtResource("27_0puj1")
 volume_db = 15.0
 
 [node name="background" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("33_gouby")
-volume_db = -32.0
+stream = ExtResource("28_gm2sr")
+volume_db = -10.0
 autoplay = true
 
 [node name="winning_purring" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("34_igoc4")
-volume_db = 14.0
+volume_db = 10.0
 
 [node name="button" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("31_gt6xq")
+
+[node name="sliding_cup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_alu3l")
+volume_db = -10.0
+pitch_scale = 0.7
 
 [connection signal="mouse_entered" from="CanvasLayer/Control/pour_coffee_button" to="." method="_on_pour_coffee_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Control/pour_coffee_button" to="." method="_on_pour_coffee_button_mouse_exited"]
@@ -400,7 +385,6 @@ stream = ExtResource("31_gt6xq")
 [connection signal="mouse_entered" from="CanvasLayer/Control/adjust_type_button" to="." method="_on_adjust_type_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Control/adjust_type_button" to="." method="_on_adjust_type_button_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Control/adjust_type_button" to="." method="_on_adjust_type_button_pressed"]
-[connection signal="hidden" from="CanvasLayer/Control/speech_bubble" to="." method="_on_speech_bubble_hidden"]
 [connection signal="animation_finished" from="CanvasLayer/Control/PouringCoffee" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="mouse_entered" from="CanvasLayer/Control/coffee_cup" to="." method="_on_coffee_cup_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Control/coffee_cup" to="." method="_on_coffee_cup_mouse_exited"]

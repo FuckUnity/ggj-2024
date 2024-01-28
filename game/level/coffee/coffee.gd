@@ -7,6 +7,8 @@ var full_cup = load("res://level/coffee/icons/coffee_cup_full.png")
 var button_left = load("res://level/coffee/icons/button_left.png")
 var button_down = load("res://level/coffee/icons/button_down.png")
 var button_right = load("res://level/coffee/icons/button_right.png")
+var pos_response = load("res://level/coffee/sprites/positiv_response.png")
+var neg_response = load("res://level/coffee/sprites/negativ_response.png")
 var button_dict = {
 	1 : button_right,
 	2 : button_down,
@@ -22,11 +24,7 @@ var bar = 2
 var type = 3
 var times = ["12:36 PM","12:41 PM","12:59 PM","01:00 PM","01:15 PM"]
 var cur_time = 0
-var pos_response = """  Oh thank you!
-That's exactly how I like my coffee!!
-	*lol*"""
-var neg_response = """No that's not the right time for this coffee.
-	:-("""
+
 var cup_positions = [
 	Vector2(1062, 729), # 0 -- right edge
 	Vector2( 980, 729), # 1
@@ -56,15 +54,16 @@ func _ready():
 	super._ready()
 	$CanvasLayer/Control/display/clock.text = times[cur_time]
 	set_paw()
-	bubble = $CanvasLayer/Control/speech_bubble
+	bubble = $CanvasLayer/Control/bubble
 	$CanvasLayer/Control/coffee_cup.set_position(cup_positions[cur_pos])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if bubble.visible == false: return
 	count_visible += delta
-	if count_visible < MAX_VISIBLE: return
-	bubble.visible = false
+	if count_visible < MAX_VISIBLE: return # keep counting
+	# hide and reset
+	bubble.visible = false 
 	count_visible = 0.0
 
 
@@ -107,6 +106,7 @@ func _on_display_pressed():
 
 func _on_coffee_cup_pressed():
 	if poaring: return
+	$sliding_cup.play()
 	cur_pos = (cur_pos + 1) % cup_positions.size()
 	if cur_pos == 0:
 		$CanvasLayer/Control/coffee_cup/steam.play("none")
@@ -125,9 +125,9 @@ func _on_animated_sprite_2d_animation_finished():
 	$CanvasLayer/Control/coffee_cup/steam.play("default")
 	# 01:00 PM - 3 be, 10 ba, 1 bt
 	if beans == 3 && bar == 1 && type == 1 && times[cur_time] == "01:00 PM":
-		$CanvasLayer/Control/speech_bubble/humans_response.text = pos_response
-	else: $CanvasLayer/Control/speech_bubble/humans_response.text = neg_response
-	$CanvasLayer/Control/speech_bubble.visible = true
+		bubble.set_texture(pos_response)
+	else: bubble.set_texture(neg_response)
+	bubble.visible = true
 	full = true
 
 func _on_speech_bubble_hidden():
