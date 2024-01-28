@@ -11,13 +11,16 @@ const hover_plant_2 = preload("res://assets/Kitchen.png")
 const hover_plant_3 = preload("res://assets/Kitchen.png")
 const hover_computer = preload("res://assets/Kitchen.png")
 const hover_easteregg = null
-const hover_food_bowl = preload("res://assets/Kitchen.png")
+const hover_food_bowl = preload("res://assets/napf.png")
 
 const window_closed = preload("res://assets/room_windows_closed.png")
 const window_opened = preload("res://assets/room_windows_opened.png")
 
 const mug_initial = preload("res://assets/Mug.png")
 const mug_used = null
+
+const plant_sad = preload("res://assets/Plants_sad.png")
+const plant_happy = preload("res://assets/Plants_happy.png")
 
 const couch_empty = null
 const couch_human = preload("res://assets/couch_human.png")
@@ -38,10 +41,10 @@ func _ready():
 		{ "button": $"Control/ButtonWindow",  "level": MainState.MiniGames.WINDOW, "hover": hover_window },
 		{ "button": $"Control/ButtonKitchen", "level": MainState.MiniGames.KITCHEN_COFFEE, "hover": hover_kitchen },
 		{ "button": $"Control/ButtonCatTree", "level": MainState.MiniGames.CAT_TREE, "hover": hover_cat_tree },
-		{ "button": $"Control/ButtonPlant0", "level": MainState.MiniGames.PLANTS, "hover": hover_plant_0 },
-		{ "button": $"Control/ButtonPlant1", "level": MainState.MiniGames.PLANTS, "hover": hover_plant_1 },
-		{ "button": $"Control/ButtonPlant2", "level": MainState.MiniGames.PLANTS, "hover": hover_plant_2 },
-		{ "button": $"Control/ButtonPlant3", "level": MainState.MiniGames.PLANTS, "hover": hover_plant_3 },
+		{ "button": $"Control/ButtonPlant0", "level": MainState.MiniGames.PLANTS, "hover": _hover_plants() },
+		{ "button": $"Control/ButtonPlant1", "level": MainState.MiniGames.PLANTS, "hover": _hover_plants() },
+		{ "button": $"Control/ButtonPlant2", "level": MainState.MiniGames.PLANTS, "hover": _hover_plants() },
+		{ "button": $"Control/ButtonPlant3", "level": MainState.MiniGames.PLANTS, "hover": _hover_plants() },
 		{ "button": $"Control/ButtonComputer", "level": MainState.MiniGames.COMPUTER, "hover": hover_computer },
 		{ "button": $"Control/ButtonFoodBowl", "level": MainState.MiniGames.FOOD_BOWL, "hover": hover_food_bowl },
 		{ "button": $"Control/ButtonEasterEgg", "level": null, "hover": hover_easteregg },
@@ -62,6 +65,12 @@ func _ready():
 		"used":
 			$"Control/AspectRatioContainer/TextureRectMug".set_texture(mug_used)
 			
+	match game.state.mainState[MainState.MainSceneObjects.PLANTS]:
+		"sad":
+			$"Control/AspectRatioContainer/TextureRectPlants".set_texture(plant_sad)
+		"happy":
+			$"Control/AspectRatioContainer/TextureRectPlants".set_texture(plant_happy)
+			
 	match game.state.mainState[MainState.MainSceneObjects.COUCH]:
 		"empty":
 			$"Control/AspectRatioContainer/TextureRectCouch".set_texture(couch_empty)
@@ -76,6 +85,12 @@ func _ready():
 		"human_sad":
 			$"Control/AspectRatioContainer/TextureRectChair".set_texture(chair_human_sad)
 			
+func _hover_plants():
+	match game.state.mainState[MainState.MainSceneObjects.PLANTS]:
+		"sad":
+			return plant_sad
+		"happy":
+			return plant_happy
 
 func _init_button(b):
 	b.button.pressed.connect(func(): if b.level != null and _can_level_be_opened(b.level): game._open_level(b.level))
