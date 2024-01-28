@@ -174,4 +174,4 @@ func is_open_level_allowed(level: MiniGames) -> bool:
 	if level == MiniGames.NONE or debug_override_level_allowed:
 		return true
 	
-	return mainState.minigamesState[level] == MiniGameState.ACTIVE
+	return mainState.minigamesState[level] == MiniGameState.ACTIVE or mainState.minigamesState[level] == MiniGameState.COMPLETED
