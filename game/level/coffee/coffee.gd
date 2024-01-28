@@ -34,8 +34,9 @@ var cup_positions = [
 	Vector2( 275, 615), # 2 -> goal
 	Vector2( 220, 615), # 3
 	Vector2( 160, 615), # 4
-	Vector2( 80, 615), # 5
-	Vector2( -14, 615), # 6 -- left edge
+	Vector2(  80, 615), # 5
+	Vector2( -14, 615), # 6
+	Vector2(-119, 838)  # -- left edge
 ]
 var cur_pos = 0
 var goal_pos = 2
@@ -47,6 +48,9 @@ var count_visible = 0.0
 var TIPP_COUNT = 30
 var tipp_timer = 0.0
 
+var FALL_TIME = 1.0
+var fall_timer = 0.0
+
 var bubble
 var text
 var olli
@@ -54,6 +58,8 @@ var cup
 var steam
 var pouring
 var clock
+var falling_cup
+var crash
 
 func set_paw():
 	Input.set_custom_mouse_cursor(cursor_paw, 0, Vector2(63,63))
@@ -90,6 +96,8 @@ func _ready():
 	pouring = $CanvasLayer/Control/machine/PouringCoffee
 	clock = $CanvasLayer/Control/display/clock
 	clock.set_frame(cur_time)
+	falling_cup = $CanvasLayer/Control/cup
+	crash = $crash
 
 func handle_bubble(delta):
 	if bubble.visible == false: return
@@ -109,10 +117,18 @@ func handle_tipp(delta):
 	olli_tipp()
 	tipp_timer = 0.0
 
+func handle_falling(delta):
+	if !falling_cup.visible: return
+	fall_timer += delta
+	if fall_timer < FALL_TIME: return
+	crash.play()
+		
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	handle_bubble(delta)
 	handle_tipp(delta)
+	handle_falling(delta)
 	
 
 func click_button():
@@ -156,11 +172,23 @@ func _on_coffee_cup_pressed():
 	if poaring: return
 	$sliding_cup.play()
 	cur_pos = (cur_pos + 1) % cup_positions.size()
-	if cur_pos == 0:
+	if cur_pos == cup_positions.size() - 1:
+		cup.set_rotation(-76)
+	elif cur_pos == 0:
+		cup.visible = false
+		falling_cup.set_position(Vector2(432, 929))
+		falling_cup.visible = true
+		fall_timer = 0.0
 		steam.play("none")
 		steam.stop()
 		full = false
 	cup.set_position(cup_positions[cur_pos])
+	
+func reset_coffee_cup():
+	falling_cup.visible = false
+	cup.visible = true
+	cup.set_rotation(0)
+	
 
 func _on_animated_sprite_2d_animation_finished():
 	print("finished poaring coffee :P")
@@ -183,14 +211,6 @@ func _on_pouring_coffee_finished():
 
 func _on_button_finished():
 	clickable = true
-
-
-func _on_background_finished():
-	$background.play()
-
-
-func _on_winning_purring_finished():
-	$winning_purring.play()
 
 func _on_adjust_type_button_mouse_entered():
 	set_dark_paw()
@@ -235,3 +255,7 @@ func _on_bubble_hidden():
 	$winning_purring.play()
 	bubble.set_texture(null)
 	bubble.visible = true
+
+
+func _on_crash_finished():
+	reset_coffee_cup()

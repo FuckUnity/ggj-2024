@@ -1,7 +1,7 @@
-[gd_scene load_steps=49 format=3 uid="uid://cpxr8f6vacmqt"]
+[gd_scene load_steps=52 format=3 uid="uid://cpxr8f6vacmqt"]
 
-[ext_resource type="Script" path="res://level/coffee/coffee.gd" id="1_2v5hi"]
 [ext_resource type="Texture2D" uid="uid://bfahy8003euh2" path="res://level/coffee/sprites/bg.png" id="1_n0lo3"]
+[ext_resource type="Script" path="res://level/coffee/coffee.gd" id="1_qmwnf"]
 [ext_resource type="Texture2D" uid="uid://b5gwe8bxik2wc" path="res://level/coffee/sprites/Plattform.png" id="3_1vn27"]
 [ext_resource type="Texture2D" uid="uid://bpn3w5gdvji4y" path="res://level/coffee/sprites/coffee_machine.png" id="3_8w54k"]
 [ext_resource type="Texture2D" uid="uid://mhej1hfs43it" path="res://level/coffee/sprites/sticky_note.png" id="3_psnuc"]
@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://d8q1f0d8dlo4" path="res://level/coffee/sprites/text/Happy_text.png" id="35_3ug3j"]
 [ext_resource type="Texture2D" uid="uid://c575kvt22f157" path="res://level/coffee/sprites/text/Hint_text.png" id="36_gkxqb"]
 [ext_resource type="Texture2D" uid="uid://dbwinabp4oyjb" path="res://level/coffee/sprites/text/Sad_text.png" id="37_k3nog"]
+[ext_resource type="AudioStream" uid="uid://c1ora1jfwpkmx" path="res://level/coffee/audio/1sec_broken.mp3" id="45_qqodu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vk4lj"]
 animations = [{
@@ -209,6 +210,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_31n1u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eo0s3"]
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ttdhv"]
 animations = [{
 "frames": [{
@@ -234,7 +239,7 @@ animations = [{
 
 [node name="Coffee" type="Node2D"]
 scale = Vector2(1000, 1000)
-script = ExtResource("1_2v5hi")
+script = ExtResource("1_qmwnf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -377,10 +382,10 @@ sprite_frames = SubResource("SpriteFrames_pvwsf")
 
 [node name="coffee_cup" type="TextureButton" parent="CanvasLayer/Control/machine"]
 layout_mode = 0
-offset_left = -14.0
-offset_top = 603.0
-offset_right = 282.0
-offset_bottom = 774.0
+offset_left = 509.0
+offset_top = 615.0
+offset_right = 803.0
+offset_bottom = 788.0
 texture_normal = ExtResource("25_kii2q")
 ignore_texture_size = true
 stretch_mode = 4
@@ -390,6 +395,27 @@ position = Vector2(126.5, -74)
 scale = Vector2(0.576316, 0.582402)
 sprite_frames = SubResource("SpriteFrames_hgb3g")
 animation = &"none"
+
+[node name="cup" type="RigidBody2D" parent="CanvasLayer/Control"]
+visible = false
+position = Vector2(432, 929)
+rotation = -1.27065
+physics_material_override = SubResource("PhysicsMaterial_31n1u")
+gravity_scale = 0.5
+linear_velocity = Vector2(-200, 0)
+angular_velocity = -6.28319
+constant_force = Vector2(-2, 0)
+
+[node name="falling_cup" type="TextureRect" parent="CanvasLayer/Control/cup"]
+offset_right = 295.0
+offset_bottom = 155.0
+texture = ExtResource("25_kii2q")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/cup"]
+position = Vector2(118.499, 78.4728)
+shape = SubResource("CircleShape2D_eo0s3")
 
 [node name="display" type="TextureButton" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -429,7 +455,7 @@ volume_db = 15.0
 
 [node name="background" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_gm2sr")
-volume_db = -10.0
+volume_db = -12.0
 autoplay = true
 
 [node name="winning_purring" type="AudioStreamPlayer" parent="."]
@@ -441,8 +467,12 @@ stream = ExtResource("31_gt6xq")
 
 [node name="sliding_cup" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("31_alu3l")
-volume_db = -10.0
+volume_db = -15.0
 pitch_scale = 0.7
+
+[node name="crash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("45_qqodu")
+pitch_scale = 0.4
 
 [connection signal="hidden" from="CanvasLayer/Control/bubble" to="." method="_on_bubble_hidden"]
 [connection signal="mouse_entered" from="CanvasLayer/Control/machine/pour_coffee_button" to="." method="_on_pour_coffee_button_mouse_entered"]
@@ -470,3 +500,4 @@ pitch_scale = 0.7
 [connection signal="finished" from="background" to="." method="_on_background_finished"]
 [connection signal="finished" from="winning_purring" to="." method="_on_winning_purring_finished"]
 [connection signal="finished" from="button" to="." method="_on_button_finished"]
+[connection signal="finished" from="crash" to="." method="_on_crash_finished"]
