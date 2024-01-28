@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://cmvn8oa0gt21v" path="res://level/plants/sprites/p2.png" id="21_i3lxe"]
 [ext_resource type="FontFile" uid="uid://c5e6jd020r2fe" path="res://level/coffee/fonts/shiny-marker/Shiny Marker Regular.ttf" id="22_k21ei"]
 [ext_resource type="Script" path="res://level/plants/wateringcan.gd" id="23_73hus"]
-[ext_resource type="Texture2D" uid="uid://dnc8bfecfcdwv" path="res://level/plants/sprites/watering-can.png" id="23_i33tf"]
+[ext_resource type="Texture2D" uid="uid://b7pbdh7e7mmsw" path="res://assets/Gießkanne_.png" id="26_4o6jx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mu8w0"]
 size = Vector2(0.754787, 74.0143)
@@ -386,7 +386,10 @@ loop = false
 script = ExtResource("23_73hus")
 
 [node name="Sprite2D" type="Sprite2D" parent="fallPath/PathFollow2D/wateringcan"]
-texture = ExtResource("23_i33tf")
+scale = Vector2(-1, 1)
+texture = ExtResource("26_4o6jx")
+region_enabled = true
+region_rect = Rect2(1453.78, 570.073, 326.585, 269.622)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fallPath/PathFollow2D/wateringcan"]
 scale = Vector2(13.4164, 12.0519)
