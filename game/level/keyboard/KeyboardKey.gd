@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var KeyboardKey = ""
-var KeyboardSpeed = 400
+var KeyboardSpeed = 100
 var lastPress = Time.get_ticks_msec()
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,3 +20,6 @@ func _physics_process(delta):
 				var label = owner.get_node("Textpanel")
 
 				label.text += KeyboardKey
+				if body.isMoving:
+					$Click.play()
+				
