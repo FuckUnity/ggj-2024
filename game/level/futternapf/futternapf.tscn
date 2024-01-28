@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b20ni4aqu8plm"]
+[gd_scene load_steps=9 format=3 uid="uid://b20ni4aqu8plm"]
 
 [ext_resource type="Script" path="res://level/futternapf/futternapf.gd" id="1_614k2"]
+[ext_resource type="Texture2D" uid="uid://cyglxsc2rjmee" path="res://level/futternapf/napf.png" id="2_34phk"]
 [ext_resource type="FontFile" uid="uid://c5e6jd020r2fe" path="res://level/coffee/fonts/shiny-marker/Shiny Marker Regular.ttf" id="2_w28v6"]
+[ext_resource type="Texture2D" uid="uid://buxsts112wuws" path="res://level/kratzbaum/catsnack01.png" id="3_adoxt"]
+[ext_resource type="Texture2D" uid="uid://nm8opicc08eu" path="res://level/keyboard/hand.png" id="3_e4xka"]
 [ext_resource type="Theme" uid="uid://bwi4lmx74xbtc" path="res://level/futternapf/button.tres" id="3_pr5vu"]
+[ext_resource type="Texture2D" uid="uid://dicjsnhkpcn81" path="res://level/futternapf/napf_front.png" id="5_gssh5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ub463"]
 font = ExtResource("2_w28v6")
@@ -11,14 +15,35 @@ font_size = 111
 [node name="Futternapf" type="Node2D"]
 script = ExtResource("1_614k2")
 
+[node name="napf" type="Sprite2D" parent="."]
+position = Vector2(279.523, 907.385)
+scale = Vector2(3.4657, 3.4657)
+texture = ExtResource("2_34phk")
+
+[node name="treat" type="Sprite2D" parent="."]
+position = Vector2(293, 185)
+rotation = -3.14159
+scale = Vector2(0.50333, 0.50333)
+texture = ExtResource("3_adoxt")
+
+[node name="arm" type="Sprite2D" parent="treat"]
+position = Vector2(119.207, 3667.58)
+scale = Vector2(1.98677, 1.98677)
+texture = ExtResource("3_e4xka")
+
+[node name="napf_front" type="Sprite2D" parent="."]
+position = Vector2(280, 908)
+scale = Vector2(3.48277, 3.48277)
+texture = ExtResource("5_gssh5")
+
 [node name="contanier" type="GridContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 859.0
-offset_top = 406.0
-offset_right = 1051.0
-offset_bottom = 534.0
+offset_left = 673.0
+offset_top = 178.0
+offset_right = 1720.0
+offset_bottom = 777.0
 grow_horizontal = 2
 grow_vertical = 2
 

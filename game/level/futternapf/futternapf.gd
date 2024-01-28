@@ -8,7 +8,7 @@ const dialogTree = [
 		'a3': 1
 	},
 	{
-		'Q': "You cant be hungry, I just fed you!",
+		'Q': "You cant be hungry,\nI just fed you!",
 		'a1': 3,
 		'a2': 2,
 		'a3': 1
@@ -46,18 +46,25 @@ const dialogTree = [
 ]
 
 var current_level = 0
+var arm_start_pos
+@export var arm_move_amount = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	arm_start_pos = $treat.position
 	_init_q(1)
 
 func _init_q(nr):
+	if nr == 7:
+		$treat/arm.queue_free()
 	if nr == 8:
 		complete()
 		return
 	nr -= 1 # index ist 0 based
 	current_level = nr
 	$contanier/Q.text = dialogTree[nr].Q
+	
+	$treat.position = arm_start_pos + Vector2(0, arm_move_amount * nr)
 
 func _on_a_1_pressed():
 	var next = dialogTree[current_level].a1
