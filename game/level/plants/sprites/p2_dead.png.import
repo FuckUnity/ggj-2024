@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://er44ysgf2su0"
-path="res://.godot/imported/p3_dead.png-20c69aedbec0eed8d4e9fa75ce661fa6.ctex"
+uid="uid://btbxrgudfsk8v"
+path="res://.godot/imported/p2_dead.png-7ca0988029feebb8a2204b331cb10b37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/plants/p3_dead.png"
-dest_files=["res://.godot/imported/p3_dead.png-20c69aedbec0eed8d4e9fa75ce661fa6.ctex"]
+source_file="res://level/plants/sprites/p2_dead.png"
+dest_files=["res://.godot/imported/p2_dead.png-7ca0988029feebb8a2204b331cb10b37.ctex"]
 
 [params]
 

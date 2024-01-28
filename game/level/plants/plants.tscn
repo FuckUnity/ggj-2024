@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://cgjgchmjnfx5e"]
 
-[ext_resource type="Script" path="res://level/kratzbaum/Player.gd" id="1_civwx"]
 [ext_resource type="Texture2D" uid="uid://dctsn6j045iwr" path="res://level/kratzbaum/catstand.png" id="2_k5pv0"]
+[ext_resource type="Script" path="res://level/plants/Player_plant.gd" id="2_r1b23"]
 [ext_resource type="Texture2D" uid="uid://dd51wsfcynktw" path="res://level/kratzbaum/catjump.png" id="3_d0mrg"]
 [ext_resource type="Texture2D" uid="uid://k2oxt8mqq0wr" path="res://level/kratzbaum/catjump02.png" id="4_tcac2"]
 [ext_resource type="Texture2D" uid="uid://ykrwfev06372" path="res://level/kratzbaum/catidle.png" id="5_0kev6"]
@@ -15,12 +15,12 @@
 [ext_resource type="AudioStream" uid="uid://1307g0s88sks" path="res://level/kratzbaum/cat_eat_chrispy_treat.ogg" id="13_gabih"]
 [ext_resource type="AudioStream" uid="uid://bnf11c1yyttbl" path="res://level/kratzbaum/cat_purr.ogg" id="14_qv8fd"]
 [ext_resource type="Texture2D" uid="uid://bp1d0whvw6vnd" path="res://level/kratzbaum/catplatf01.png" id="15_3n7mt"]
-[ext_resource type="Texture2D" uid="uid://r2jxtqs6w1p7" path="res://level/plants/p1_dead.png" id="16_xyvq6"]
-[ext_resource type="Texture2D" uid="uid://btbxrgudfsk8v" path="res://level/plants/p2_dead.png" id="17_pem0o"]
-[ext_resource type="Texture2D" uid="uid://er44ysgf2su0" path="res://level/plants/p3_dead.png" id="18_msyf7"]
-[ext_resource type="Texture2D" uid="uid://dd5e0hoxi5t20" path="res://level/plants/p3.png" id="19_gsoqx"]
-[ext_resource type="Texture2D" uid="uid://cnd83nvl8ci6n" path="res://level/plants/p1.png" id="20_wul1n"]
-[ext_resource type="Texture2D" uid="uid://cmvn8oa0gt21v" path="res://level/plants/p2.png" id="21_i3lxe"]
+[ext_resource type="Texture2D" uid="uid://r2jxtqs6w1p7" path="res://level/plants/sprites/p1_dead.png" id="16_xyvq6"]
+[ext_resource type="Texture2D" uid="uid://btbxrgudfsk8v" path="res://level/plants/sprites/p2_dead.png" id="17_pem0o"]
+[ext_resource type="Texture2D" uid="uid://er44ysgf2su0" path="res://level/plants/sprites/p3_dead.png" id="18_msyf7"]
+[ext_resource type="Texture2D" uid="uid://dd5e0hoxi5t20" path="res://level/plants/sprites/p3.png" id="19_gsoqx"]
+[ext_resource type="Texture2D" uid="uid://cnd83nvl8ci6n" path="res://level/plants/sprites/p1.png" id="20_wul1n"]
+[ext_resource type="Texture2D" uid="uid://cmvn8oa0gt21v" path="res://level/plants/sprites/p2.png" id="21_i3lxe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mu8w0"]
 
@@ -101,7 +101,7 @@ region_rect = Rect2(90, 1927, 3412, 264)
 
 [node name="Player2" type="CharacterBody2D" parent="."]
 position = Vector2(581, 766)
-script = ExtResource("1_civwx")
+script = ExtResource("2_r1b23")
 gravity = 800
 SPEED = 500.0
 JUMP_VELOCITY = -800.0
