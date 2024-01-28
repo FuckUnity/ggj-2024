@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d35fcfy4ngulx"]
+[gd_scene load_steps=12 format=3 uid="uid://d35fcfy4ngulx"]
 
 [ext_resource type="Script" path="res://level/main/main.gd" id="1_rswi3"]
 [ext_resource type="Texture2D" uid="uid://dnub5cpkjdy2l" path="res://assets/Kitchen.png" id="2_l2i18"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b117e2hih2e6b" path="res://assets/Plants_sad.png" id="6_kt6gt"]
 [ext_resource type="Shader" path="res://level/main/hover.gdshader" id="8_al7t1"]
 [ext_resource type="Texture2D" uid="uid://bqxybok0lfjdy" path="res://assets/napf.png" id="9_efw6u"]
+[ext_resource type="AudioStream" uid="uid://ciaomyl45n8k4" path="res://level/main/WohnzimmerBackroundloop.mp3" id="10_koedn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_unlex"]
 shader = ExtResource("8_al7t1")
@@ -149,3 +150,7 @@ offset_right = 1226.0
 offset_bottom = 945.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_koedn")
+autoplay = true
