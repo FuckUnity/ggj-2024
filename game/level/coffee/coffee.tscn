@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cpxr8f6vacmqt"]
+[gd_scene load_steps=49 format=3 uid="uid://cpxr8f6vacmqt"]
 
 [ext_resource type="Script" path="res://level/coffee/coffee.gd" id="1_2v5hi"]
 [ext_resource type="Texture2D" uid="uid://bfahy8003euh2" path="res://level/coffee/sprites/bg.png" id="1_n0lo3"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://xbkqsrvukyge" path="res://level/coffee/sprites/Friend.png" id="5_dcw5n"]
 [ext_resource type="Texture2D" uid="uid://byyflbuvbsfpd" path="res://level/coffee/icons/button_down.png" id="5_ejncl"]
 [ext_resource type="Texture2D" uid="uid://dbdj6irh3gabd" path="res://level/coffee/icons/button_left.png" id="6_g0f7p"]
-[ext_resource type="Texture2D" uid="uid://cy31pgqj8k30y" path="res://level/coffee/sprites/display.png" id="11_r4rh2"]
+[ext_resource type="Texture2D" uid="uid://iysuiekkqno5" path="res://level/coffee/sprites/negativ_olli.png" id="12_diypt"]
 [ext_resource type="Texture2D" uid="uid://cqoq0ietmi75y" path="res://level/coffee/sprites/coffee_streams/c-0.png" id="12_hlqe5"]
 [ext_resource type="Texture2D" uid="uid://sxks7dtrkgj" path="res://level/coffee/sprites/coffee_streams/c-1.png" id="13_ayrmi"]
 [ext_resource type="Texture2D" uid="uid://djwh8ouo7y2u3" path="res://level/coffee/sprites/coffee_streams/c-2.png" id="14_op2ol"]
@@ -26,7 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://d4lv4ebuwi03f" path="res://level/coffee/sprites/coffee_streams/steam/s-3.png" id="25_8c3ou"]
 [ext_resource type="Texture2D" uid="uid://bgtcgif22rdef" path="res://level/coffee/sprites/coffee_cup.png" id="25_kii2q"]
 [ext_resource type="Texture2D" uid="uid://rqjnvm1db2si" path="res://level/coffee/sprites/coffee_streams/steam/s-4.png" id="26_fppeg"]
-[ext_resource type="Texture2D" uid="uid://wispkm8iggh" path="res://level/coffee/sprites/tired_olli.png" id="27_0gxoj"]
 [ext_resource type="AudioStream" uid="uid://d10xko1u7c6to" path="res://level/coffee/audio/5sec_coffee_poar.wav" id="27_0puj1"]
 [ext_resource type="Texture2D" uid="uid://cjvdjotuyxvgj" path="res://level/coffee/sprites/clock/1236.png" id="27_6kcbd"]
 [ext_resource type="Texture2D" uid="uid://b2h2lwvy0orik" path="res://level/coffee/sprites/coffee_streams/steam/s-0.png" id="27_e6pj5"]
@@ -37,7 +36,34 @@
 [ext_resource type="AudioStream" uid="uid://dy5r6j4i0wmf0" path="res://level/coffee/audio/very_fast_sliding_cup.mp3" id="31_alu3l"]
 [ext_resource type="AudioStream" uid="uid://qrmb5ilyvoua" path="res://level/coffee/audio/button.wav" id="31_gt6xq"]
 [ext_resource type="Texture2D" uid="uid://bqf5r7nshv4qw" path="res://level/coffee/sprites/clock/0115.png" id="31_q7lhh"]
+[ext_resource type="Texture2D" uid="uid://b0p58n3noi212" path="res://level/coffee/sprites/winning_screen.PNG" id="32_6jvlk"]
+[ext_resource type="Texture2D" uid="uid://crupbsniaalyq" path="res://level/coffee/sprites/text/speech_bubble.png" id="33_gde3c"]
+[ext_resource type="Texture2D" uid="uid://tamp8wnq0lw6" path="res://level/coffee/sprites/positiv_olli.png" id="33_rw0aq"]
 [ext_resource type="AudioStream" uid="uid://crkm6rsjcqbkj" path="res://level/coffee/audio/schnurren.wav" id="34_igoc4"]
+[ext_resource type="Texture2D" uid="uid://dasdl4pkpdw0m" path="res://level/coffee/sprites/text/Tired_text.png" id="34_yc8vv"]
+[ext_resource type="Texture2D" uid="uid://d8q1f0d8dlo4" path="res://level/coffee/sprites/text/Happy_text.png" id="35_3ug3j"]
+[ext_resource type="Texture2D" uid="uid://c575kvt22f157" path="res://level/coffee/sprites/text/Hint_text.png" id="36_gkxqb"]
+[ext_resource type="Texture2D" uid="uid://dbwinabp4oyjb" path="res://level/coffee/sprites/text/Sad_text.png" id="37_k3nog"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vk4lj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_yc8vv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_3ug3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_gkxqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_k3nog")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pvwsf"]
 animations = [{
@@ -214,8 +240,8 @@ script = ExtResource("1_2v5hi")
 anchor_mode = 0
 
 [node name="Bg" type="Sprite2D" parent="."]
-position = Vector2(0.9565, 0.5365)
-scale = Vector2(0.0119812, 0.0120556)
+position = Vector2(0.961, 0.5395)
+scale = Vector2(0.000997917, 0.00100093)
 texture = ExtResource("1_n0lo3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -226,7 +252,7 @@ anchors_preset = 0
 offset_left = 10.0
 offset_top = 32.0
 offset_right = 1926.0
-offset_bottom = 1092.0
+offset_bottom = 1083.0
 
 [node name="sticky_note" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -242,8 +268,8 @@ stretch_mode = 4
 layout_mode = 0
 offset_left = 361.0
 offset_top = 773.0
-offset_right = 1537.0
-offset_bottom = 1044.0
+offset_right = 1561.0
+offset_bottom = 1048.0
 texture = ExtResource("3_1vn27")
 stretch_mode = 4
 
@@ -260,10 +286,31 @@ stretch_mode = 4
 layout_mode = 0
 offset_left = 1463.0
 offset_top = 603.0
-offset_right = 1908.0
+offset_right = 1909.0
 offset_bottom = 1046.0
 texture = ExtResource("4_xmymy")
 stretch_mode = 4
+
+[node name="bubble" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -33.0
+offset_right = 562.0
+offset_bottom = 449.0
+texture = ExtResource("33_gde3c")
+stretch_mode = 4
+
+[node name="text" type="AnimatedSprite2D" parent="CanvasLayer/Control/bubble"]
+position = Vector2(286, 213)
+sprite_frames = SubResource("SpriteFrames_vk4lj")
+
+[node name="olli" type="TextureRect" parent="CanvasLayer/Control/bubble"]
+layout_mode = 0
+offset_top = 420.0
+offset_right = 474.0
+offset_bottom = 1081.0
+texture = ExtResource("12_diypt")
+stretch_mode = 2
 
 [node name="machine" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -360,42 +407,21 @@ sprite_frames = SubResource("SpriteFrames_ttdhv")
 [node name="winning screen" type="TextureButton" parent="CanvasLayer/Control"]
 visible = false
 layout_mode = 0
-offset_top = -34.0
-offset_right = 1929.0
-offset_bottom = 1076.0
-texture_normal = ExtResource("11_r4rh2")
+offset_left = -12.0
+offset_top = -36.0
+offset_right = 1915.0
+offset_bottom = 1049.0
+texture_normal = ExtResource("32_6jvlk")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/winning screen"]
+[node name="olli2" type="TextureRect" parent="CanvasLayer/Control/winning screen"]
 layout_mode = 0
-offset_left = 144.0
-offset_top = 127.0
-offset_right = 1766.0
-offset_bottom = 981.0
-theme_override_font_sizes/font_size = 64
-text = "Woohooo!    :-D
-You did it, your human is not tired anymore.
-
-» Press anywhere to proceed «"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="bubble" type="TextureRect" parent="CanvasLayer/Control"]
-layout_mode = 0
-offset_left = 40.0
-offset_top = -18.0
-offset_right = 473.0
-offset_bottom = 348.0
-
-[node name="olli" type="TextureRect" parent="CanvasLayer/Control/bubble"]
-layout_mode = 0
-offset_left = -71.0
-offset_top = 404.0
-offset_right = 403.0
-offset_bottom = 1060.0
-texture = ExtResource("27_0gxoj")
-expand_mode = 1
-stretch_mode = 3
+offset_left = 1.0
+offset_top = 424.0
+offset_right = 626.0
+offset_bottom = 1085.0
+texture = ExtResource("33_rw0aq")
+stretch_mode = 4
 
 [node name="pouring_coffee" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("27_0puj1")
@@ -418,6 +444,7 @@ stream = ExtResource("31_alu3l")
 volume_db = -10.0
 pitch_scale = 0.7
 
+[connection signal="hidden" from="CanvasLayer/Control/bubble" to="." method="_on_bubble_hidden"]
 [connection signal="mouse_entered" from="CanvasLayer/Control/machine/pour_coffee_button" to="." method="_on_pour_coffee_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Control/machine/pour_coffee_button" to="." method="_on_pour_coffee_button_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Control/machine/pour_coffee_button" to="." method="_on_pour_coffee_button_pressed"]
@@ -439,7 +466,6 @@ pitch_scale = 0.7
 [connection signal="mouse_exited" from="CanvasLayer/Control/display" to="." method="_on_display_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/Control/display" to="." method="_on_display_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/winning screen" to="." method="_on_winning_screen_pressed"]
-[connection signal="hidden" from="CanvasLayer/Control/bubble" to="." method="_on_bubble_hidden"]
 [connection signal="finished" from="pouring_coffee" to="." method="_on_pouring_coffee_finished"]
 [connection signal="finished" from="background" to="." method="_on_background_finished"]
 [connection signal="finished" from="winning_purring" to="." method="_on_winning_purring_finished"]

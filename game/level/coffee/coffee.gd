@@ -48,6 +48,7 @@ var TIPP_COUNT = 30
 var tipp_timer = 0.0
 
 var bubble
+var text
 var olli
 var cup
 var steam
@@ -61,18 +62,18 @@ func set_dark_paw():
 	Input.set_custom_mouse_cursor(cursor_dark_paw, 0, Vector2(63,63))
 
 func olli_tipp():
-	bubble.set_texture(tipp_response)
+	text.set_frame(2)
 	olli.set_texture(tipp_olli)
 	bubble.visible = true
 
 func olli_positiv():
-	bubble.set_texture(pos_response)
+	text.set_frame(1)
 	olli.set_texture(pos_olli)
 	bubble.visible = true
 	won = true
 	
 func olli_negativ():
-	bubble.set_texture(neg_response)
+	text.set_frame(3)
 	olli.set_texture(neg_olli)
 	bubble.visible = true
 
@@ -81,6 +82,7 @@ func _ready():
 	super._ready()
 	set_paw()
 	bubble = $CanvasLayer/Control/bubble
+	text = $CanvasLayer/Control/bubble/text
 	olli = $CanvasLayer/Control/bubble/olli
 	cup = $CanvasLayer/Control/machine/coffee_cup
 	cup.set_position(cup_positions[cur_pos])
@@ -98,6 +100,7 @@ func handle_bubble(delta):
 	count_visible = 0.0
 
 func handle_tipp(delta):
+	if won: return
 	tipp_timer += delta
 	if tipp_timer < TIPP_COUNT: return # keep counting
 	# as long as a reaction is displayed don't give a tipp
@@ -129,19 +132,19 @@ func _on_adjust_bar_button_pressed():
 	click_button()
 	bar = (bar % 3) + 1
 	print(bar)
-	$CanvasLayer/Control/adjust_bar_button.set_texture_normal(button_dict[bar])
+	$CanvasLayer/Control/machine/adjust_bar_button.set_texture_normal(button_dict[bar])
 
 func _on_adjust_beans_button_pressed():
 	click_button()
 	beans = (beans % 3) + 1
 	print(beans)
-	$CanvasLayer/Control/adjust_beans_button.set_texture_normal(button_dict[beans])
+	$CanvasLayer/Control/machine/adjust_beans_button.set_texture_normal(button_dict[beans])
 
 func _on_adjust_type_button_pressed():
 	click_button()
 	type = (type % 3) + 1
 	print(type)
-	$CanvasLayer/Control/adjust_type_button.set_texture_normal(button_dict[type])
+	$CanvasLayer/Control/machine/adjust_type_button.set_texture_normal(button_dict[type])
 
 
 func _on_display_pressed():
@@ -161,7 +164,7 @@ func _on_coffee_cup_pressed():
 
 func _on_animated_sprite_2d_animation_finished():
 	print("finished poaring coffee :P")
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	if !won: Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if cur_pos != goal_pos: return
 	steam.play("default")
 	# 01:00 PM - 3 be, 10 ba, 1 bt
@@ -230,3 +233,5 @@ func _on_bubble_hidden():
 	$"CanvasLayer/Control/winning screen".visible = true
 	$winning_purring.autoplay = true
 	$winning_purring.play()
+	bubble.set_texture(null)
+	bubble.visible = true
