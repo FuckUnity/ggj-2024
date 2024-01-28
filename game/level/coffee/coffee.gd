@@ -186,6 +186,7 @@ func _on_coffee_cup_pressed():
 		steam.stop()
 		full = false
 		falling_cup.set_position(Vector2(432, 929))
+		falling_cup.sleeping = false
 	cup.set_position(cup_positions[cur_pos])
 	
 func reset_coffee_cup():
@@ -193,6 +194,7 @@ func reset_coffee_cup():
 	cup.set_rotation(0)
 	cup.visible = true
 	falling_cup.visible = false
+	falling_cup.sleeping = true
 
 func _on_animated_sprite_2d_animation_finished():
 	print("finished poaring coffee :P")

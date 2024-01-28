@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cpxr8f6vacmqt"]
+[gd_scene load_steps=53 format=3 uid="uid://cpxr8f6vacmqt"]
 
 [ext_resource type="Texture2D" uid="uid://bfahy8003euh2" path="res://level/coffee/sprites/bg.png" id="1_n0lo3"]
 [ext_resource type="Script" path="res://level/coffee/coffee.gd" id="1_qmwnf"]
@@ -210,6 +210,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vjw1a"]
+size = Vector2(1.06212, 0.0710003)
+
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_31n1u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eo0s3"]
@@ -396,15 +399,22 @@ scale = Vector2(0.576316, 0.582402)
 sprite_frames = SubResource("SpriteFrames_hgb3g")
 animation = &"none"
 
+[node name="Area2D" type="Area2D" parent="CanvasLayer/Control"]
+scale = Vector2(10, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Area2D"]
+position = Vector2(95, 100.6)
+scale = Vector2(100, 100)
+shape = SubResource("RectangleShape2D_vjw1a")
+
 [node name="cup" type="RigidBody2D" parent="CanvasLayer/Control"]
 visible = false
 position = Vector2(432, 929)
 rotation = -1.27065
 physics_material_override = SubResource("PhysicsMaterial_31n1u")
-gravity_scale = 0.4
-linear_velocity = Vector2(-200, 0)
+sleeping = true
+linear_velocity = Vector2(-100, 0)
 angular_velocity = -6.28319
-constant_force = Vector2(-2, 0)
 
 [node name="falling_cup" type="TextureRect" parent="CanvasLayer/Control/cup"]
 offset_right = 295.0
@@ -471,6 +481,7 @@ volume_db = -15.0
 pitch_scale = 0.7
 
 [node name="crash" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0.147, 0.122)
 stream = ExtResource("45_qqodu")
 pitch_scale = 0.4
 
