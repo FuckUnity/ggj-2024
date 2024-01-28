@@ -1,6 +1,144 @@
-[gd_scene format=3 uid="uid://dhsmbap6gwobw"]
+[gd_scene load_steps=19 format=3 uid="uid://dhsmbap6gwobw"]
+
+[ext_resource type="Script" path="res://level/kratzbaum/Player.gd" id="1_civwx"]
+[ext_resource type="Texture2D" uid="uid://dctsn6j045iwr" path="res://level/kratzbaum/catstand.png" id="2_k5pv0"]
+[ext_resource type="Texture2D" uid="uid://dd51wsfcynktw" path="res://level/kratzbaum/catjump.png" id="3_d0mrg"]
+[ext_resource type="Texture2D" uid="uid://k2oxt8mqq0wr" path="res://level/kratzbaum/catjump02.png" id="4_tcac2"]
+[ext_resource type="Texture2D" uid="uid://ykrwfev06372" path="res://level/kratzbaum/catidle.png" id="5_0kev6"]
+[ext_resource type="Texture2D" uid="uid://bsahrbiurh6mn" path="res://level/kratzbaum/cat01.png" id="6_m0qq0"]
+[ext_resource type="Texture2D" uid="uid://dgwspnf6arwd5" path="res://level/kratzbaum/cat02.png" id="7_21nyb"]
+[ext_resource type="Texture2D" uid="uid://ci7y6lrvii1tm" path="res://level/kratzbaum/cat03.png" id="8_iuovo"]
+[ext_resource type="Texture2D" uid="uid://bkmsbkjins1w1" path="res://level/kratzbaum/cat04.png" id="9_5nkvo"]
+[ext_resource type="Texture2D" uid="uid://ct53icyvfqu1x" path="res://level/kratzbaum/cat05.png" id="10_7siai"]
+[ext_resource type="Script" path="res://level/kratzbaum/jumpChargeIndicator.gd" id="11_caw2d"]
+[ext_resource type="AudioStream" uid="uid://b0s3hisdm4ool" path="res://level/kratzbaum/cat_meow.ogg" id="12_3ylj1"]
+[ext_resource type="AudioStream" uid="uid://1307g0s88sks" path="res://level/kratzbaum/cat_eat_chrispy_treat.ogg" id="13_gabih"]
+[ext_resource type="AudioStream" uid="uid://bnf11c1yyttbl" path="res://level/kratzbaum/cat_purr.ogg" id="14_qv8fd"]
+[ext_resource type="Texture2D" uid="uid://bp1d0whvw6vnd" path="res://level/kratzbaum/catplatf01.png" id="15_3n7mt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mu8w0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anlmk"]
+size = Vector2(148.5, 129.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tx0f1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k5pv0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_d0mrg")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_tcac2")
+}],
+"loop": true,
+"name": &"jump_quick",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0kev6")
+}],
+"loop": true,
+"name": &"sleep",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_m0qq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_21nyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_iuovo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5nkvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7siai")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
 
 [node name="Plants" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
+[node name="floor" type="StaticBody2D" parent="."]
+position = Vector2(57, 948)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+scale = Vector2(4932.67, 13.2963)
+shape = SubResource("RectangleShape2D_mu8w0")
+
+[node name="Sprite2D" type="Sprite2D" parent="floor"]
+scale = Vector2(4008.99, 1.08327)
+texture = ExtResource("15_3n7mt")
+region_enabled = true
+region_rect = Rect2(90, 1927, 3412, 264)
+
+[node name="Player2" type="CharacterBody2D" parent="."]
+position = Vector2(581, 766)
+script = ExtResource("1_civwx")
+gravity = 800
+SPEED = 500.0
+JUMP_VELOCITY = -800.0
+JUMP_MAX = -1000.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+position = Vector2(0.75, -21.75)
+shape = SubResource("RectangleShape2D_anlmk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player2"]
+position = Vector2(-13, -51)
+scale = Vector2(0.116416, 0.116416)
+sprite_frames = SubResource("SpriteFrames_tx0f1")
+animation = &"sleep"
+
+[node name="JumpIndicator" type="Node2D" parent="Player2"]
+position = Vector2(92, -10)
+scale = Vector2(0.116416, 0.116416)
+script = ExtResource("11_caw2d")
+
+[node name="Camera2D" type="Camera2D" parent="Player2"]
+position = Vector2(-2, 10)
+limit_left = -99999
+limit_top = -99999
+limit_right = 99999
+limit_bottom = 99999
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_left_margin = 0.3
+drag_right_margin = 0.3
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Player2"]
+current = true
+
+[node name="meow" type="AudioStreamPlayer2D" parent="Player2"]
+stream = ExtResource("12_3ylj1")
+
+[node name="eat" type="AudioStreamPlayer2D" parent="Player2"]
+stream = ExtResource("13_gabih")
+
+[node name="purr" type="AudioStreamPlayer2D" parent="Player2"]
+stream = ExtResource("14_qv8fd")
+
+[node name="plant" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="plant"]
