@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bwi4lmx74xbtc"]
+
+[ext_resource type="FontFile" uid="uid://c5e6jd020r2fe" path="res://level/coffee/fonts/shiny-marker/Shiny Marker Regular.ttf" id="1_gnxsm"]
+
+[resource]
+default_font = ExtResource("1_gnxsm")
+default_font_size = 100

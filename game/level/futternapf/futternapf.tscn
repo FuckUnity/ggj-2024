@@ -1,28 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://b20ni4aqu8plm"]
+[gd_scene load_steps=5 format=3 uid="uid://b20ni4aqu8plm"]
 
 [ext_resource type="Script" path="res://level/futternapf/futternapf.gd" id="1_614k2"]
+[ext_resource type="FontFile" uid="uid://c5e6jd020r2fe" path="res://level/coffee/fonts/shiny-marker/Shiny Marker Regular.ttf" id="2_w28v6"]
+[ext_resource type="Theme" uid="uid://bwi4lmx74xbtc" path="res://level/futternapf/button.tres" id="3_pr5vu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ub463"]
+font = ExtResource("2_w28v6")
+font_size = 111
 
 [node name="Futternapf" type="Node2D"]
 script = ExtResource("1_614k2")
 
 [node name="contanier" type="GridContainer" parent="."]
-offset_left = 920.0
-offset_top = 217.0
-offset_right = 1124.0
-offset_bottom = 275.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 859.0
+offset_top = 406.0
+offset_right = 1051.0
+offset_bottom = 534.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Label" type="Label" parent="contanier"]
+[node name="Q" type="Label" parent="contanier"]
 layout_mode = 2
-text = "Do You want some food?"
+text = "Do you want some food?"
+label_settings = SubResource("LabelSettings_ub463")
 
-[node name="Button1" type="Button" parent="contanier"]
+[node name="A1" type="Button" parent="contanier"]
 layout_mode = 2
+theme = ExtResource("3_pr5vu")
 text = "Meow (yes)"
 
-[node name="Button2" type="Button" parent="contanier"]
+[node name="A2" type="Button" parent="contanier"]
 layout_mode = 2
+theme = ExtResource("3_pr5vu")
 text = "Meow (affirmative	)"
 
-[node name="Button3" type="Button" parent="contanier"]
+[node name="A3" type="Button" parent="contanier"]
 layout_mode = 2
+theme = ExtResource("3_pr5vu")
 text = "Meow (of course)"
+
+[connection signal="pressed" from="contanier/A1" to="." method="_on_a_1_pressed"]
+[connection signal="pressed" from="contanier/A2" to="." method="_on_a_2_pressed"]
+[connection signal="pressed" from="contanier/A3" to="." method="_on_a_3_pressed"]
