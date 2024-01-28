@@ -26,7 +26,6 @@ var clickable = true
 var beans = 2
 var bar = 2
 var type = 3
-var times = ["12:36 PM","12:41 PM","12:59 PM","01:00 PM","01:15 PM"]
 var cur_time = 0
 
 var cup_positions = [
@@ -53,6 +52,7 @@ var olli
 var cup
 var steam
 var pouring
+var clock
 
 func set_paw():
 	Input.set_custom_mouse_cursor(cursor_paw, 0, Vector2(63,63))
@@ -79,7 +79,6 @@ func olli_negativ():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
-	$CanvasLayer/Control/display/clock.text = times[cur_time]
 	set_paw()
 	bubble = $CanvasLayer/Control/bubble
 	olli = $CanvasLayer/Control/bubble/olli
@@ -87,6 +86,8 @@ func _ready():
 	cup.set_position(cup_positions[cur_pos])
 	steam = $CanvasLayer/Control/machine/coffee_cup/steam
 	pouring = $CanvasLayer/Control/machine/PouringCoffee
+	clock = $CanvasLayer/Control/display/clock
+	clock.set_frame(cur_time)
 
 func handle_bubble(delta):
 	if bubble.visible == false: return
@@ -144,8 +145,8 @@ func _on_adjust_type_button_pressed():
 
 
 func _on_display_pressed():
-	cur_time = (cur_time + 1) % times.size()
-	$CanvasLayer/Control/display/clock.text = times[cur_time]
+	cur_time = (cur_time + 1) % 5
+	clock.set_frame(cur_time)
 
 
 func _on_coffee_cup_pressed():
@@ -164,7 +165,7 @@ func _on_animated_sprite_2d_animation_finished():
 	if cur_pos != goal_pos: return
 	steam.play("default")
 	# 01:00 PM - 3 be, 10 ba, 1 bt
-	if beans == 3 && bar == 1 && type == 1 && times[cur_time] == "01:00 PM":
+	if beans == 3 && bar == 1 && type == 1 && cur_time == 3:
 		olli_positiv()
 	else: olli_negativ()
 	full = true
