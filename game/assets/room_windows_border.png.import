@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqolh0122rfmm"
-path="res://.godot/imported/treat.png-84a7a73f6eaba5d5ed7f8fdb6a28f257.ctex"
+uid="uid://dyqi04i7kat5n"
+path="res://.godot/imported/room_windows_border.png-3e79485ffb73991a219dafda3a237686.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://level/moorhuhn/treat.png"
-dest_files=["res://.godot/imported/treat.png-84a7a73f6eaba5d5ed7f8fdb6a28f257.ctex"]
+source_file="res://assets/room_windows_border.png"
+dest_files=["res://.godot/imported/room_windows_border.png-3e79485ffb73991a219dafda3a237686.ctex"]
 
 [params]
 
