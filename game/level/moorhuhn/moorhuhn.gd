@@ -3,6 +3,8 @@ extends level_base
 var cursor_paw = load("res://assets/paw.png")
 var template_bird = preload("res://level/moorhuhn/bird.tscn")
 var template_point = preload("res://level/moorhuhn/point.tscn")
+const plant_sad = preload("res://assets/Plants_sad.png")
+const plant_happy = preload("res://assets/Plants_happy.png")
 
 var bpm = 20.0
 var rng = RandomNumberGenerator.new()
@@ -25,6 +27,8 @@ func _ready():
 	bird_holder = $"./BirdHolder"
 	points_holder = $"./PointsHolder"
 	Input.set_custom_mouse_cursor(cursor_paw, 0, Vector2(64, 64))
+	
+	$"Control3/AspectRatioContainer/TextureRectPlant".set_texture(_get_plants_image())
 
 func _physics_process(delta):
 	_next_bird_spawn_in_s = _next_bird_spawn_in_s - delta
@@ -95,3 +99,9 @@ func _spawn_point():
 	_next_point_spanw_in_s = rng.randf_range(0.4, 0.7)
 	_points_to_spawn -= 1
 	
+func _get_plants_image():
+	match game.state.mainState[MainState.MainSceneObjects.PLANTS]:
+		"sad":
+			return plant_sad
+		"happy":
+			return plant_happy

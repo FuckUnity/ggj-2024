@@ -51,6 +51,7 @@ var arm_start_pos
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	super._ready()
 	arm_start_pos = $treat.position
 	_init_q(1)
 
