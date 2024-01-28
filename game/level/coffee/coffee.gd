@@ -9,6 +9,10 @@ var button_down = load("res://level/coffee/icons/button_down.png")
 var button_right = load("res://level/coffee/icons/button_right.png")
 var pos_response = load("res://level/coffee/sprites/positiv_response.png")
 var neg_response = load("res://level/coffee/sprites/negativ_response.png")
+var tipp_response = load("res://level/coffee/sprites/tipp_response.png")
+var pos_olli = load("res://level/coffee/sprites/positiv_olli.png")
+var tipp_olli = load("res://level/coffee/sprites/tipp_olli.png")
+var neg_olli = load("res://level/coffee/sprites/negativ_olli.png")
 var button_dict = {
 	1 : button_right,
 	2 : button_down,
@@ -36,12 +40,16 @@ var cup_positions = [
 ]
 var cur_pos = 0
 var goal_pos = 2
+var won = false
 
 var MAX_VISIBLE = 4.5
 var count_visible = 0.0
 
-var bubble
+var TIPP_COUNT = 30
+var tipp_timer = 0.0
 
+var bubble
+var olli
 
 func set_paw():
 	Input.set_custom_mouse_cursor(cursor_paw, 0, Vector2(63,63))
@@ -49,16 +57,32 @@ func set_paw():
 func set_dark_paw():
 	Input.set_custom_mouse_cursor(cursor_dark_paw, 0, Vector2(63,63))
 
+func olli_tipp():
+	bubble.set_texture(tipp_response)
+	olli.set_texture(tipp_olli)
+	bubble.visible = true
+
+func olli_positiv():
+	bubble.set_texture(pos_response)
+	olli.set_texture(pos_olli)
+	bubble.visible = true
+	won = true
+	
+func olli_negativ():
+	bubble.set_texture(neg_response)
+	olli.set_texture(neg_olli)
+	bubble.visible = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super._ready()
 	$CanvasLayer/Control/display/clock.text = times[cur_time]
 	set_paw()
 	bubble = $CanvasLayer/Control/bubble
+	olli = $CanvasLayer/Control/bubble/olli
 	$CanvasLayer/Control/coffee_cup.set_position(cup_positions[cur_pos])
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func handle_bubble(delta):
 	if bubble.visible == false: return
 	count_visible += delta
 	if count_visible < MAX_VISIBLE: return # keep counting
@@ -66,6 +90,20 @@ func _process(delta):
 	bubble.visible = false 
 	count_visible = 0.0
 
+func handle_tipp(delta):
+	tipp_timer += delta
+	if tipp_timer < TIPP_COUNT: return # keep counting
+	# as long as a reaction is displayed don't give a tipp
+	if bubble.visible: return
+	print("bubble invis" + str(tipp_timer))
+	olli_tipp()
+	tipp_timer = 0.0
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	handle_bubble(delta)
+	handle_tipp(delta)
+	
 
 func click_button():
 	clickable = false;
@@ -111,8 +149,6 @@ func _on_coffee_cup_pressed():
 	if cur_pos == 0:
 		$CanvasLayer/Control/coffee_cup/steam.play("none")
 		$CanvasLayer/Control/coffee_cup/steam.stop()
-		#$CanvasLayer/Control/coffee_cup.set_texture_normal(empty_cup)
-		#cat_face.frame = (cat_face.frame + 1) % count_cat_faces
 		full = false
 	$CanvasLayer/Control/coffee_cup.set_position(cup_positions[cur_pos])
 
@@ -121,23 +157,12 @@ func _on_animated_sprite_2d_animation_finished():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if cur_pos != goal_pos:
 		return
-	#$CanvasLayer/Control/coffee_cup.set_texture_normal(full_cup)
 	$CanvasLayer/Control/coffee_cup/steam.play("default")
 	# 01:00 PM - 3 be, 10 ba, 1 bt
 	if beans == 3 && bar == 1 && type == 1 && times[cur_time] == "01:00 PM":
-		bubble.set_texture(pos_response)
-	else: bubble.set_texture(neg_response)
-	bubble.visible = true
+		olli_positiv()
+	else: olli_negativ()
 	full = true
-
-func _on_speech_bubble_hidden():
-	# print("bubble gone")
-	if  $CanvasLayer/Control/speech_bubble/humans_response.text != pos_response:
-		return
-	$"CanvasLayer/Control/winning screen".visible = true
-	$winning_purring.autoplay = true
-	$winning_purring.play()
-
 
 func _on_winning_screen_pressed():
 	complete()
@@ -193,3 +218,9 @@ func _on_display_mouse_entered():
 
 func _on_display_mouse_exited():
 	set_paw()
+
+func _on_bubble_hidden():
+	if !won: return
+	$"CanvasLayer/Control/winning screen".visible = true
+	$winning_purring.autoplay = true
+	$winning_purring.play()
