@@ -364,10 +364,10 @@ scale = Vector2(10.7308, 32.2731)
 shape = SubResource("RectangleShape2D_s5njh")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 223.0
-offset_top = 906.0
-offset_right = 1562.0
-offset_bottom = 1077.0
+offset_left = 186.0
+offset_top = 903.0
+offset_right = 1525.0
+offset_bottom = 1074.0
 theme = SubResource("Theme_qfiun")
 text = "Don't eat the dead plants!"
 
