@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dg5gg1vnmlbjf"]
+[gd_scene load_steps=10 format=3 uid="uid://dg5gg1vnmlbjf"]
 
 [ext_resource type="Script" path="res://level/moorhuhn/moorhuhn.gd" id="1_6n85o"]
 [ext_resource type="Texture2D" uid="uid://2xjy7uijpcnj" path="res://level/moorhuhn/background.png" id="1_e8ekf"]
+[ext_resource type="Texture2D" uid="uid://c48ostu7de0rr" path="res://level/moorhuhn/moorhuhn_bg.jpg" id="2_cejhb"]
 [ext_resource type="Texture2D" uid="uid://w5ytcejhcpph" path="res://assets/room_empty.png" id="3_d3ukn"]
 [ext_resource type="Texture2D" uid="uid://dyqi04i7kat5n" path="res://assets/room_windows_border.png" id="4_75g8t"]
 [ext_resource type="Texture2D" uid="uid://cqlty36vcjrfl" path="res://assets/Plants_happy.png" id="5_5xn03"]
@@ -35,13 +36,21 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -200.0
+offset_right = 2688.0
+offset_bottom = 2176.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.4, 0.4)
 ratio = 1.77
 
 [node name="ColorRect" type="ColorRect" parent="Control2/AspectRatioContainer"]
 layout_mode = 2
 color = Color(0.364706, 0.686275, 0.807843, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Control2/AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("2_cejhb")
 
 [node name="BirdHolder" type="Node2D" parent="."]
 
