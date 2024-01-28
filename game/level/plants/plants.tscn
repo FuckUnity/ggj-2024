@@ -15,6 +15,12 @@
 [ext_resource type="AudioStream" uid="uid://1307g0s88sks" path="res://level/kratzbaum/cat_eat_chrispy_treat.ogg" id="13_gabih"]
 [ext_resource type="AudioStream" uid="uid://bnf11c1yyttbl" path="res://level/kratzbaum/cat_purr.ogg" id="14_qv8fd"]
 [ext_resource type="Texture2D" uid="uid://bp1d0whvw6vnd" path="res://level/kratzbaum/catplatf01.png" id="15_3n7mt"]
+[ext_resource type="Texture2D" uid="uid://r2jxtqs6w1p7" path="res://level/plants/p1_dead.png" id="16_xyvq6"]
+[ext_resource type="Texture2D" uid="uid://btbxrgudfsk8v" path="res://level/plants/p2_dead.png" id="17_pem0o"]
+[ext_resource type="Texture2D" uid="uid://er44ysgf2su0" path="res://level/plants/p3_dead.png" id="18_msyf7"]
+[ext_resource type="Texture2D" uid="uid://dd5e0hoxi5t20" path="res://level/plants/p3.png" id="19_gsoqx"]
+[ext_resource type="Texture2D" uid="uid://cnd83nvl8ci6n" path="res://level/plants/p1.png" id="20_wul1n"]
+[ext_resource type="Texture2D" uid="uid://cmvn8oa0gt21v" path="res://level/plants/p2.png" id="21_i3lxe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mu8w0"]
 
@@ -76,25 +82,7 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y14bn"]
-load_path = "res://.godot/imported/p1_dead.png-e0f1bc2a0f0fa50465398ad7659dc920.ctex"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5njh"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dv8g5"]
-load_path = "res://.godot/imported/p2_dead.png-7ca0988029feebb8a2204b331cb10b37.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yhofy"]
-load_path = "res://.godot/imported/p3_dead.png-1a8b9ccae21493dff727e152ed745eac.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ja6o6"]
-load_path = "res://.godot/imported/p3.png-e5ea286110c258bfc9f2a3a8af7b8470.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0c74d"]
-load_path = "res://.godot/imported/p1.png-d9eb6c18d52405f1e153a26a6fea75b8.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ecfms"]
-load_path = "res://.godot/imported/p2.png-262af9f2e6d34776354745d269a88228.ctex"
 
 [node name="Plants" type="Node2D"]
 
@@ -164,7 +152,7 @@ position = Vector2(2709, 609)
 
 [node name="Sprite2D" type="Sprite2D" parent="plant6"]
 position = Vector2(4, 18)
-texture = SubResource("CompressedTexture2D_y14bn")
+texture = ExtResource("16_xyvq6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plant6"]
 position = Vector2(21, 29)
@@ -176,7 +164,7 @@ position = Vector2(2274, 677)
 
 [node name="Sprite2D" type="Sprite2D" parent="plant5"]
 position = Vector2(4, 18)
-texture = SubResource("CompressedTexture2D_dv8g5")
+texture = ExtResource("17_pem0o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plant5"]
 position = Vector2(21, 29)
@@ -188,7 +176,7 @@ position = Vector2(2012, 809)
 
 [node name="Sprite2D" type="Sprite2D" parent="plant4"]
 position = Vector2(4, 18)
-texture = SubResource("CompressedTexture2D_yhofy")
+texture = ExtResource("18_msyf7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plant4"]
 scale = Vector2(10.1652, 12.1635)
@@ -199,7 +187,7 @@ position = Vector2(1736, 739)
 
 [node name="Sprite2D" type="Sprite2D" parent="plant3"]
 position = Vector2(4, 18)
-texture = SubResource("CompressedTexture2D_ja6o6")
+texture = ExtResource("19_gsoqx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plant3"]
 scale = Vector2(8.55217, 19.6398)
@@ -210,7 +198,7 @@ position = Vector2(1007, 754)
 
 [node name="Sprite2D" type="Sprite2D" parent="plant2"]
 position = Vector2(4, 18)
-texture = SubResource("CompressedTexture2D_0c74d")
+texture = ExtResource("20_wul1n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plant2"]
 scale = Vector2(22.5176, 48.5478)
@@ -221,7 +209,7 @@ position = Vector2(1354, 644)
 
 [node name="Sprite2D" type="Sprite2D" parent="plant"]
 position = Vector2(-5, -19)
-texture = SubResource("CompressedTexture2D_ecfms")
+texture = ExtResource("21_i3lxe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plant"]
 scale = Vector2(10.7308, 32.2731)
