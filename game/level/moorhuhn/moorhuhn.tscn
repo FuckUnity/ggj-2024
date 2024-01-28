@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dg5gg1vnmlbjf"]
+[gd_scene load_steps=9 format=3 uid="uid://dg5gg1vnmlbjf"]
 
 [ext_resource type="Script" path="res://level/moorhuhn/moorhuhn.gd" id="1_6n85o"]
 [ext_resource type="Texture2D" uid="uid://2xjy7uijpcnj" path="res://level/moorhuhn/background.png" id="1_e8ekf"]
+[ext_resource type="Texture2D" uid="uid://w5ytcejhcpph" path="res://assets/room_empty.png" id="3_d3ukn"]
+[ext_resource type="Texture2D" uid="uid://dyqi04i7kat5n" path="res://assets/room_windows_border.png" id="4_75g8t"]
+[ext_resource type="Texture2D" uid="uid://cqlty36vcjrfl" path="res://assets/Plants_happy.png" id="5_5xn03"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nyu38"]
 size = Vector2(159, 9)
@@ -43,6 +46,7 @@ color = Color(0.364706, 0.686275, 0.807843, 1)
 [node name="BirdHolder" type="Node2D" parent="."]
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,6 +74,44 @@ size_flags_vertical = 3
 texture = ExtResource("1_e8ekf")
 expand_mode = 2
 stretch_mode = 5
+
+[node name="Control3" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -100.0
+offset_right = 1420.0
+offset_bottom = 980.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Control3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1290.0
+offset_top = -950.0
+offset_right = 886.0
+offset_bottom = 274.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+ratio = 1.77
+
+[node name="TextureRectRoom" type="TextureRect" parent="Control3/AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("3_d3ukn")
+
+[node name="TextureRectWindow" type="TextureRect" parent="Control3/AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("4_75g8t")
+
+[node name="TextureRectPlant" type="TextureRect" parent="Control3/AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("5_5xn03")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
