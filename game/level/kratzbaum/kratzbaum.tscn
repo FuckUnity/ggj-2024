@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cmo8kdh81gm2s"]
+[gd_scene load_steps=31 format=3 uid="uid://cmo8kdh81gm2s"]
 
 [ext_resource type="Script" path="res://level/kratzbaum/Player.gd" id="1_6cojx"]
 [ext_resource type="Texture2D" uid="uid://c3c3xwe1caoy4" path="res://level/kratzbaum/catstamm.png" id="1_f6ygx"]
@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://b0s3hisdm4ool" path="res://level/kratzbaum/cat_meow.ogg" id="19_0pvsy"]
 [ext_resource type="Texture2D" uid="uid://buxsts112wuws" path="res://level/kratzbaum/catsnack01.png" id="19_h3dfc"]
 [ext_resource type="AudioStream" uid="uid://1307g0s88sks" path="res://level/kratzbaum/cat_eat_chrispy_treat.ogg" id="20_ryeyd"]
+[ext_resource type="AudioStream" uid="uid://ciaomyl45n8k4" path="res://level/main/WohnzimmerBackroundloop.mp3" id="21_fiaf0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gw654"]
 size = Vector2(645, 40.1957)
@@ -251,6 +252,11 @@ stream = ExtResource("20_ryeyd")
 
 [node name="purr" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("18_pa7ie")
+
+[node name="background" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("21_fiaf0")
+volume_db = -10.0
+autoplay = true
 
 [node name="pickup" type="Area2D" parent="."]
 position = Vector2(-1161, -129)

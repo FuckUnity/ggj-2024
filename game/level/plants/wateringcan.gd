@@ -14,6 +14,9 @@ func _process(delta):
 		position = start_pos + Vector2(0, vert_wobble)
 	else:
 		($'..' as PathFollow2D).progress_ratio += 0.3 * delta
+		if ($'..' as PathFollow2D).progress_ratio >= 1:
+			$'../../..'.complete()
+			print('complete')
 	queue_redraw()
 
 func _on_body_entered(body):

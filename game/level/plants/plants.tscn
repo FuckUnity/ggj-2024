@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cgjgchmjnfx5e"]
+[gd_scene load_steps=41 format=3 uid="uid://cgjgchmjnfx5e"]
 
 [ext_resource type="Script" path="res://level/plants/plants.gd" id="1_8bt68"]
 [ext_resource type="Texture2D" uid="uid://dyqi04i7kat5n" path="res://assets/room_windows_border.png" id="2_a0onp"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://bnf11c1yyttbl" path="res://level/kratzbaum/cat_purr.ogg" id="14_qv8fd"]
 [ext_resource type="Texture2D" uid="uid://r2jxtqs6w1p7" path="res://level/plants/sprites/p1_dead.png" id="16_xyvq6"]
 [ext_resource type="Texture2D" uid="uid://btbxrgudfsk8v" path="res://level/plants/sprites/p2_dead.png" id="17_pem0o"]
+[ext_resource type="AudioStream" uid="uid://ciaomyl45n8k4" path="res://level/main/WohnzimmerBackroundloop.mp3" id="18_0lt5b"]
 [ext_resource type="Texture2D" uid="uid://er44ysgf2su0" path="res://level/plants/sprites/p3_dead.png" id="18_msyf7"]
 [ext_resource type="Texture2D" uid="uid://dd5e0hoxi5t20" path="res://level/plants/sprites/p3.png" id="19_gsoqx"]
 [ext_resource type="Texture2D" uid="uid://cnd83nvl8ci6n" path="res://level/plants/sprites/p1.png" id="20_wul1n"]
@@ -110,11 +111,11 @@ point_count = 4
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dr2ay"]
 
-[sub_resource type="Animation" id="Animation_81u44"]
-resource_name = "fall"
-
 [sub_resource type="Animation" id="Animation_e8628"]
 length = 0.001
+
+[sub_resource type="Animation" id="Animation_81u44"]
+resource_name = "fall"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l78ad"]
 _data = {
@@ -201,6 +202,11 @@ stream = ExtResource("13_gabih")
 
 [node name="purr" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("14_qv8fd")
+
+[node name="background" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("18_0lt5b")
+volume_db = -10.0
+autoplay = true
 
 [node name="plant_dead_6" type="Area2D" parent="."]
 position = Vector2(2709, 610)
