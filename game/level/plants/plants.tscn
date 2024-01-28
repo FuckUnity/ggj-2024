@@ -1,5 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://cgjgchmjnfx5e"]
+[gd_scene load_steps=32 format=3 uid="uid://cgjgchmjnfx5e"]
 
+[ext_resource type="Script" path="res://level/plants/plants.gd" id="1_8bt68"]
 [ext_resource type="Texture2D" uid="uid://dctsn6j045iwr" path="res://level/kratzbaum/catstand.png" id="2_k5pv0"]
 [ext_resource type="Script" path="res://level/plants/Player_plant.gd" id="2_r1b23"]
 [ext_resource type="Texture2D" uid="uid://dd51wsfcynktw" path="res://level/kratzbaum/catjump.png" id="3_d0mrg"]
@@ -21,6 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://dd5e0hoxi5t20" path="res://level/plants/sprites/p3.png" id="19_gsoqx"]
 [ext_resource type="Texture2D" uid="uid://cnd83nvl8ci6n" path="res://level/plants/sprites/p1.png" id="20_wul1n"]
 [ext_resource type="Texture2D" uid="uid://cmvn8oa0gt21v" path="res://level/plants/sprites/p2.png" id="21_i3lxe"]
+[ext_resource type="FontFile" uid="uid://c5e6jd020r2fe" path="res://level/coffee/fonts/shiny-marker/Shiny Marker Regular.ttf" id="22_k21ei"]
+[ext_resource type="Script" path="res://level/plants/wateringcan.gd" id="23_73hus"]
+[ext_resource type="Texture2D" uid="uid://dnc8bfecfcdwv" path="res://level/plants/sprites/watering-can.png" id="23_i33tf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mu8w0"]
 
@@ -84,7 +88,14 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5njh"]
 
+[sub_resource type="Theme" id="Theme_qfiun"]
+default_font = ExtResource("22_k21ei")
+default_font_size = 125
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dr2ay"]
+
 [node name="Plants" type="Node2D"]
+script = ExtResource("1_8bt68")
 
 [node name="floor" type="StaticBody2D" parent="."]
 position = Vector2(57, 948)
@@ -99,30 +110,29 @@ texture = ExtResource("15_3n7mt")
 region_enabled = true
 region_rect = Rect2(90, 1927, 3412, 264)
 
-[node name="Player2" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(581, 766)
 script = ExtResource("2_r1b23")
 gravity = 800
 SPEED = 500.0
-JUMP_VELOCITY = -800.0
-JUMP_MAX = -1000.0
+JUMP_VELOCITY = -1200.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0.75, -21.75)
 shape = SubResource("RectangleShape2D_anlmk")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(-13, -51)
 scale = Vector2(0.116416, 0.116416)
 sprite_frames = SubResource("SpriteFrames_tx0f1")
 animation = &"sleep"
 
-[node name="JumpIndicator" type="Node2D" parent="Player2"]
+[node name="JumpIndicator" type="Node2D" parent="Player"]
 position = Vector2(92, -10)
 scale = Vector2(0.116416, 0.116416)
 script = ExtResource("11_caw2d")
 
-[node name="Camera2D" type="Camera2D" parent="Player2"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-2, 10)
 limit_left = -99999
 limit_top = -99999
@@ -135,55 +145,55 @@ drag_right_margin = 0.3
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
-[node name="AudioListener2D" type="AudioListener2D" parent="Player2"]
+[node name="AudioListener2D" type="AudioListener2D" parent="Player"]
 current = true
 
-[node name="meow" type="AudioStreamPlayer2D" parent="Player2"]
+[node name="meow" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("12_3ylj1")
 
-[node name="eat" type="AudioStreamPlayer2D" parent="Player2"]
+[node name="eat" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("13_gabih")
 
-[node name="purr" type="AudioStreamPlayer2D" parent="Player2"]
+[node name="purr" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("14_qv8fd")
 
-[node name="plant6" type="StaticBody2D" parent="."]
+[node name="plant_dead_6" type="Area2D" parent="."]
 position = Vector2(2709, 609)
 
-[node name="Sprite2D" type="Sprite2D" parent="plant6"]
+[node name="Sprite2D" type="Sprite2D" parent="plant_dead_6"]
 position = Vector2(4, 18)
 texture = ExtResource("16_xyvq6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plant6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant_dead_6"]
 position = Vector2(21, 29)
 scale = Vector2(15.3054, 33.0841)
 shape = SubResource("RectangleShape2D_s5njh")
 
-[node name="plant5" type="StaticBody2D" parent="."]
-position = Vector2(2274, 677)
+[node name="plant_dead_5" type="Area2D" parent="."]
+position = Vector2(8749, 712)
 
-[node name="Sprite2D" type="Sprite2D" parent="plant5"]
+[node name="Sprite2D" type="Sprite2D" parent="plant_dead_5"]
 position = Vector2(4, 18)
 texture = ExtResource("17_pem0o")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plant5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant_dead_5"]
 position = Vector2(21, 29)
 scale = Vector2(9.47309, 24.141)
 shape = SubResource("RectangleShape2D_s5njh")
 
-[node name="plant4" type="StaticBody2D" parent="."]
-position = Vector2(2012, 809)
+[node name="plant_dead_4" type="Area2D" parent="."]
+position = Vector2(6728, 748)
 
-[node name="Sprite2D" type="Sprite2D" parent="plant4"]
+[node name="Sprite2D" type="Sprite2D" parent="plant_dead_4"]
 position = Vector2(4, 18)
 texture = ExtResource("18_msyf7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="plant4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant_dead_4"]
 scale = Vector2(10.1652, 12.1635)
 shape = SubResource("RectangleShape2D_s5njh")
 
-[node name="plant3" type="StaticBody2D" parent="."]
-position = Vector2(1736, 739)
+[node name="plant3" type="Area2D" parent="."]
+position = Vector2(1258, 692)
 
 [node name="Sprite2D" type="Sprite2D" parent="plant3"]
 position = Vector2(4, 18)
@@ -193,8 +203,8 @@ texture = ExtResource("19_gsoqx")
 scale = Vector2(8.55217, 19.6398)
 shape = SubResource("RectangleShape2D_s5njh")
 
-[node name="plant2" type="StaticBody2D" parent="."]
-position = Vector2(1007, 754)
+[node name="plant2" type="Area2D" parent="."]
+position = Vector2(5333, 485)
 
 [node name="Sprite2D" type="Sprite2D" parent="plant2"]
 position = Vector2(4, 18)
@@ -204,8 +214,8 @@ texture = ExtResource("20_wul1n")
 scale = Vector2(22.5176, 48.5478)
 shape = SubResource("RectangleShape2D_s5njh")
 
-[node name="plant" type="StaticBody2D" parent="."]
-position = Vector2(1354, 644)
+[node name="plant" type="Area2D" parent="."]
+position = Vector2(3769, 691)
 
 [node name="Sprite2D" type="Sprite2D" parent="plant"]
 position = Vector2(-5, -19)
@@ -214,3 +224,30 @@ texture = ExtResource("21_i3lxe")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plant"]
 scale = Vector2(10.7308, 32.2731)
 shape = SubResource("RectangleShape2D_s5njh")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 147.0
+offset_top = 295.0
+offset_right = 1486.0
+offset_bottom = 466.0
+theme = SubResource("Theme_qfiun")
+text = "Don't eat the dead plants!"
+
+[node name="wateringcan" type="Area2D" parent="Label"]
+position = Vector2(9370, 350)
+script = ExtResource("23_73hus")
+
+[node name="Sprite2D" type="Sprite2D" parent="Label/wateringcan"]
+texture = ExtResource("23_i33tf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Label/wateringcan"]
+scale = Vector2(13.4164, 12.0519)
+shape = SubResource("CircleShape2D_dr2ay")
+
+[connection signal="body_entered" from="plant_dead_6" to="Player" method="_on_plant_dead_area_entered"]
+[connection signal="body_entered" from="plant_dead_5" to="Player" method="_on_plant_dead_area_entered"]
+[connection signal="body_entered" from="plant_dead_4" to="Player" method="_on_plant_dead_area_entered"]
+[connection signal="body_entered" from="plant3" to="Player" method="_on_plant_area_entered"]
+[connection signal="body_entered" from="plant2" to="Player" method="_on_plant_area_entered"]
+[connection signal="body_entered" from="plant" to="Player" method="_on_plant_area_entered"]
+[connection signal="body_entered" from="Label/wateringcan" to="Label/wateringcan" method="_on_body_entered"]
