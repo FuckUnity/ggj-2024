@@ -1,10 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2psm1tw6l77"]
+[gd_scene load_steps=7 format=3 uid="uid://d2psm1tw6l77"]
 
 [ext_resource type="Script" path="res://level/moorhuhn/bird.gd" id="1_ivgay"]
-[ext_resource type="Texture2D" uid="uid://cbd6nswqwyh66" path="res://level/moorhuhn/bird.png" id="2_f8o2g"]
+[ext_resource type="Texture2D" uid="uid://4iow8q6752fg" path="res://level/moorhuhn/sprites/frame-1.png" id="2_1n3rb"]
+[ext_resource type="Texture2D" uid="uid://cqnuj7g5plpte" path="res://level/moorhuhn/sprites/frame-2.png" id="3_4d8wh"]
+[ext_resource type="Texture2D" uid="uid://da52tcdm36osx" path="res://level/moorhuhn/sprites/frame-3.png" id="4_1vuuk"]
+[ext_resource type="Texture2D" uid="uid://clbc5fnie4bi2" path="res://level/moorhuhn/sprites/frame-4.png" id="5_7ej71"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1hn3f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1n3rb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4d8wh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1vuuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7ej71")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Bird" type="Node2D"]
 script = ExtResource("1_ivgay")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_f8o2g")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -5)
+scale = Vector2(0.409768, 0.409768)
+sprite_frames = SubResource("SpriteFrames_1hn3f")
+frame = 2
+frame_progress = 0.39956

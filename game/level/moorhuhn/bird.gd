@@ -57,6 +57,7 @@ func _check_edge():
 	
 	if position.x > viewport.x:
 		movement.x = -movement.x
+		$AnimatedSprite2D.flip_h = not $AnimatedSprite2D.flip_h
 		
 	if state == State.KILLED or state == State.FREE:
 		if position.y < -viewport.y - 400 or position.y > viewport.y + 400:
@@ -74,5 +75,7 @@ func _get_start_position(side: float) -> Vector2:
 func _get_start_movement(side: float) -> Vector2:
 	var speed = _rng.randf_range(180.0, 300.0)
 	var angle = _rng.randf_range(-85.0, -60.0)
+
+	$AnimatedSprite2D.flip_h = side > 0
 	
 	return Vector2(speed * -side, angle)
