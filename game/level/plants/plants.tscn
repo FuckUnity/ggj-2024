@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dhsmbap6gwobw"]
+[gd_scene load_steps=26 format=3 uid="uid://cgjgchmjnfx5e"]
 
 [ext_resource type="Script" path="res://level/kratzbaum/Player.gd" id="1_civwx"]
 [ext_resource type="Texture2D" uid="uid://dctsn6j045iwr" path="res://level/kratzbaum/catstand.png" id="2_k5pv0"]
@@ -76,6 +76,26 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_y14bn"]
+load_path = "res://.godot/imported/p1_dead.png-e0f1bc2a0f0fa50465398ad7659dc920.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s5njh"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dv8g5"]
+load_path = "res://.godot/imported/p2_dead.png-7ca0988029feebb8a2204b331cb10b37.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yhofy"]
+load_path = "res://.godot/imported/p3_dead.png-1a8b9ccae21493dff727e152ed745eac.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ja6o6"]
+load_path = "res://.godot/imported/p3.png-e5ea286110c258bfc9f2a3a8af7b8470.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0c74d"]
+load_path = "res://.godot/imported/p1.png-d9eb6c18d52405f1e153a26a6fea75b8.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ecfms"]
+load_path = "res://.godot/imported/p2.png-262af9f2e6d34776354745d269a88228.ctex"
+
 [node name="Plants" type="Node2D"]
 
 [node name="floor" type="StaticBody2D" parent="."]
@@ -139,6 +159,70 @@ stream = ExtResource("13_gabih")
 [node name="purr" type="AudioStreamPlayer2D" parent="Player2"]
 stream = ExtResource("14_qv8fd")
 
+[node name="plant6" type="StaticBody2D" parent="."]
+position = Vector2(2709, 609)
+
+[node name="Sprite2D" type="Sprite2D" parent="plant6"]
+position = Vector2(4, 18)
+texture = SubResource("CompressedTexture2D_y14bn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant6"]
+position = Vector2(21, 29)
+scale = Vector2(15.3054, 33.0841)
+shape = SubResource("RectangleShape2D_s5njh")
+
+[node name="plant5" type="StaticBody2D" parent="."]
+position = Vector2(2274, 677)
+
+[node name="Sprite2D" type="Sprite2D" parent="plant5"]
+position = Vector2(4, 18)
+texture = SubResource("CompressedTexture2D_dv8g5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant5"]
+position = Vector2(21, 29)
+scale = Vector2(9.47309, 24.141)
+shape = SubResource("RectangleShape2D_s5njh")
+
+[node name="plant4" type="StaticBody2D" parent="."]
+position = Vector2(2012, 809)
+
+[node name="Sprite2D" type="Sprite2D" parent="plant4"]
+position = Vector2(4, 18)
+texture = SubResource("CompressedTexture2D_yhofy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant4"]
+scale = Vector2(10.1652, 12.1635)
+shape = SubResource("RectangleShape2D_s5njh")
+
+[node name="plant3" type="StaticBody2D" parent="."]
+position = Vector2(1736, 739)
+
+[node name="Sprite2D" type="Sprite2D" parent="plant3"]
+position = Vector2(4, 18)
+texture = SubResource("CompressedTexture2D_ja6o6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant3"]
+scale = Vector2(8.55217, 19.6398)
+shape = SubResource("RectangleShape2D_s5njh")
+
+[node name="plant2" type="StaticBody2D" parent="."]
+position = Vector2(1007, 754)
+
+[node name="Sprite2D" type="Sprite2D" parent="plant2"]
+position = Vector2(4, 18)
+texture = SubResource("CompressedTexture2D_0c74d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant2"]
+scale = Vector2(22.5176, 48.5478)
+shape = SubResource("RectangleShape2D_s5njh")
+
 [node name="plant" type="StaticBody2D" parent="."]
+position = Vector2(1354, 644)
 
 [node name="Sprite2D" type="Sprite2D" parent="plant"]
+position = Vector2(-5, -19)
+texture = SubResource("CompressedTexture2D_ecfms")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant"]
+scale = Vector2(10.7308, 32.2731)
+shape = SubResource("RectangleShape2D_s5njh")
