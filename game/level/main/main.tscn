@@ -1,12 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://d35fcfy4ngulx"]
+[gd_scene load_steps=11 format=3 uid="uid://d35fcfy4ngulx"]
 
 [ext_resource type="Script" path="res://level/main/main.gd" id="1_rswi3"]
-[ext_resource type="Texture2D" uid="uid://cdum0diys0l72" path="res://assets/Kitchen.png" id="2_l2i18"]
+[ext_resource type="Texture2D" uid="uid://dnub5cpkjdy2l" path="res://assets/Kitchen.png" id="2_l2i18"]
 [ext_resource type="Texture2D" uid="uid://w5ytcejhcpph" path="res://assets/room_empty.png" id="2_rqsb0"]
 [ext_resource type="Texture2D" uid="uid://b07rfa12n1rmf" path="res://assets/Mug.png" id="3_fjpey"]
 [ext_resource type="Texture2D" uid="uid://co8ylh4bk2ple" path="res://assets/Coffee_room.png" id="4_ccutl"]
-[ext_resource type="Texture2D" uid="uid://dgab1l67agmys" path="res://assets/Kratzbaum.png" id="5_kxywm"]
-[ext_resource type="Texture2D" uid="uid://bq5ve1iboo6wj" path="res://assets/Monstera_happy.png" id="6_m3eg3"]
+[ext_resource type="Texture2D" uid="uid://cwnuw8r0md4x4" path="res://assets/Kratzbaum.png" id="5_kxywm"]
+[ext_resource type="Texture2D" uid="uid://b117e2hih2e6b" path="res://assets/Plants_sad.png" id="6_kt6gt"]
+[ext_resource type="Shader" path="res://level/main/hover.gdshader" id="8_al7t1"]
+[ext_resource type="Texture2D" uid="uid://bqxybok0lfjdy" path="res://assets/napf.png" id="9_efw6u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_unlex"]
+shader = ExtResource("8_al7t1")
+shader_parameter/width = 12.0
+shader_parameter/outline_color = Color(0.8, 0.8, 0.8, 0.259)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_rswi3")
@@ -49,11 +56,12 @@ texture = ExtResource("4_ccutl")
 layout_mode = 2
 texture = ExtResource("5_kxywm")
 
-[node name="TextureRectPlant1" type="TextureRect" parent="Control/AspectRatioContainer"]
+[node name="TextureRectPlants" type="TextureRect" parent="Control/AspectRatioContainer"]
 layout_mode = 2
-texture = ExtResource("6_m3eg3")
+texture = ExtResource("6_kt6gt")
 
 [node name="TextureRectHover" type="TextureRect" parent="Control/AspectRatioContainer"]
+material = SubResource("ShaderMaterial_unlex")
 layout_mode = 2
 
 [node name="TextureRectMug" type="TextureRect" parent="Control/AspectRatioContainer"]
@@ -65,6 +73,10 @@ layout_mode = 2
 
 [node name="TextureRectChair" type="TextureRect" parent="Control/AspectRatioContainer"]
 layout_mode = 2
+
+[node name="TextureRectFoodBowl" type="TextureRect" parent="Control/AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("9_efw6u")
 
 [node name="ButtonWindow" type="TextureButton" parent="Control"]
 layout_mode = 2
@@ -121,5 +133,19 @@ offset_left = -2.0
 offset_top = 354.0
 offset_right = 181.0
 offset_bottom = 694.0
+
+[node name="ButtonEasterEgg" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 1200.0
+offset_top = 189.0
+offset_right = 1303.0
+offset_bottom = 258.0
+
+[node name="ButtonFoodBowl" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 1114.0
+offset_top = 879.0
+offset_right = 1226.0
+offset_bottom = 945.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
