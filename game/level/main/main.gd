@@ -5,11 +5,7 @@ const cursor_paw = preload("res://assets/tiny_paw.png")
 const hover_window = preload("res://assets/Kitchen.png")
 const hover_kitchen = preload("res://assets/Coffee_room.png")
 const hover_cat_tree = preload("res://assets/Kratzbaum.png")
-const hover_plant_0 = preload("res://assets/Kitchen.png")
-const hover_plant_1 = preload("res://assets/Monstera_happy.png")
-const hover_plant_2 = preload("res://assets/Kitchen.png")
-const hover_plant_3 = preload("res://assets/Kitchen.png")
-const hover_computer = preload("res://assets/Kitchen.png")
+const hover_computer = preload("res://assets/Desk.png")
 const hover_easteregg = null
 const hover_food_bowl = preload("res://assets/napf.png")
 

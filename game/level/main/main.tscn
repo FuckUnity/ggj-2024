@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://d35fcfy4ngulx"]
+[gd_scene load_steps=13 format=3 uid="uid://d35fcfy4ngulx"]
 
 [ext_resource type="Script" path="res://level/main/main.gd" id="1_rswi3"]
 [ext_resource type="Texture2D" uid="uid://dnub5cpkjdy2l" path="res://assets/Kitchen.png" id="2_l2i18"]
 [ext_resource type="Texture2D" uid="uid://w5ytcejhcpph" path="res://assets/room_empty.png" id="2_rqsb0"]
 [ext_resource type="Texture2D" uid="uid://b07rfa12n1rmf" path="res://assets/Mug.png" id="3_fjpey"]
+[ext_resource type="Texture2D" uid="uid://boxcsqq341cwc" path="res://assets/Desk.png" id="4_5t5fv"]
 [ext_resource type="Texture2D" uid="uid://co8ylh4bk2ple" path="res://assets/Coffee_room.png" id="4_ccutl"]
 [ext_resource type="Texture2D" uid="uid://cwnuw8r0md4x4" path="res://assets/Kratzbaum.png" id="5_kxywm"]
 [ext_resource type="Texture2D" uid="uid://b117e2hih2e6b" path="res://assets/Plants_sad.png" id="6_kt6gt"]
@@ -49,21 +50,25 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("2_l2i18")
 
-[node name="TextureRectCoffeeMaker" type="TextureRect" parent="Control/AspectRatioContainer"]
+[node name="TextureRectPlants" type="TextureRect" parent="Control/AspectRatioContainer"]
 layout_mode = 2
-texture = ExtResource("4_ccutl")
+texture = ExtResource("6_kt6gt")
 
 [node name="TextureRectCatTree" type="TextureRect" parent="Control/AspectRatioContainer"]
 layout_mode = 2
 texture = ExtResource("5_kxywm")
 
-[node name="TextureRectPlants" type="TextureRect" parent="Control/AspectRatioContainer"]
-layout_mode = 2
-texture = ExtResource("6_kt6gt")
-
 [node name="TextureRectHover" type="TextureRect" parent="Control/AspectRatioContainer"]
 material = SubResource("ShaderMaterial_unlex")
 layout_mode = 2
+
+[node name="TextureRectDesk" type="TextureRect" parent="Control/AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("4_5t5fv")
+
+[node name="TextureRectCoffeeMaker" type="TextureRect" parent="Control/AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("4_ccutl")
 
 [node name="TextureRectMug" type="TextureRect" parent="Control/AspectRatioContainer"]
 layout_mode = 2
@@ -131,9 +136,9 @@ offset_bottom = 274.0
 [node name="ButtonComputer" type="TextureButton" parent="Control"]
 layout_mode = 0
 offset_left = -2.0
-offset_top = 354.0
-offset_right = 181.0
-offset_bottom = 694.0
+offset_top = 509.0
+offset_right = 128.0
+offset_bottom = 849.0
 
 [node name="ButtonEasterEgg" type="TextureButton" parent="Control"]
 layout_mode = 0
