@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cgjgchmjnfx5e"]
+[gd_scene load_steps=36 format=3 uid="uid://cgjgchmjnfx5e"]
 
 [ext_resource type="Script" path="res://level/plants/plants.gd" id="1_8bt68"]
 [ext_resource type="Texture2D" uid="uid://dctsn6j045iwr" path="res://level/kratzbaum/catstand.png" id="2_k5pv0"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dnc8bfecfcdwv" path="res://level/plants/sprites/watering-can.png" id="23_i33tf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mu8w0"]
+size = Vector2(0.754787, 74.0143)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_anlmk"]
 size = Vector2(148.5, 129.5)
@@ -92,7 +93,25 @@ animations = [{
 default_font = ExtResource("22_k21ei")
 default_font_size = 125
 
+[sub_resource type="Curve2D" id="Curve2D_06833"]
+_data = {
+"points": PackedVector2Array(-355.772, 381.881, 355.772, -381.881, -676.088, 124.996, 0, 0, 0, 0, -163, -195, -18.3848, -320.524, 18.3848, 320.524, 19.9121, 77.9962, 0, 0, 0, 0, 65.9121, 1091)
+}
+point_count = 4
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_dr2ay"]
+
+[sub_resource type="Animation" id="Animation_81u44"]
+resource_name = "fall"
+
+[sub_resource type="Animation" id="Animation_e8628"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l78ad"]
+_data = {
+"RESET": SubResource("Animation_e8628"),
+"fall": SubResource("Animation_81u44")
+}
 
 [node name="Plants" type="Node2D"]
 script = ExtResource("1_8bt68")
@@ -101,11 +120,23 @@ script = ExtResource("1_8bt68")
 position = Vector2(57, 948)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
-scale = Vector2(4932.67, 13.2963)
+position = Vector2(4474, 264)
+scale = Vector2(13564.8, 9.60015)
+shape = SubResource("RectangleShape2D_mu8w0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="floor"]
+position = Vector2(-476.5, -803)
+scale = Vector2(552.473, 40.3166)
+shape = SubResource("RectangleShape2D_mu8w0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="floor"]
+position = Vector2(9793, -763)
+scale = Vector2(552.473, 40.3166)
 shape = SubResource("RectangleShape2D_mu8w0")
 
 [node name="Sprite2D" type="Sprite2D" parent="floor"]
-scale = Vector2(4008.99, 1.08327)
+position = Vector2(4472, 368)
+scale = Vector2(-3.0251, 3.79247)
 texture = ExtResource("15_3n7mt")
 region_enabled = true
 region_rect = Rect2(90, 1927, 3412, 264)
@@ -158,13 +189,25 @@ stream = ExtResource("13_gabih")
 stream = ExtResource("14_qv8fd")
 
 [node name="plant_dead_6" type="Area2D" parent="."]
-position = Vector2(2709, 609)
+position = Vector2(2709, 610)
 
 [node name="Sprite2D" type="Sprite2D" parent="plant_dead_6"]
 position = Vector2(4, 18)
 texture = ExtResource("16_xyvq6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plant_dead_6"]
+position = Vector2(21, 29)
+scale = Vector2(15.3054, 33.0841)
+shape = SubResource("RectangleShape2D_s5njh")
+
+[node name="plant_dead_10" type="Area2D" parent="."]
+position = Vector2(7091, 517)
+
+[node name="Sprite2D" type="Sprite2D" parent="plant_dead_10"]
+position = Vector2(4, 18)
+texture = ExtResource("16_xyvq6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant_dead_10"]
 position = Vector2(21, 29)
 scale = Vector2(15.3054, 33.0841)
 shape = SubResource("RectangleShape2D_s5njh")
@@ -181,6 +224,18 @@ position = Vector2(21, 29)
 scale = Vector2(9.47309, 24.141)
 shape = SubResource("RectangleShape2D_s5njh")
 
+[node name="plant_dead_7" type="Area2D" parent="."]
+position = Vector2(5122, 616)
+
+[node name="Sprite2D" type="Sprite2D" parent="plant_dead_7"]
+position = Vector2(4, 18)
+texture = ExtResource("17_pem0o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant_dead_7"]
+position = Vector2(21, 29)
+scale = Vector2(9.47309, 24.141)
+shape = SubResource("RectangleShape2D_s5njh")
+
 [node name="plant_dead_4" type="Area2D" parent="."]
 position = Vector2(6728, 748)
 
@@ -189,6 +244,28 @@ position = Vector2(4, 18)
 texture = ExtResource("18_msyf7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plant_dead_4"]
+scale = Vector2(10.1652, 12.1635)
+shape = SubResource("RectangleShape2D_s5njh")
+
+[node name="plant_dead_8" type="Area2D" parent="."]
+position = Vector2(3914, 719)
+
+[node name="Sprite2D" type="Sprite2D" parent="plant_dead_8"]
+position = Vector2(4, 18)
+texture = ExtResource("18_msyf7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant_dead_8"]
+scale = Vector2(10.1652, 12.1635)
+shape = SubResource("RectangleShape2D_s5njh")
+
+[node name="plant_dead_9" type="Area2D" parent="."]
+position = Vector2(8623, 742)
+
+[node name="Sprite2D" type="Sprite2D" parent="plant_dead_9"]
+position = Vector2(4, 18)
+texture = ExtResource("18_msyf7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant_dead_9"]
 scale = Vector2(10.1652, 12.1635)
 shape = SubResource("RectangleShape2D_s5njh")
 
@@ -203,6 +280,17 @@ texture = ExtResource("19_gsoqx")
 scale = Vector2(8.55217, 19.6398)
 shape = SubResource("RectangleShape2D_s5njh")
 
+[node name="plant6" type="Area2D" parent="."]
+position = Vector2(8427, 646)
+
+[node name="Sprite2D" type="Sprite2D" parent="plant6"]
+position = Vector2(4, 18)
+texture = ExtResource("19_gsoqx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant6"]
+scale = Vector2(8.55217, 19.6398)
+shape = SubResource("RectangleShape2D_s5njh")
+
 [node name="plant2" type="Area2D" parent="."]
 position = Vector2(5333, 485)
 
@@ -214,8 +302,41 @@ texture = ExtResource("20_wul1n")
 scale = Vector2(22.5176, 48.5478)
 shape = SubResource("RectangleShape2D_s5njh")
 
+[node name="plant7" type="Area2D" parent="."]
+position = Vector2(7483, 508)
+
+[node name="Sprite2D" type="Sprite2D" parent="plant7"]
+position = Vector2(4, 18)
+texture = ExtResource("20_wul1n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant7"]
+scale = Vector2(22.5176, 48.5478)
+shape = SubResource("RectangleShape2D_s5njh")
+
+[node name="plant5" type="Area2D" parent="."]
+position = Vector2(2467, 532)
+
+[node name="Sprite2D" type="Sprite2D" parent="plant5"]
+position = Vector2(4, 18)
+texture = ExtResource("20_wul1n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant5"]
+scale = Vector2(22.5176, 48.5478)
+shape = SubResource("RectangleShape2D_s5njh")
+
+[node name="plant4" type="Area2D" parent="."]
+position = Vector2(5710, 564)
+
+[node name="Sprite2D" type="Sprite2D" parent="plant4"]
+position = Vector2(-5, -19)
+texture = ExtResource("21_i3lxe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plant4"]
+scale = Vector2(10.7308, 32.2731)
+shape = SubResource("RectangleShape2D_s5njh")
+
 [node name="plant" type="Area2D" parent="."]
-position = Vector2(3769, 691)
+position = Vector2(3779, 671)
 
 [node name="Sprite2D" type="Sprite2D" parent="plant"]
 position = Vector2(-5, -19)
@@ -233,21 +354,44 @@ offset_bottom = 466.0
 theme = SubResource("Theme_qfiun")
 text = "Don't eat the dead plants!"
 
-[node name="wateringcan" type="Area2D" parent="Label"]
-position = Vector2(9370, 350)
+[node name="fallPath" type="Path2D" parent="."]
+position = Vector2(10198, 595)
+curve = SubResource("Curve2D_06833")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="fallPath"]
+position = Vector2(-676.088, 124.996)
+rotation = -0.0106686
+rotates = false
+cubic_interp = false
+loop = false
+
+[node name="wateringcan" type="Area2D" parent="fallPath/PathFollow2D"]
 script = ExtResource("23_73hus")
 
-[node name="Sprite2D" type="Sprite2D" parent="Label/wateringcan"]
+[node name="Sprite2D" type="Sprite2D" parent="fallPath/PathFollow2D/wateringcan"]
 texture = ExtResource("23_i33tf")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Label/wateringcan"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fallPath/PathFollow2D/wateringcan"]
 scale = Vector2(13.4164, 12.0519)
 shape = SubResource("CircleShape2D_dr2ay")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="fallPath/PathFollow2D/wateringcan"]
+libraries = {
+"": SubResource("AnimationLibrary_l78ad")
+}
+
 [connection signal="body_entered" from="plant_dead_6" to="Player" method="_on_plant_dead_area_entered"]
+[connection signal="body_entered" from="plant_dead_10" to="Player" method="_on_plant_dead_area_entered"]
 [connection signal="body_entered" from="plant_dead_5" to="Player" method="_on_plant_dead_area_entered"]
+[connection signal="body_entered" from="plant_dead_7" to="Player" method="_on_plant_dead_area_entered"]
 [connection signal="body_entered" from="plant_dead_4" to="Player" method="_on_plant_dead_area_entered"]
+[connection signal="body_entered" from="plant_dead_8" to="Player" method="_on_plant_dead_area_entered"]
+[connection signal="body_entered" from="plant_dead_9" to="Player" method="_on_plant_dead_area_entered"]
 [connection signal="body_entered" from="plant3" to="Player" method="_on_plant_area_entered"]
+[connection signal="body_entered" from="plant6" to="Player" method="_on_plant_area_entered"]
 [connection signal="body_entered" from="plant2" to="Player" method="_on_plant_area_entered"]
+[connection signal="body_entered" from="plant7" to="Player" method="_on_plant_area_entered"]
+[connection signal="body_entered" from="plant5" to="Player" method="_on_plant_area_entered"]
+[connection signal="body_entered" from="plant4" to="Player" method="_on_plant_area_entered"]
 [connection signal="body_entered" from="plant" to="Player" method="_on_plant_area_entered"]
-[connection signal="body_entered" from="Label/wateringcan" to="Label/wateringcan" method="_on_body_entered"]
+[connection signal="body_entered" from="fallPath/PathFollow2D/wateringcan" to="fallPath/PathFollow2D/wateringcan" method="_on_body_entered"]
