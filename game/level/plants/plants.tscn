@@ -1,6 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://cgjgchmjnfx5e"]
+[gd_scene load_steps=40 format=3 uid="uid://cgjgchmjnfx5e"]
 
 [ext_resource type="Script" path="res://level/plants/plants.gd" id="1_8bt68"]
+[ext_resource type="Texture2D" uid="uid://dyqi04i7kat5n" path="res://assets/room_windows_border.png" id="2_a0onp"]
+[ext_resource type="Texture2D" uid="uid://cjlba6uroqgsy" path="res://assets/room_windows_closed.png" id="2_dycii"]
 [ext_resource type="Texture2D" uid="uid://dctsn6j045iwr" path="res://level/kratzbaum/catstand.png" id="2_k5pv0"]
 [ext_resource type="Script" path="res://level/plants/Player_plant.gd" id="2_r1b23"]
 [ext_resource type="Texture2D" uid="uid://dd51wsfcynktw" path="res://level/kratzbaum/catjump.png" id="3_d0mrg"]
@@ -15,7 +17,6 @@
 [ext_resource type="AudioStream" uid="uid://b0s3hisdm4ool" path="res://level/kratzbaum/cat_meow.ogg" id="12_3ylj1"]
 [ext_resource type="AudioStream" uid="uid://1307g0s88sks" path="res://level/kratzbaum/cat_eat_chrispy_treat.ogg" id="13_gabih"]
 [ext_resource type="AudioStream" uid="uid://bnf11c1yyttbl" path="res://level/kratzbaum/cat_purr.ogg" id="14_qv8fd"]
-[ext_resource type="Texture2D" uid="uid://bp1d0whvw6vnd" path="res://level/kratzbaum/catplatf01.png" id="15_3n7mt"]
 [ext_resource type="Texture2D" uid="uid://r2jxtqs6w1p7" path="res://level/plants/sprites/p1_dead.png" id="16_xyvq6"]
 [ext_resource type="Texture2D" uid="uid://btbxrgudfsk8v" path="res://level/plants/sprites/p2_dead.png" id="17_pem0o"]
 [ext_resource type="Texture2D" uid="uid://er44ysgf2su0" path="res://level/plants/sprites/p3_dead.png" id="18_msyf7"]
@@ -88,6 +89,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s5njh"]
+size = Vector2(20, 13.7489)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_keg6t"]
+radius = 9.3015
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mff7t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rbuht"]
 
 [sub_resource type="Theme" id="Theme_qfiun"]
 default_font = ExtResource("22_k21ei")
@@ -119,6 +128,11 @@ script = ExtResource("1_8bt68")
 [node name="floor" type="StaticBody2D" parent="."]
 position = Vector2(57, 948)
 
+[node name="Sprite2D2" type="Sprite2D" parent="floor"]
+position = Vector2(9358, 191)
+scale = Vector2(6.60195, 6.60195)
+texture = ExtResource("2_dycii")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
 position = Vector2(4474, 264)
 scale = Vector2(13564.8, 9.60015)
@@ -135,11 +149,11 @@ scale = Vector2(552.473, 40.3166)
 shape = SubResource("RectangleShape2D_mu8w0")
 
 [node name="Sprite2D" type="Sprite2D" parent="floor"]
-position = Vector2(4472, 368)
-scale = Vector2(-3.0251, 3.79247)
-texture = ExtResource("15_3n7mt")
+position = Vector2(4814, -2644)
+scale = Vector2(-6.55923, 7.97442)
+texture = ExtResource("2_a0onp")
 region_enabled = true
-region_rect = Rect2(90, 1927, 3412, 264)
+region_rect = Rect2(605.964, 380.483, 1535.58, 811.753)
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(581, 766)
@@ -299,8 +313,9 @@ position = Vector2(4, 18)
 texture = ExtResource("20_wul1n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plant2"]
+position = Vector2(11, 21)
 scale = Vector2(22.5176, 48.5478)
-shape = SubResource("RectangleShape2D_s5njh")
+shape = SubResource("CircleShape2D_keg6t")
 
 [node name="plant7" type="Area2D" parent="."]
 position = Vector2(7483, 508)
@@ -310,8 +325,9 @@ position = Vector2(4, 18)
 texture = ExtResource("20_wul1n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plant7"]
+position = Vector2(7, 82)
 scale = Vector2(22.5176, 48.5478)
-shape = SubResource("RectangleShape2D_s5njh")
+shape = SubResource("CircleShape2D_mff7t")
 
 [node name="plant5" type="Area2D" parent="."]
 position = Vector2(2467, 532)
@@ -321,8 +337,9 @@ position = Vector2(4, 18)
 texture = ExtResource("20_wul1n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="plant5"]
+position = Vector2(7, 73)
 scale = Vector2(22.5176, 48.5478)
-shape = SubResource("RectangleShape2D_s5njh")
+shape = SubResource("CircleShape2D_rbuht")
 
 [node name="plant4" type="Area2D" parent="."]
 position = Vector2(5710, 564)
@@ -347,10 +364,10 @@ scale = Vector2(10.7308, 32.2731)
 shape = SubResource("RectangleShape2D_s5njh")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 147.0
-offset_top = 295.0
-offset_right = 1486.0
-offset_bottom = 466.0
+offset_left = 223.0
+offset_top = 906.0
+offset_right = 1562.0
+offset_bottom = 1077.0
 theme = SubResource("Theme_qfiun")
 text = "Don't eat the dead plants!"
 

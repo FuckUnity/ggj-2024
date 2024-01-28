@@ -13,7 +13,7 @@ func _process(delta):
 		var vert_wobble = sin(Time.get_ticks_msec() / 500.0) * vert_wobble_amount
 		position = start_pos + Vector2(0, vert_wobble)
 	else:
-		($'..' as PathFollow2D).progress_ratio += 0.2 * delta
+		($'..' as PathFollow2D).progress_ratio += 0.3 * delta
 	queue_redraw()
 
 func _on_body_entered(body):
