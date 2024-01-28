@@ -50,17 +50,18 @@ layout_mode = 2
 layout_mode = 2
 texture = ExtResource("2_l2i18")
 
-[node name="TextureRectPlants" type="TextureRect" parent="Control/AspectRatioContainer"]
+[node name="TextureRectHover" type="TextureRect" parent="Control/AspectRatioContainer"]
+z_as_relative = false
+material = SubResource("ShaderMaterial_unlex")
 layout_mode = 2
-texture = ExtResource("6_kt6gt")
 
 [node name="TextureRectCatTree" type="TextureRect" parent="Control/AspectRatioContainer"]
 layout_mode = 2
 texture = ExtResource("5_kxywm")
 
-[node name="TextureRectHover" type="TextureRect" parent="Control/AspectRatioContainer"]
-material = SubResource("ShaderMaterial_unlex")
+[node name="TextureRectPlants" type="TextureRect" parent="Control/AspectRatioContainer"]
 layout_mode = 2
+texture = ExtResource("6_kt6gt")
 
 [node name="TextureRectDesk" type="TextureRect" parent="Control/AspectRatioContainer"]
 layout_mode = 2
